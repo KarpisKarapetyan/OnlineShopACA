@@ -4,12 +4,8 @@ import { useRoutes } from "react-router-dom";
 import { ROUTES } from "./helpers/routes";
 import { ModalProvider } from "./contexts";
 
-
-
-
 const App = () => {
   const routes = useRoutes(ROUTES)
-
   return (
     <ModalProvider >
           <div className="App">
