@@ -1,0 +1,40 @@
+.inputsForm{
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.inputsForm input {
+    width: 250px;
+    height: 30px;
+    outline: 0;
+}
+.inputsForm button{
+    padding: 5px 20px;
+}
+
+.inputsForm label{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.inputsDiv{
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+.errorPrice{
+    width: 250px;
+    text-align: left;
+    height: auto;
+    
+    display: flex;
+    justify-content: left;
+    font-size: 12px;
+    color: rgb(253, 2, 2);
+}

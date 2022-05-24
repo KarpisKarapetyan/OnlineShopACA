@@ -1,0 +1,11 @@
+.homePage{
+    background-color: #A7E1DE;
+}
+
+.filterDIV{
+    display: flex;
+    justify-content: center;
+    height: auto;
+    width: 100%;
+    border-top: 1px black solid;
+}

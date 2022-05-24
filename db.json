@@ -1,0 +1,39 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Aram",
+      "password": "1111"
+    },
+    {
+      "name": "Karpis",
+      "password": "2222",
+      "id": "IEuugks"
+    },
+    {
+      "name": "Karo",
+      "password": "3333",
+      "id": "Ed8ZNtf"
+    }
+  ],
+  "tShirts": [
+    {
+      "size": "L",
+      "img": "tShirts1.png"
+    }
+  ],
+   "apranq" : [
+     {
+       "price" : "2000",
+       "size" : "XL"
+     },
+     {
+      "price" : "4000",
+      "size" : "X"
+    },
+    {
+      "price" : "2000",
+      "size" : "XL"
+    }
+   ]
+}

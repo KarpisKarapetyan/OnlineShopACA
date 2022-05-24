@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Corinthia&family=Lora&family=Merriweather:wght@300&family=Montserrat:wght@100&family=Roboto+Slab:wght@100&display=swap");
+
+.allLinks{
+    display: flex;
+    justify-content: start;
+}
+
+.dropdown {
+  display: inline-block;
+  cursor: pointer;
+}
+.dropbutton {
+  color: black;
+  padding: 5px;
+  margin-right: 10px;
+  font-size: 20px;
+  background-color: #a7e1de;
+  font-weight: bold;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  transition: 0.6s;
+  letter-spacing: 2px;
+  min-width: 90px;
+  cursor: pointer;
+}
+.dropbuttonchild {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  background-color: #a7e1de;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.dropbuttonchild ul {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.active {
+  color: #000;
+  background-color: #fff;
+  transition: all 0.3s;
+}
+
+.dropdown:hover .dropbuttonchild {
+  display: block;
+  cursor: pointer;
+}
+
+.dropdown:hover .dropbutton {
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 2px;
+}
+
+.link:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  justify-content: space-between;
+  cursor: pointer;
+}

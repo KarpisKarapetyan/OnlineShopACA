@@ -1,0 +1,7 @@
+.persons{
+    border : 1px white solid ;
+    border-radius: 6px;
+}
+.label{
+    cursor: pointer;
+}

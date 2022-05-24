@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Corinthia&family=Lora&family=Merriweather:wght@300&family=Montserrat:wght@100&family=Roboto+Slab:wght@100&display=swap");
+
+.form {
+  display: flex;
+  flex-flow: column;
+  width: 30vw;
+  gap: 1rem;
+}
+
+.checkbox {
+    cursor: pointer
+}
+
+span {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.remember {
+  letter-spacing: 1px;
+}
+
+.label {
+  display: flex;
+  flex-flow: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem 0;
+  width: 40%;
+  margin: 0 auto;
+  text-align: left;
+  height: 80vh;
+}
+
+.userInput {
+  border: 1px solid black;
+  width: 20vw;
+  height: 3vh;
+  border-radius: 50px 50px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+
+.loginBtn {
+  background: none;
+  border: none;
+  background-color: #a7e1de;
+  width: 5vw;
+  height: 3vh;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 50px 50px;
+}
+
+.registerBtn {
+  background: none;
+  border: none;
+  background-color: #a7e1de;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 50px 50px;
+}
+
+.goToRegister {
+    padding-top: 10px;
+    gap: 2rem
+}

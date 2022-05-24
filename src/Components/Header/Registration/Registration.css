@@ -1,0 +1,27 @@
+.registrationForm{
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+}
+.registrationForm input{
+    width: 250px;
+    height: 30px;
+    outline: 0;
+}
+.registrationForm button{
+    padding: 5px 20px;
+}
+.registrationDiv{
+    width: 100%;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+.registrationDiv label{
+    display: flex;
+    flex-direction: column;
+    
+}

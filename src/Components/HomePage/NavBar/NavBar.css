@@ -1,0 +1,39 @@
+.NavBar{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width:90vw;
+    height: 80vh;
+    background-image: url("../../Images/NavbarBackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 20px;
+    border-radius: 5px;
+}
+.navInput{
+    width: 600px;
+    height: 30px;
+    margin:0 auto 20px auto;
+    display: flex;
+    justify-content: center;
+
+}
+.navInput .filter{
+    width: 600px;
+    height: 100%;
+    background-color: black;
+    color: #fff;
+    border-radius: 20px;
+    padding: 0 0 0  15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navInputBtn{
+    width: 100px;
+    height: 30px;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 20px;
+    color: black;
+}

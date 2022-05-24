@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Corinthia&family=Lora&family=Merriweather:wght@300&family=Montserrat:wght@100&family=Roboto+Slab:wght@100&display=swap');
+
+
+.headerBody {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #a7e1de;
+  height: 70px;
+  padding: 0 10px;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+.siteName {
+  min-width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.submit{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.submitBtn{
+    border: none;
+    background: none;
+}
+
+.submitBtn {
+    border: none;
+    background: none;
+    color: #a7e1de
+}
+
+.headerRight{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginAndRegister{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.search {
+    border: none;
+    height: 3vh;
+    width: 12vw;
+    background-color: black;
+    border-radius: 50px 50px;
+}
+
+.navHeader {
+  display: flex;
+  gap: 1rem;
+}
+
+.betweenLogin {
+  display: flex;
+  align-items: center;
+  width: 10vw;
+}
+
+.basketTrue {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.divBasket {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.loginBasket {
+  width: 48px !important;
+  height: 48px !important;
+}
+.loginBasket label {
+  cursor: pointer;
+}
+
+.logoBasket {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logOut {
+  padding: 0;
+  border: none;
+  background: none;
+  height: 5vh;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.logoContainer {
+  width: 10vw;
+  height: 10vh;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  cursor: pointer;
+}
+
+.logo {
+  border: 2px solid rgb(0, 0, 0);
+  width: 6vw ;
+  height: 10vh ;
+}
+
+.logoAndLinks{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,53 @@
+@keyframes showbackBlack {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes showModal{
+    0%{
+        opacity: 0;
+        transform: translateY(-500px);
+    }
+    100%{
+        /* transform: translateY(0px) */
+    }
+}
+
+.backBlack{
+    position: fixed;
+    top: 0; right: 0; left : 0 ; bottom:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.658);
+    transition: all .3s;
+    animation: showBackBlack .3s ease-out;
+}
+
+.modal{
+    background: white;
+    width: 400px;
+    height: 200px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.24);
+    border-radius: 10px;
+    transition: all .3s;;
+    animation: showModal .3s ease-out;
+
+}
+
+.modalMain{
+    padding: 10px 20px;
+}
+
+.backBlack-hide{
+    opacity: 0;
+}
+
+.backBlack-hide .modal{
+    opacity: 0;
+    transform: translateY(-500px);
+}
