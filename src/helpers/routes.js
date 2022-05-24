@@ -5,6 +5,9 @@ import Woman from '../Components/Header/persons/Woman'
 import Kids from '../Components/Header/persons/Kids'
 import Registration from "../Components/Header/Registration/Registration";
 import { Navigate } from "react-router-dom";
+import LearnMore from "../Components/HomePage/LearnMore/LearnMore";
+import MakeOrder from "../Components/makeOrder/makeOrder";
+import FilterResualt from "../Components/FilterResualt/FilterResualt";
 
 const MAIN_ROUTES = [
     {
@@ -30,8 +33,19 @@ const MAIN_ROUTES = [
     {
         path: "Registration",
         element: <Registration />
-    }
-
+    },
+    {
+        path: "LearnMore",
+        element: <LearnMore/>
+    },
+    {
+        path: "MakeOrder",
+        element: <MakeOrder/>
+    },
+    {
+        path: "FilterResualt",
+        element: <FilterResualt/>
+    },
 ]
 
 export const ROUTES = [
