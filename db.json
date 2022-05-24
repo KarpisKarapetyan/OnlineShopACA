@@ -14,6 +14,11 @@
       "name": "Karo",
       "password": "3333",
       "id": "Ed8ZNtf"
+    },
+    {
+      "name": "Liana",
+      "password": "555444",
+      "id": "63wLXCY"
     }
   ],
   "tShirts": [
@@ -22,18 +27,18 @@
       "img": "tShirts1.png"
     }
   ],
-   "apranq" : [
-     {
-       "price" : "2000",
-       "size" : "XL"
-     },
-     {
-      "price" : "4000",
-      "size" : "X"
+  "apranq": [
+    {
+      "price": "2000",
+      "size": "XL"
     },
     {
-      "price" : "2000",
-      "size" : "XL"
+      "price": "4000",
+      "size": "X"
+    },
+    {
+      "price": "2000",
+      "size": "XL"
     }
-   ]
+  ]
 }
