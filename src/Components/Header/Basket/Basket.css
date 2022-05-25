@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Corinthia&family=Lora&family=Merriweather:wght@300&family=Montserrat:wght@100&family=Roboto+Slab:wght@100&display=swap');
+
+.ourBaskets {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 70px;
+    left: 0;
+    transform: translateX(-130%);
+    transition: all 0.2s;
+}
+
+
+
+.ourBaskets.active {
+    transform: translateX(0)
+}
+
+ .blur {
+    width: 100vw;
+    height: 100vh;
+    left: 30%;
+    /* backdrop-filter: blur(2px); */
+    position: absolute;
+}
+
+.basket_content{
+    width: 30%;
+    height: 70%;
+    background-color: #a7e1de;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.4s;
+}
+
+.basket_header {
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    padding: 10px;
+    font-size: 2rem;
+    border-bottom: 1px solid white;
+    width: 100%;
+    text-align: center;
+    
+}
+
+ul {
+    text-align: center;
+}
+
+ul li {
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+} 
