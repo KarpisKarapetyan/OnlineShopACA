@@ -1,15 +1,12 @@
+import { NavLink, useNavigate } from "react-router-dom";
 import background from "../../Images/OrderBack.png";
 
-
-
 function Orders() {
-  const toOrder = ()=>{
-    alert("chatch bags")
-  }
+  const navigate = useNavigate()
 
   return (
     <div className="orders">
-      <div onClick={toOrder} className="orderClick">
+      <div onClick={()=> navigate("../MakeOrder")} className="orderClick">
         <div className="orderClickShadow">
           <img src={background}></img>
         </div>
@@ -24,7 +21,8 @@ function Orders() {
           scelerisque. Morbi nec lacus sit amet justo feugiat laoreet
           sollicitudin tincidunt odio.
         </p>
-        <a href="">LEARN MOREEEEEEEE</a>
+        <NavLink className="linkMore"
+         to="/LearnMore">Learn More</NavLink>
 
       </div>
     </div>

@@ -1,33 +1,29 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { set, useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { mainUrl } from "../../../api/api";
+import { filterSelector, setFilterData } from "../../../redux/slices/filterSlice";
 import './Filter.css'
 
 function Filter (){
     const {register,handleSubmit,formState: { errors },} = useForm();
-    const [inputData ,setInputData] = useState([])
+    const dispatch = useDispatch()
+    const filterData = useSelector(filterSelector)
+    const navigate = useNavigate()
 
     const onSubmit = (data) => {
-       const {price ,size} = data
-       setInputData(prev => {
-         
-         prev.push(price,size)
-         return prev
-       })
-       console.log("inputData -->", inputData)
-    };
-  
-    useEffect(()=>{
+      const {price ,size} = data
       axios.get(`${mainUrl}/apranq`)
       .then((res) => {
-        const dress = res.data.filter(item => 
-        item.price === inputData[0] && item.size===inputData[1])
-console.log("res -->" , res)
-console.log("dress -->" , dress)
+        const currentArr = res.data.filter(item =>  
+        item.price === price && item.size=== size)
+        dispatch(setFilterData(currentArr))
+        console.log(filterData)
+        navigate("../FilterResualt")
       })
-    },[])
-
+    };
     return (
       <div>
         <form className="inputsForm" onSubmit={handleSubmit(onSubmit)}>

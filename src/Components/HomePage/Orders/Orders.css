@@ -19,6 +19,7 @@
     width: 30%;
     height: 350px;
     margin: 15px 0;
+    cursor: pointer;
     
 }
 
@@ -47,4 +48,7 @@
     font-weight: 400px;
     line-height: 51.2px;
     font-family: Montserrat;
+}
+.linkMore{
+    text-decoration: none;
 }
