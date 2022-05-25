@@ -8,8 +8,13 @@ import Register from "./Registration/Register"
 import Links from "./Links/Links"
 import logo from "../Images/LogoZootMood.png"
 import searchLogo from "../../project_pictures/Vector.png"
+import {basketSelector, setIsBasketShown} from "../../redux/slices/basketSlice"
+import basketLogo from "../Images/BasketLogo.png"
+import OurBaskets from "./Basket/OurBaskets"
 
 function Header() {
+  const isBasketShown = useSelector(basketSelector)
+
   const dispatch = useDispatch()
   const {
     register,
@@ -75,7 +80,13 @@ function Header() {
         <div className="betweenLogin">
           {user && (
             <div className="basketTrue">
-              <Basket />
+              <div
+                className="divBasket"
+                onClick={() => dispatch(setIsBasketShown(!isBasketShown))}
+              >
+                <img className="logoBasket" src={basketLogo}></img>
+                <OurBaskets />
+              </div>
               <div className="divBasket loginBasket">
                 <label>
                   <span className="spanLogin">{user}</span>

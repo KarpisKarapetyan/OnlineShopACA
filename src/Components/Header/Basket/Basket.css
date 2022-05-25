@@ -10,8 +10,6 @@
     transition: all 0.2s;
 }
 
-
-
 .ourBaskets.active {
     transform: translateX(0)
 }
