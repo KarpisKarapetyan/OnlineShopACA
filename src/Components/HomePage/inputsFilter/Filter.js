@@ -17,12 +17,12 @@ function Filter (){
     
     const onSubmit = (data) => {
       const {price ,size} = data
-      axios.get(`${mainUrl}/apranq`)
+      axios.get(`${mainUrl}/manTshirts`)
       .then((res) => {
         const currentArr = res.data.filter(item =>  
         item.price === price && item.size=== size)
         dispatch(setFilterData(currentArr))
-        console.log(filterData)
+        console.log( filterData)
         closeModal()
         navigate("../FilterResualt")  
       })
