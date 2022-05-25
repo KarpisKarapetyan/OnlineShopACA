@@ -7,13 +7,13 @@ import { ModalProvider } from "./contexts";
 const App = () => {
   const routes = useRoutes(ROUTES)
   return (
-    <ModalProvider >
           <div className="App">
+            <ModalProvider >
               <Header/>
-                  {routes}
+                    {routes}
               <Footer/>
+            </ModalProvider>    
          </div>
-    </ModalProvider> 
     
   );
 }
