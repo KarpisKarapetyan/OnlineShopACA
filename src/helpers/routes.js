@@ -8,6 +8,7 @@ import { Navigate } from "react-router-dom";
 import LearnMore from "../Components/HomePage/LearnMore/LearnMore";
 import MakeOrder from "../Components/makeOrder/makeOrder";
 import FilterResualt from "../Components/FilterResualt/FilterResualt";
+import ManTshirts from "../Components/ManTshirts/ManTshirts";
 
 const MAIN_ROUTES = [
     {
@@ -46,6 +47,10 @@ const MAIN_ROUTES = [
         path: "FilterResualt",
         element: <FilterResualt/>
     },
+    {
+        path: "manTshirts",
+        element: <ManTshirts />
+    }
 ]
 
 export const ROUTES = [
