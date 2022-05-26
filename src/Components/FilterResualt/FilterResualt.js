@@ -3,6 +3,8 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { filterSelector } from '../../redux/slices/filterSlice'
 import './FilterResualt.css'
 
+
+
 function FilterResualt (){
     const filterData = useSelector(filterSelector)
     const navigate = useNavigate()
@@ -10,7 +12,6 @@ function FilterResualt (){
     const test = ()=>{
         alert ('Կորոշենք հլը ուր ա գնում')
     }
-
     return(
         <div className='filterMain' >
             {filterData.length > 0 && 

@@ -19,10 +19,9 @@ function Carousel ({children}){
                 })
             })
         )
-    },[])
+    },[children])
 
     const leftClick = ()=>{
-        alert("depi dzax")
         setOffset(currentOffset=>{
             const newOffset = currentOffset + PAGE_WiDTH
             return Math.min(newOffset, 0)
@@ -30,11 +29,10 @@ function Carousel ({children}){
     }
 
     const rightClick = ()=>{
-        alert("depi aj")
         setOffset(currentOffset=>{
             const newOffset = currentOffset - PAGE_WiDTH
-            const maxOffset = -(PAGE_WiDTH*(pages.length - 1))
-            return Math.max(newOffset,maxOffset)
+            const maxOffset = -(PAGE_WiDTH*(pages.length - 3))
+            return Math.max(newOffset, maxOffset)
         })
     }
     return (

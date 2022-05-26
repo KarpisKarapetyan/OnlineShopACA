@@ -1,8 +1,8 @@
 .main-container {
     display: flex;
     align-items: center;
-    height: 150px;
-    width: 450px;
+    height: 100%;
+    width:  100%;
 }
 .window{
     height: 100%;

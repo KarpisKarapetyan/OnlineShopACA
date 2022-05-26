@@ -15,8 +15,10 @@ const HomePage = () => {
             <div className="mainOrderDIV">
                 <Orders/>
             </div>
-           <div>
+           <div className='imgBox'>
+               <div className='imgSize'>
                <Products/>
+               </div>
            </div>
            
         </div>

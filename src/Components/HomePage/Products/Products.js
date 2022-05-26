@@ -14,14 +14,25 @@ function Products (){
     return (
         
              <>
-                     {products.map((item , i)=>(
-                        <Carousel key={i} >
-                            <div className='item'>  
-                                <img src={item.location} /> 
+             <div className="productTitle">
+                <span className='titleSpan'> Products </span>
+             </div>
+             <Carousel>
+             {products?.map((item , i)=>(
+                 <div key={i}>
+                     <div className='item' >  
+                                <img src={item?.location} /> 
+                                
                             </div>
-                        </Carousel> 
+                            <div>
+                            <p> {item.price}</p>
+                            </div>
+                 </div>
+                            
                           
                     ))}
+             </Carousel>
+                 
              </>
                
          
