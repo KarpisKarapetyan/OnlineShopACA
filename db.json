@@ -4,17 +4,19 @@
       "id": "1",
       "name": "Aram",
       "password": "1111"
+
     },
     {
       "name": "Karpis",
       "password": "2222",
       "id": "IEuugks"
+
     },
     {
       "name": "Karo",
       "password": "3333",
       "id": "Ed8ZNtf"
-    }
+        }
   ],
   "tShirts": [
     {
@@ -25,7 +27,9 @@
    "apranq" : [
      {
        "price" : "2000",
-       "size" : "XL"
+       "size" : "XL",
+       "img" :  "/src/Components/Images/NavBarImage1.jpg"
+
      },
      {
       "price" : "4000",
@@ -33,7 +37,8 @@
     },
     {
       "price" : "2000",
-      "size" : "XL"
+      "size" : "XL",
+      "img" : "/src/img/Einstein.png"
     }
    ]
 }
