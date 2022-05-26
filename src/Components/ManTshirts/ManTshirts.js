@@ -8,8 +8,12 @@ import {
   subtractIsBasketBtnShown,
 } from "../../redux/slices/basketSlice"
 import {
+  setBasketItemCounter,
+  setUnseenUserBasket,
   setUserBasket,
+  subtractUnseenBasket,
   subtractUserBasket,
+  unseenBasketSelector,
   userBasketSelector,
   userSelector,
 } from "../../redux/slices/userSlice"
@@ -20,6 +24,7 @@ const ManTshirts = () => {
   const [tshirtsArr, setTshirtsArr] = useState([])
   const userBasket = useSelector(userBasketSelector)
   const isBasketBtnShown = useSelector(basketBtnShownSelector)
+  const unseenUserBasket = useSelector(unseenBasketSelector)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -30,26 +35,43 @@ const ManTshirts = () => {
 
   const addBasket = (item) => {
     if (user) {
-      dispatch(setUserBasket(item))
-      dispatch(setIsBasketBtnShown(item.id))
-    }
-    else{
-        alert("please Log in")
+      const arr = userBasket
+      const findedItem = arr.find((element) => element === item)
+      if (findedItem) {
+        dispatch(setUnseenUserBasket(item))
+        dispatch(setBasketItemCounter(prev => {
+          prev == prev++
+          return prev
+        }))
+      } else {
+        dispatch(setBasketItemCounter(1))
+        dispatch(setUserBasket(item))
+        dispatch(setUnseenUserBasket(item))
+        dispatch(setIsBasketBtnShown(item.id))
+      }
+    } else {
+      alert("please Log in")
     }
   }
 
   const subtractBasket = (item) => {
     const arr = userBasket
+    const unSeenArr = unseenUserBasket
     const basketShownArr = isBasketBtnShown
+
     const index = arr.indexOf(item)
+    const unseenBasketIndex = unSeenArr.indexOf(item)
     const indexOfItemId = basketShownArr.indexOf(item.id)
+
     const filteredArr = arr.filter((item, i) => i !== index)
-    console.log(filteredArr);
+    const filteredUnseenArr = unSeenArr.filter((item, i) => i !== unseenBasketIndex)
     const filteredItemIdArr = basketShownArr.filter(
       (item, i) => i !== indexOfItemId
     )
+
     dispatch(subtractUserBasket(filteredArr))
     dispatch(subtractIsBasketBtnShown(filteredItemIdArr))
+    dispatch(subtractUnseenBasket(filteredUnseenArr))
   }
 
   return (
