@@ -75,19 +75,6 @@
       "size": "XXL",
       "location": "https://firebasestorage.googleapis.com/v0/b/onlineshopaca-6023f.appspot.com/o/Mans%20Jackets%2FIMG_20210113_131713.jpg?alt=media&token=b5c7cea5-a3ac-4df2-8185-53d59d0f3311"
     }
-  ],
-  "apranq": [
-    {
-      "price": "2000",
-      "size": "XL"
-    },
-    {
-      "price": "4000",
-      "size": "X"
-    },
-    {
-      "price": "2000",
-      "size": "XL"
-    }
   ]
+  
 }
