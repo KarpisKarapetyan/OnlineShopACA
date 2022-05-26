@@ -5,7 +5,7 @@ import {FaChevronLeft , FaChevronRight } from 'react-icons/fa'
 function Carousel ({children}){
     const [pages,Setpages] = useState([])
     const [offset,setOffset] = useState(0)
-    const PAGE_WiDTH = 450
+    const PAGE_WiDTH = 421
     
     useEffect(()=>{
         Setpages(
@@ -36,10 +36,10 @@ function Carousel ({children}){
         })
     }
     return (
-        <div className='main-container'>
+        <div className='mainContainer'>
             <FaChevronLeft className='arrow' onClick={leftClick}/>
                 <div className='window'>
-                    <div className='all-PagesContanier '
+                    <div className='allPagesContanier '
                     style={{
                         transform : `translateX(${offset}px)`
                     }}
