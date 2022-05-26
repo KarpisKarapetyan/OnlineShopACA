@@ -7,11 +7,8 @@ export const searchThunk = createAsyncThunk("search" , async ({search}) => {
     console.log(search);
 
     const arr = response.data.find((item, i) => {
-        console.log(item)
         return item.some(item => {
-            console.log(item);
             return item.name.some((item) => {
-                console.log(item)
                 return item === search
             })
         })
