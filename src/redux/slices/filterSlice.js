@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { filterExtraReducer } from "../thunks/filterThunk"
 
 const initialState = {
     filterData : []
@@ -11,6 +12,9 @@ const filterSlice = createSlice({
         setFilterData: (state, {payload}) => {
             state.filterData = payload
         }
+    },
+    extraReducers: (builder) => {
+        filterExtraReducer(builder)
     }
 })
 
