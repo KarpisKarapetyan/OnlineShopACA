@@ -12,7 +12,7 @@ function Orders() {
         </div>
       </div>
       <div className="orderText">
-        <h2>ԱՆՀԱՏԱԿԱՆ ՊԱՏՎԵՐՆԵՐ</h2>
+        <h2>Private order</h2>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum
           fermentum nisl, in accumsan nibh faucibus sit amet. Sed egestas

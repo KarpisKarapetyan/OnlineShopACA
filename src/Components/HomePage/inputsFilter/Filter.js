@@ -1,9 +1,10 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { set, useForm } from "react-hook-form";
+import { useContext } from "react";
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { mainUrl } from "../../../api/api";
+import { ModalContext } from "../../../contexts";
 import { filterSelector, setFilterData } from "../../../redux/slices/filterSlice";
 import './Filter.css'
 
@@ -12,7 +13,8 @@ function Filter (){
     const dispatch = useDispatch()
     const filterData = useSelector(filterSelector)
     const navigate = useNavigate()
-
+    const {closeModal} = useContext(ModalContext)
+    
     const onSubmit = (data) => {
       const {price ,size} = data
       axios.get(`${mainUrl}/manTshirts`)
@@ -20,8 +22,9 @@ function Filter (){
         const currentArr = res.data.filter(item =>  
         item.price === price && item.size=== size)
         dispatch(setFilterData(currentArr))
-        console.log(filterData)
-        navigate("../FilterResualt")
+        console.log( filterData)
+        closeModal()
+        navigate("../FilterResualt")  
       })
     };
     return (
