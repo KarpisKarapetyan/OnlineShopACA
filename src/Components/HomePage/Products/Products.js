@@ -7,8 +7,8 @@ import './Products.css'
 function Products (){
     const [products,setProducts] =useState([])
 
-    axios.get(`${mainUrl}/manTshirts`)
-      .then((res) => setProducts(res.data)
+    axios.get(`${mainUrl}/allProducts`)
+      .then((res) => setProducts(res.data.flat(1))
 
       )
     return (
