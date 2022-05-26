@@ -41,8 +41,8 @@ const ManTshirts = () => {
   const subtractBasket = (item) => {
     const arr = userBasket
     const basketShownArr = isBasketBtnShown
-    let index = arr.indexOf(item)
-    let indexOfItemId = basketShownArr.indexOf(item.id)
+    const index = arr.indexOf(item)
+    const indexOfItemId = basketShownArr.indexOf(item.id)
     const filteredArr = arr.filter((item, i) => i !== index)
     console.log(filteredArr);
     const filteredItemIdArr = basketShownArr.filter(

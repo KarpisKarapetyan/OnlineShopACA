@@ -3,10 +3,13 @@ import userReducer from "./slices/userSlice";
 import authSlice from "./slices/authSlice"
 import basketSlice from "./slices/basketSlice"
 import filterSlice from "./slices/filterSlice";
+import searchSlice from "./slices/searchSlice";
+
 
 export const rootReducer = combineReducers({
     user: userReducer,
     authRoute: authSlice,
     isBasketShown: basketSlice,
-    filterData : filterSlice
+    filterData : filterSlice,
+    searchArr: searchSlice
 })
