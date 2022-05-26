@@ -15,7 +15,7 @@ function Products (){
         
              <>
              <div className="productTitle">
-                <span> Products </span>
+                <span className='titleSpan'> Products </span>
              </div>
              <Carousel>
              {products?.map((item , i)=>(
