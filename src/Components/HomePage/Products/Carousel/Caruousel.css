@@ -1,4 +1,4 @@
-.main-container {
+.mainContainer {
     display: flex;
     align-items: center;
     height: 100%;
@@ -10,7 +10,7 @@
     overflow: hidden;
     
 }
-.all-PagesContanier {
+.allPagesContanier {
     height: 100%;
     display: flex;
     transition: translate;

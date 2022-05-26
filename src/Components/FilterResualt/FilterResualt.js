@@ -3,8 +3,6 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { filterSelector } from '../../redux/slices/filterSlice'
 import './FilterResualt.css'
 
-
-
 function FilterResualt (){
     const filterData = useSelector(filterSelector)
     const navigate = useNavigate()
@@ -26,7 +24,7 @@ function FilterResualt (){
                         <div className='dressDetails'
                             onClick={test}
                         >
-                        <p> Size: {item.size} Price: {item.price} </p> </div>
+                        <p> Price: {item.price}AMD  Size: {item.size}</p> </div>
                     </div>
                 ))}
             </div>
