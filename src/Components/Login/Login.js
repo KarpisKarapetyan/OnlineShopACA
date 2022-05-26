@@ -69,7 +69,7 @@ const Login = () => {
         </label>
 
         <button type="submit" className={classes.loginBtn}>
-          log in
+          Log in
         </button>
       </form>
 
@@ -79,7 +79,7 @@ const Login = () => {
             onClick={() => dispatch(setAuthRoute(REGISTRATION))}
             className={classes.registerBtn}
           >
-            <p className={classes.registerBtnP}>go to Registration</p>
+            <p className={classes.registerBtnP}>Go to Registration</p>
           </button>
         </div>
       )}
