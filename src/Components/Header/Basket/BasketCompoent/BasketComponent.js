@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react"
+import {useEffect,} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import {
   basketBtnShownSelector,
@@ -6,44 +6,65 @@ import {
   subtractIsBasketBtnShown,
 } from "../../../../redux/slices/basketSlice"
 import {
+  basketCounterSelector,
+  setBasketItemCounter,
+  setUnseenUserBasket,
   setUserBasket,
+  subtractUnseenBasket,
   subtractUserBasket,
+  unseenBasketSelector,
   userBasketSelector,
 } from "../../../../redux/slices/userSlice"
 
 const BasketComponent = () => {
   const userBasket = useSelector(userBasketSelector)
   const isBasketBtnShown = useSelector(basketBtnShownSelector)
-  const [basketItemCounter, setBasketItemCounter] = useState(0)
+  const unseenUserBasket = useSelector(unseenBasketSelector)
+  const basketItemCounter = useSelector(basketCounterSelector)
   const dispatch = useDispatch()
 
+  console.log(basketItemCounter);
+  console.log(unseenUserBasket)
 
   const addBasket = (item) => {
-    dispatch(setUserBasket(item))
-    dispatch(setIsBasketBtnShown(item.id))
+    const arr = userBasket
+      const findedItem = arr.find((element) => element === item)
+      if (findedItem) {
+        dispatch(setUnseenUserBasket(item))
+      } else {
+        dispatch(setBasketItemCounter(1))
+        dispatch(setUserBasket(item))
+        dispatch(setUnseenUserBasket(item))
+        dispatch(setIsBasketBtnShown(item.id))
+      }
   }
 
   const subtractBasket = (item) => {
     const arr = userBasket
+    const unSeenArr = unseenUserBasket
     const basketShownArr = isBasketBtnShown
-    let index = arr.indexOf(item)
-    let indexOfItemId = basketShownArr.indexOf(item.id)
+
+    const index = arr.indexOf(item)
+    const unseenBasketIndex = unSeenArr.indexOf(item)
+    const indexOfItemId = basketShownArr.indexOf(item.id)
+
     const filteredArr = arr.filter((item, i) => i !== index)
-    console.log(filteredArr)
+    const filteredUnseenArr = unSeenArr.filter((item, i) => i !== unseenBasketIndex)
     const filteredItemIdArr = basketShownArr.filter(
       (item, i) => i !== indexOfItemId
     )
+
     dispatch(subtractUserBasket(filteredArr))
     dispatch(subtractIsBasketBtnShown(filteredItemIdArr))
+    dispatch(subtractUnseenBasket(filteredUnseenArr))
   }
-
-  console.log(isBasketBtnShown)
 
   return (
     <div>
       {userBasket.map((item) => {
         return (
           <div key={item.id}>
+            <div>{basketItemCounter}</div>
             <div>{item.price}</div>
             <div>{item.size}</div>
             <button onClick={() => addBasket(item)}>+</button>

@@ -1,41 +1,41 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-import { mainUrl } from "../../api/api";
+import {createAsyncThunk} from "@reduxjs/toolkit"
+import axios from "axios"
+import {mainUrl} from "../../api/api"
 
-export const searchThunk = createAsyncThunk("search" , async ({search}) => {
-    const response = await axios.get(`${mainUrl}/allProducts`)
-    console.log(search);
+export const searchThunk = createAsyncThunk("search", async ({search}) => {
+  const response = await axios.get(`${mainUrl}/allProducts`)
+  const arr = []
 
-    const arr = response.data.find((item, i) => {
-        console.log(item)
-        return item.some(item => {
-            console.log(item);
-            return item.name.some((item) => {
-                console.log(item)
-                return item === search
-            })
-        })
+  response.data.forEach((item) => {
+    const boolean = item.some((item) => {
+      return item.name.some((item) => {
+        return item === search
+      })
     })
 
-    return arr
+    if (boolean) {
+      arr.push(item)
+    }
+  })
+  const newArr = arr.flat(Infinity)
+  return newArr
 })
 
 const searchThunkPending = () => {
-    searchArr: []
+  searchArr: []
 }
 
 const searchThunkFulfilled = (state, {payload}) => {
-    console.log("ssssss", payload);
-    state.searchArr = payload
+  console.log("ssssss", payload)
+  state.searchArr = payload
 }
 
 const searchThunkRejected = (state) => {
-    state.searchArr = []
+  state.searchArr = []
 }
 
-
 export const searchExtraReducer = (builder) => {
-    builder
+  builder
     .addCase(searchThunk.pending, searchThunkPending)
     .addCase(searchThunk.fulfilled, searchThunkFulfilled)
     .addCase(searchThunk.rejected, searchThunkRejected)
