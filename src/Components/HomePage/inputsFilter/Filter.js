@@ -17,7 +17,7 @@ function Filter (){
     
     const onSubmit = (data) => {
       const {price ,size} = data
-      axios.get(`${mainUrl}/manTshirts`)
+      axios.get(`${mainUrl}/allProducts`)
       .then((res) => {
         const currentArr = res.data.filter(item =>  
         item.price === price && item.size=== size)
