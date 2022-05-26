@@ -4,7 +4,7 @@ import {searchSelector} from "../../redux/slices/searchSlice"
 const SearchResult = () => {
   const searchArr = useSelector(searchSelector)
 
-  if (searchArr) {
+  if (searchArr.length !== 0) {
     return (
       <div>
         {searchArr.map(({price, size, location}) => {
@@ -18,11 +18,8 @@ const SearchResult = () => {
         })}
       </div>
     )
-  }
-  else{
-      return (
-          <div>oh no</div>
-      )
+  } else {
+    return <div>sorry</div>
   }
 }
 
