@@ -25,6 +25,8 @@ function Filter (){
         closeModal()
         navigate("../FilterResualt")  
       })
+      
+      
     };
     return (
       <div>

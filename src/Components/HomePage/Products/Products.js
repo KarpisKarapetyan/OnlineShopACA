@@ -1,14 +1,16 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { mainUrl } from '../../../api/api'
 import Carousel from './Carousel/Carousel'
 import './Products.css'
 
 function Products (){
     const [products,setProducts] =useState([])
-
-    axios.get(`${mainUrl}/allProducts`)
+    useEffect(()=>{
+        axios.get(`${mainUrl}/allProducts`)
       .then((res) => setProducts(res.data.flat(1)))
+    },[])
+    
     return (
              <>
              <div className="productsMain">
