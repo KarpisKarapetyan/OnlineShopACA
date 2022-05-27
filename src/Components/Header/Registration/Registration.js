@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import { setAuthRoute } from "../../../redux/slices/authSlice";
 
 const [LOGIN] = AUTH_TABS;
+
 const Registration = () => {
   const [isRegisterFailed, setIsRegisterFailed] = useState(true);
   const dispatch = useDispatch()

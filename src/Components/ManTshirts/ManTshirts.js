@@ -1,31 +1,17 @@
 import axios from "axios"
 import {useEffect, useState} from "react"
-import {useDispatch, useSelector} from "react-redux"
+import {useSelector} from "react-redux"
 import {mainUrl} from "../../api/api"
-import {
-  basketBtnShownSelector,
-  setIsBasketBtnShown,
-  subtractIsBasketBtnShown,
-} from "../../redux/slices/basketSlice"
-import {
-  setBasketItemCounter,
-  setUnseenUserBasket,
-  setUserBasket,
-  subtractUnseenBasket,
-  subtractUserBasket,
-  unseenBasketSelector,
-  userBasketSelector,
-  userSelector,
-} from "../../redux/slices/userSlice"
+import { useAddBasket } from "../../hooks/useAddBasket"
+import { useSubtractBasket } from "../../hooks/useSubtractBasket"
+import { basketBtnShownSelector} from "../../redux/slices/basketSlice"
 import classes from "./ManTshirts.module.css"
 
 const ManTshirts = () => {
-  const user = useSelector(userSelector)
   const [tshirtsArr, setTshirtsArr] = useState([])
-  const userBasket = useSelector(userBasketSelector)
   const isBasketBtnShown = useSelector(basketBtnShownSelector)
-  const unseenUserBasket = useSelector(unseenBasketSelector)
-  const dispatch = useDispatch()
+  const addBasket = useAddBasket()
+  const subtractBasket = useSubtractBasket()
 
   useEffect(() => {
     axios.get(`${mainUrl}/manTshirts`).then((res) => {
@@ -33,46 +19,6 @@ const ManTshirts = () => {
     })
   }, [])
 
-  const addBasket = (item) => {
-    if (user) {
-      const arr = userBasket
-      const findedItem = arr.find((element) => element === item)
-      if (findedItem) {
-        dispatch(setUnseenUserBasket(item))
-        dispatch(setBasketItemCounter(prev => {
-          prev == prev++
-          return prev
-        }))
-      } else {
-        dispatch(setBasketItemCounter(1))
-        dispatch(setUserBasket(item))
-        dispatch(setUnseenUserBasket(item))
-        dispatch(setIsBasketBtnShown(item.id))
-      }
-    } else {
-      alert("please Log in")
-    }
-  }
-
-  const subtractBasket = (item) => {
-    const arr = userBasket
-    const unSeenArr = unseenUserBasket
-    const basketShownArr = isBasketBtnShown
-
-    const index = arr.indexOf(item)
-    const unseenBasketIndex = unSeenArr.indexOf(item)
-    const indexOfItemId = basketShownArr.indexOf(item.id)
-
-    const filteredArr = arr.filter((item, i) => i !== index)
-    const filteredUnseenArr = unSeenArr.filter((item, i) => i !== unseenBasketIndex)
-    const filteredItemIdArr = basketShownArr.filter(
-      (item, i) => i !== indexOfItemId
-    )
-
-    dispatch(subtractUserBasket(filteredArr))
-    dispatch(subtractIsBasketBtnShown(filteredItemIdArr))
-    dispatch(subtractUnseenBasket(filteredUnseenArr))
-  }
 
   return (
     <div>
