@@ -17,7 +17,7 @@ const HomePage = () => {
             </div>
            <div className='imgBox'>
                <div className='imgSize'>
-               <Products/>
+               <Products />
                </div>
            </div>
            

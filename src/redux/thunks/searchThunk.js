@@ -7,18 +7,14 @@ export const searchThunk = createAsyncThunk("search", async ({search}) => {
   const arr = []
 
   response.data.forEach((item) => {
-    const boolean = item.some((item) => {
-      return item.name.some((item) => {
-        return item === search
-      })
-    })
+    const boolean = item.name.some(item => item === search)
 
-    if (boolean) {
+    if(boolean){
       arr.push(item)
     }
   })
-  const newArr = arr.flat(Infinity)
-  return newArr
+
+  return arr
 })
 
 const searchThunkPending = () => {
@@ -26,7 +22,6 @@ const searchThunkPending = () => {
 }
 
 const searchThunkFulfilled = (state, {payload}) => {
-  console.log("ssssss", payload)
   state.searchArr = payload
 }
 

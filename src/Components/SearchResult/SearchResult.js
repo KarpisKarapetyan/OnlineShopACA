@@ -7,9 +7,9 @@ const SearchResult = () => {
   if (searchArr.length !== 0) {
     return (
       <div>
-        {searchArr.map(({price, size, location}) => {
+        {searchArr.map(({price, size, location, id}) => {
           return (
-            <div>
+            <div key={id}>
               <img src={location} />
               <div>{price}</div>
               <div>{size}</div>

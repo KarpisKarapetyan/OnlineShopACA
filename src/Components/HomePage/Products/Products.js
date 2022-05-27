@@ -8,34 +8,28 @@ function Products (){
     const [products,setProducts] =useState([])
 
     axios.get(`${mainUrl}/allProducts`)
-      .then((res) => setProducts(res.data.flat(1))
-
-      )
+      .then((res) => setProducts(res.data.flat(1)))
     return (
-        
              <>
-             <div className="productTitle">
-                <span className='titleSpan'> Products </span>
+             <div className="productsMain">
+                <span className='productTitle'> Best Selling  </span>
              </div>
+             <div className='aboutProduct'>
+                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+             </div> 
              <Carousel>
              {products?.map((item , i)=>(
                  <div key={i}>
-                     <div className='item' >  
-                                <img src={item?.location} /> 
-                                
+                            <div className='item' >  
+                                <img src={item?.location} />  
                             </div>
-                            <div>
-                            <p> {item.price}</p>
+                            <div className='dressDetailsCarusel'>
+                                <p> Price: {item.price} AMD Size: {item.size}</p>
                             </div>
                  </div>
-                            
-                          
-                    ))}
-             </Carousel>
-                 
-             </>
-               
-         
+                 ))}
+             </Carousel>   
+             </>             
     )
 }
 export default Products
