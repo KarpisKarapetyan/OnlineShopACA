@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AUTH_TABS } from "../../helpers/constants";
 
-const {LOGIN} = AUTH_TABS
+const [LOGIN] = AUTH_TABS
 
 const initialState = {
     authRoute: LOGIN
