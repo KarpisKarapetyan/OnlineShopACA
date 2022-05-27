@@ -2,16 +2,19 @@ import axios from "axios"
 import {useEffect, useState} from "react"
 import {mainUrl} from "../../api/api"
 import "./WomanJackets.css"
+import { useAddBasket } from "../../hooks/useAddBasket"
 
 
 const WomanJackets = () => {
+  
 
     const [womanJacketsArr, setWomanJacketsArr] = useState([])  
     useEffect(() => {
       axios.get(`${mainUrl}/womanJackets`)
-      .then(console.log("-------------"))
       .then(res => setWomanJacketsArr(res.data))
     }, [])
+
+    const addBasket = useAddBasket()
  
     return (
       <div className="womanJackets">
@@ -21,11 +24,16 @@ const WomanJackets = () => {
             womanJacketsArr.map((item,i)=>{
                 return(
                     <div key={i} className ="womanJacketsItems">
-                      <div className='womanJacketsDetails'>
-                       <img src={item.location} />
-                       <p> Size: {item.size} Price: {item.price} </p>
+                        <div className="womanJacketsDetailsImij">
+                          <img src={item.location} />
+                        </div>
+                        <div className='womanJacketsDetails'
+                        >
+                         
+                          <p> Size: {item.size} Price: {item.price} </p>
+                          <button onClick={() => addBasket(item)}>Add Basket</button>
+                        </div>
                       </div>
-                    </div>
                     )
             })
         }
