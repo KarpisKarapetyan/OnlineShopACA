@@ -5,7 +5,9 @@ import {mainUrl} from "../../api/api"
 import { useAddBasket } from "../../hooks/useAddBasket"
 import { useSubtractBasket } from "../../hooks/useSubtractBasket"
 import { basketBtnShownSelector} from "../../redux/slices/basketSlice"
-import classes from "./ManTshirts.module.css"
+import Loadable from "../Loadable/Loadable"
+//import classes from "./ManTshirts.module.css"
+import "./ManTshirts.css"
 
 const ManTshirts = () => {
   const [tshirtsArr, setTshirtsArr] = useState([])
@@ -25,8 +27,8 @@ const ManTshirts = () => {
       {tshirtsArr.map((item, i) => {
         return (
           <div key={item.id}>
-            <div>
-              <img src={item.location} />
+            <div className="item">
+              <Loadable src={item.locaion}/>
             </div>
             <span>{item.price}</span>
             <span>{item.size}</span>
