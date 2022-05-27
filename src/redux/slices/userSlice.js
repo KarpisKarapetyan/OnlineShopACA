@@ -18,13 +18,10 @@ const userSlice = createSlice({
       state.user = null
     },
     setUserBasket: (state, {payload}) => {
-      state.userBasket.push(payload)
+      state.userBasket = payload
     },
     setUnseenUserBasket: (state, {payload}) => {
       state.unseenUserBasket.push(payload)
-    },
-    subtractUserBasket: (state, {payload}) => {
-      state.userBasket = payload
     },
     subtractUnseenBasket: (state, {payload}) => {
       state.unseenUserBasket = payload
@@ -44,7 +41,6 @@ export const {
   setUser,
   removeUser,
   setUserBasket,
-  subtractUserBasket,
   setUnseenUserBasket,
   subtractUnseenBasket,
   setBasketItemCounter,
