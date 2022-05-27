@@ -16,12 +16,12 @@ export const MANLINKS = [
 export const WOMANLINKS = [
   {
     id: "1",
-    to: "tShirts",
+    to: "womanTshirt",
     title: "T-SHIRTS",
   },
   {
     id: "2",
-    to: "jackets",
+    to: "womanJacket",
     title: "JACETKS",
   },
 ]
