@@ -3,12 +3,12 @@
     align-items: center;
     height: 100%;
     width:  100%;
+    justify-content: center;
 }
 .window{
     height: 100%;
-    width: 100%;
+    width: 840px;
     overflow: hidden;
-    
 }
 .allPagesContanier {
     height: 100%;
