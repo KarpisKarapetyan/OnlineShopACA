@@ -12,7 +12,7 @@ const WomanTshirts = () => {
     }, []) 
      
     return (
-      <div>
+      <div className="womanTshirts">
         {
             womanTshirtsArr.map((item,i)=>{
                 return(
