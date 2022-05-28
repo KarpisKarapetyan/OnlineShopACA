@@ -45,13 +45,6 @@
     color: #a7e1de
 }
 
-.headerRight{
-    /* display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center; */
-}
-
 .loginAndRegister{
     display: flex;
     flex-direction: row;
