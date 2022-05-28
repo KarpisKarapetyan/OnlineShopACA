@@ -25,17 +25,13 @@ const userSlice = createSlice({
     },
     subtractUnseenBasket: (state, {payload}) => {
       state.unseenUserBasket = payload
-    },
-    setBasketItemCounter: (state, {payload}) => {
-      state.basketItemCounter = payload
-    },
+    }
   },
 })
 
 export const userSelector = (state) => state.user.user
 export const userBasketSelector = (state) => state.user.userBasket
 export const unseenBasketSelector = (state) => state.user.unseenUserBasket
-export const basketCounterSelector = (state) => state.user.basketItemCounter
 
 export const {
   setUser,
@@ -43,7 +39,6 @@ export const {
   setUserBasket,
   setUnseenUserBasket,
   subtractUnseenBasket,
-  setBasketItemCounter,
 } = userSlice.actions
 
 export default userSlice.reducer

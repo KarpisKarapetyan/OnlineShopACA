@@ -1,9 +1,8 @@
-import {useEffect, useState,} from "react"
+import {useEffect} from "react"
 import {useDispatch, useSelector} from "react-redux"
-import { useAddBasket } from "../../../../hooks/useAddBasket"
-import { useSubtractBasket } from "../../../../hooks/useSubtractBasket"
+import {useAddBasket} from "../../../../hooks/useAddBasket"
+import {useSubtractBasket} from "../../../../hooks/useSubtractBasket"
 import {
-  basketCounterSelector,
   setUserBasket,
   unseenBasketSelector,
   userBasketSelector,
@@ -12,7 +11,6 @@ import {
 const BasketComponent = () => {
   const userBasket = useSelector(userBasketSelector)
   const unseenUserBasket = useSelector(unseenBasketSelector)
-  const basketItemCounter = useSelector(basketCounterSelector)
   const dispatch = useDispatch()
 
   const addBasket = useAddBasket()
@@ -20,34 +18,33 @@ const BasketComponent = () => {
 
   useEffect(() => {
     const newArr = []
-    unseenUserBasket.forEach(item => {
+    unseenUserBasket.forEach((item) => {
       newArr.push({...item})
     })
 
-    const arr = newArr.reduce((acc, item, i, array) => {
-      if(i !== 0){
-        if(item.id === array[i - 1].id){
-          for(let i = 0; i < acc.length; i++){
-            if(acc[i].id === item.id){
-              acc[i].count += 1
-              break
-            }
+    const arr = newArr.reduce((acc, item, i) => {
+        if(i !== 0){
+          const obj = acc.find(elem => elem.id === item.id)
+          if(obj){
+            const index = acc.indexOf(obj)
+            acc[index].count++
+            return acc
           }
-          return acc
-        }else{
+          else{
+            item.count = 1
+            acc.push(item)
+            return acc
+          }
+        }
+        else{
           item.count = 1
           acc.push(item)
           return acc
         }
-      }else{
-        item.count = 1
-        acc.push(item)
-        return acc
-      }
     }, [])
-    dispatch(setUserBasket(arr))
-  }, [basketItemCounter])
 
+    dispatch(setUserBasket(arr))
+  }, [unseenUserBasket])
 
   return (
     <div>

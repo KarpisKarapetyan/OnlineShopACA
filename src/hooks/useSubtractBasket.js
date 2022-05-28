@@ -15,7 +15,6 @@ export const useSubtractBasket = () => {
     const indexOfItemId = basketShownArr.indexOf(item.id)
     const filteredUnseenArr = unSeenArr.filter((elem, i) => i !== unseenBasketIndex)
     const filteredItemIdArr = basketShownArr.filter((item, i) => i !== indexOfItemId)
-    dispatch(setBasketItemCounter(Math.random()))
     dispatch(subtractIsBasketBtnShown(filteredItemIdArr))
     dispatch(subtractUnseenBasket(filteredUnseenArr))
   }
