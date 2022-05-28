@@ -19,12 +19,14 @@ function Filter (){
       const {price ,size} = data
       axios.get(`${mainUrl}/allProducts`)
       .then((res) => {
-        const currentArr = res.data.flat(1).filter(item =>  
+        const currentArr = res.data.filter(item =>  
         item.price === price && item.size=== size)
         dispatch(setFilterData(currentArr))
         closeModal()
         navigate("../FilterResualt")  
       })
+      
+      
     };
     return (
       <div>
@@ -43,7 +45,7 @@ function Filter (){
                 type="number"
               />
               
-            <div className="errorPrice">
+            <div className="errorMessage">
               {errors?.price && <p>{errors?.price?.message || "Error!"}</p>}
             </div>
             </label>
@@ -59,7 +61,7 @@ function Filter (){
                   })}
                 type="text"
               />
-              <div className="errorPrice">
+              <div className="errorMessage">
               {errors?.size && <p>{errors?.size?.message || "Error!"}</p>}
             </div>
             </label>

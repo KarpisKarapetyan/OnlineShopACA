@@ -9,6 +9,7 @@ const Routes = lazy(() => import("./helpers/routes"))
 
 const App = () => {
   const routes = useRoutes(ROUTES)
+
   return (
     <div className="App">
       

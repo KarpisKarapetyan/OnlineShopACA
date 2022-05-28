@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Corinthia&family=Lora&family=Merriweather:wght@300&family=Montserrat:wght@100&family=Roboto+Slab:wght@100&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 .headerBody {
   display: flex;
@@ -9,6 +9,8 @@
   height: 70px;
   padding: 0 10px;
   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+  font-family: 'Open Sans', sans-serif;
+  padding: 0 70px;
 }
 
 .siteName {
@@ -19,10 +21,17 @@
 }
 
 .submit{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    position: absolute;
+    z-index:3;
+    right: 17px;
+    top: 6px;
+}
+.form {
+  position: relative;
 }
 
 .submitBtn{
@@ -36,26 +45,29 @@
     color: #a7e1de
 }
 
-.headerRight{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
 .loginAndRegister{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.loginAndRegister label {
+  margin: 0 5px;
 }
 
 .search {
-    border: none;
-    height: 3vh;
-    width: 12vw;
-    background-color: black;
-    border-radius: 50px 50px;
+  position:relative;
+  border: none;
+  width: 221px;
+  height: 39px;
+  background-color: #fff;
+  border-radius: 50px 50px;
+  z-index:2;
+  padding: 0 10px;
+  margin: 0 10px;
 }
 
 .navHeader {
@@ -123,6 +135,7 @@
   border: 2px solid rgb(0, 0, 0);
   width: 6vw ;
   height: 10vh ;
+  border-radius: 0px 0px 5px 5px;
 }
 
 .logoAndLinks{
@@ -130,4 +143,38 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+@media only screen and (max-width: 1200px) {
+  .loginAndRegister {
+    font-size: 15px;
+  }
+  .search {
+    width: 200px;
+    height: 28px;
+  }
+  .submit {
+    top:1px;
+  }
+  .submit img {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .loginAndRegister {
+    font-size: 13px;
+}
+  .search {
+    width: 200px;
+    height: 28px;
+  }
+  .submit {
+    top:1px;
+  }
+  .submit img {
+    width: 17px;
+    height: 17px;
+  }
 }

@@ -60,7 +60,7 @@ function Header() {
         </div>
 
         <div>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)} className="form">
             <label>
               <div className="submit">
                 <button type="submit" className="submitBtn">

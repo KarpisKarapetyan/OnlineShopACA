@@ -14,13 +14,10 @@ export const useSubtractBasket = () => {
     const unseenBasketIndex = unSeenArr.indexOf(obj)
     const indexOfItemId = basketShownArr.indexOf(item.id)
     const filteredUnseenArr = unSeenArr.filter((elem, i) => i !== unseenBasketIndex)
-    const filteredItemIdArr = basketShownArr.filter(
-      (item, i) => i !== indexOfItemId
-    )
+    const filteredItemIdArr = basketShownArr.filter((item, i) => i !== indexOfItemId)
     dispatch(setBasketItemCounter(Math.random()))
     dispatch(subtractIsBasketBtnShown(filteredItemIdArr))
     dispatch(subtractUnseenBasket(filteredUnseenArr))
   }
-
   return subtracting
 }

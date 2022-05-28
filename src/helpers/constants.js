@@ -3,7 +3,7 @@ export const AUTH_TABS = ["LOGIN", "REGISTRATION"]
 export const MANLINKS = [
   {
     id: "1",
-    to: "manTshirts",
+    to: "tshirtMan",
     title: "T-SHIRTS",
   },
   {
@@ -16,12 +16,12 @@ export const MANLINKS = [
 export const WOMANLINKS = [
   {
     id: "1",
-    to: "tShirts",
+    to: "womanTshirt",
     title: "T-SHIRTS",
   },
   {
     id: "2",
-    to: "jackets",
+    to: "womanJacket",
     title: "JACETKS",
   },
 ]

@@ -10,6 +10,9 @@ import MakeOrder from "../Components/makeOrder/makeOrder";
 import FilterResualt from "../Components/FilterResualt/FilterResualt";
 import ManTshirts from "../Components/ManTshirts/ManTshirts";
 import SearchResult from "../Components/SearchResult/SearchResult";
+import WomanTshirts from "../Components/WomanTshirts/WomanTshirts";
+import WomanJackets from "../Components/WomanJackets/WomanJackets";
+import TshirtMan from "../Components/TshirtMan/TshirtMan";
 
 const MAIN_ROUTES = [
     {
@@ -55,6 +58,18 @@ const MAIN_ROUTES = [
     {
         path: "searchResult",
         element: <SearchResult />
+    },
+    {
+        path: "womanTshirt",
+        element: <WomanTshirts />
+    },
+    {
+        path: "womanJacket",
+        element: <WomanJackets />
+    },
+    {
+        path: "tshirtMan",
+        element: <TshirtMan />
     }
 ]
 
