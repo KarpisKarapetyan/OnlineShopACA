@@ -1,20 +1,18 @@
 import { useSelector } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { useAddBasket } from '../../hooks/useAddBasket'
 import { filterSelector } from '../../redux/slices/filterSlice'
 import './FilterResualt.css'
 
 function FilterResualt (){
     const filterData = useSelector(filterSelector)
-    const navigate = useNavigate()
+    const goBasket = useAddBasket()
 
-    const test = ()=>{
-        alert ('Կորոշենք հլը ուր ա գնում')
-    }
     return(
         <div className='filterMain' >
             {filterData.length > 0 && 
             <>
-            <span className='filterTitle'> Your search resualts</span>
+            <span className='filterTitle'> Your search results</span>
             <div className='filterDataMain'>
                 {filterData.map((item,i) =>(
                     <div key = {i}
@@ -22,7 +20,7 @@ function FilterResualt (){
                     >   
                         <img src={item.location} />
                         <div className='dressDetails'
-                            onClick={test}
+                            onClick={() => goBasket(item)}
                         >
                         <p> Price: {item.price}AMD  Size: {item.size}</p> </div>
                     </div>

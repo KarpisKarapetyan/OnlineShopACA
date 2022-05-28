@@ -1,27 +1,72 @@
+::-webkit-input-placeholder{color: rgba(255, 255, 255, 0.733);}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+
+.registrationMain{
+    height: 85vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
 .registrationForm{
     width: 100%;
     margin: 0 auto;
     text-align: left;
 }
+.formMainDIV {
+    display: flex;
+    flex-direction: center;
+    margin-right: 140px;
+}
 .registrationForm input{
+    border: none;
     width: 250px;
     height: 30px;
     outline: 0;
+    border-radius: 15px;
+    text-indent: 15px;
+    background-color: rgb(0, 0, 0);
+    color: #a7e1de;
 }
 .registrationForm button{
     padding: 5px 20px;
+    border-radius: 15px;
+    background-color: #a7e1de;
+    border: none;
+    cursor: pointer;
 }
 .registrationDiv{
-    width: 100%;
+    width: 50%;
     text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    gap: 13px;
     align-items: center;
+    font-size: 24px;
+}
+
+.registrationDiv p{
+    margin-bottom: 12px;
+    font-family: 'Montserrat', sans-serif;
 }
 .registrationDiv label{
     display: flex;
     flex-direction: column;
-    
 }
+
+.registrationImage{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    object-fit: cover;
+} 
+
+.registrationImage img{ 
+    width: 100%;
+    height: 100%;
+    object-fit:revert;
+    
+ } 

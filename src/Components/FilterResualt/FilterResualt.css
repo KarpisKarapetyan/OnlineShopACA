@@ -2,6 +2,9 @@
     min-height: 85vh;
     max-width: 100vw;
     background-color: #A7E1DE;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .filterTitle{
@@ -20,9 +23,10 @@
     
 
 .filterItems{
-    width: 100;
-    height: 400px;
+    width: 280px;
+    height: 450px;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .filterItems img{
