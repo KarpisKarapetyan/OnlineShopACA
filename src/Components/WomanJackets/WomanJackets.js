@@ -29,9 +29,8 @@ const WomanJackets = () => {
                         </div>
                         <div className='womanJacketsDetails'
                         >
-                         
-                          <p> Size: {item.size} Price: {item.price} </p>
                           <button onClick={() => addBasket(item)}>Add Basket</button>
+                          <p> Size: {item.size} Price: {item.price} </p>
                         </div>
                       </div>
                     )
