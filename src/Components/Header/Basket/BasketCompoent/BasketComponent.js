@@ -1,9 +1,8 @@
-import {useEffect, useState} from "react"
+import {useEffect} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import {useAddBasket} from "../../../../hooks/useAddBasket"
 import {useSubtractBasket} from "../../../../hooks/useSubtractBasket"
 import {
-  basketCounterSelector,
   setUserBasket,
   unseenBasketSelector,
   userBasketSelector,
@@ -12,7 +11,6 @@ import {
 const BasketComponent = () => {
   const userBasket = useSelector(userBasketSelector)
   const unseenUserBasket = useSelector(unseenBasketSelector)
-  const basketItemCounter = useSelector(basketCounterSelector)
   const dispatch = useDispatch()
 
   const addBasket = useAddBasket()
@@ -24,29 +22,27 @@ const BasketComponent = () => {
       newArr.push({...item})
     })
 
-    const arr = newArr.reduce((acc, item, i, array) => {
-      if (i !== 0) {
-          for (let i = 0; i < acc.length; i++) {
-            console.log("acc for", acc)
-            if (acc[i].id === item.id) {
-              console.log('acc if', acc);
-              acc[i].count += 1
-              break
-            } else {
-              item.count = 1
-              acc.push(item)
-              console.log("acc else if", acc)
-              return acc
-            }
+    const arr = newArr.reduce((acc, item, i) => {
+        if(i !== 0){
+          const obj = acc.find(elem => elem.id === item.id)
+          if(obj){
+            const index = acc.indexOf(obj)
+            acc[index].count++
+            return acc
           }
-        } else {
+          else{
+            item.count = 1
+            acc.push(item)
+            return acc
+          }
+        }
+        else{
           item.count = 1
           acc.push(item)
-          console.log("acc else", acc)
           return acc
         }
     }, [])
-    console.log("arr", arr)
+
     dispatch(setUserBasket(arr))
   }, [unseenUserBasket])
 

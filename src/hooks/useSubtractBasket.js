@@ -4,18 +4,17 @@ import { setBasketItemCounter, subtractUnseenBasket, unseenBasketSelector } from
 
 export const useSubtractBasket = () => {
   const isBasketBtnShown = useSelector(basketBtnShownSelector)
-  // const unseenUserBasket = useSelector(unseenBasketSelector)
+  const unseenUserBasket = useSelector(unseenBasketSelector)
   const dispatch = useDispatch()
 
   const subtracting = (item) => {
-    // const unSeenArr = unseenUserBasket
+    const unSeenArr = unseenUserBasket
     const basketShownArr = isBasketBtnShown
     const obj = unSeenArr.find(elem => elem.id === item.id)
     const unseenBasketIndex = unSeenArr.indexOf(obj)
     const indexOfItemId = basketShownArr.indexOf(item.id)
     const filteredUnseenArr = unSeenArr.filter((elem, i) => i !== unseenBasketIndex)
     const filteredItemIdArr = basketShownArr.filter((item, i) => i !== indexOfItemId)
-    dispatch(setBasketItemCounter(Math.random()))
     dispatch(subtractIsBasketBtnShown(filteredItemIdArr))
     dispatch(subtractUnseenBasket(filteredUnseenArr))
   }
