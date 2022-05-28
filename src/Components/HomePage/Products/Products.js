@@ -1,16 +1,24 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { mainUrl } from '../../../api/api'
+import { useAddBasket } from '../../../hooks/useAddBasket'
 import Carousel from './Carousel/Carousel'
 import './Products.css'
 
 function Products (){
-    const [products,setProducts] =useState([])
-    useEffect(()=>{
-        axios.get(`${mainUrl}/allProducts`)
-      .then((res) => setProducts(res.data.flat(1)))
-    },[])
+    const [products,setProducts] = useState([])
     
+    useEffect(()=>{
+        if(!sessionStorage.getItem("BestSeller")){
+            axios.get(`${mainUrl}/bestSelling`)
+         .then((res) => {
+            setProducts(res.data)
+            return res.data
+        }).then((result) => sessionStorage.setItem("BestSeller", JSON.stringify(result)))}
+        setProducts(JSON.parse(sessionStorage.getItem("BestSeller")))
+    },[])
+        
+    const goBasket = useAddBasket()
     return (
              <>
              <div className="productsMain">
@@ -22,10 +30,11 @@ function Products (){
              <Carousel>
              {products?.map((item , i)=>(
                  <div key={i}>
-                            <div className='item' >  
+                            <div className='itemProducts' >  
                                 <img src={item?.location} />  
                             </div>
-                            <div className='dressDetailsCarusel'>
+                            <div onClick={()=> goBasket(item)}
+                             className='dressDetailsCarusel'>
                                 <p> Price: {item.price} AMD Size: {item.size}</p>
                             </div>
                  </div>

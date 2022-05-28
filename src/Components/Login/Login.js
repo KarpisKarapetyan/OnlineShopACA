@@ -3,27 +3,19 @@ import {useState} from "react"
 import {useForm} from "react-hook-form"
 import {useDispatch, useSelector} from "react-redux"
 import {useNavigate} from "react-router-dom"
-import {authRouteSelector, setAuthRoute} from "../../redux/slices/authSlice"
 import {mainUrl} from "../../api/api"
 import {setUser} from "../../redux/slices/userSlice"
 import classes from "./Login.module.css"
-import { AUTH_TABS } from "../../helpers/constants"
-
-const [, REGISTRATION] = AUTH_TABS
 
 const Login = () => {
   const [isLoginFailed, setIsLoginFailed] = useState(false)
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const authRoute = useSelector(authRouteSelector)
+  const { register, handleSubmit, formState: {errors},} = useForm()
 
-  console.log('au', authRoute);
-
-  const {
-    register,
-    handleSubmit,
-    formState: {errors},
-  } = useForm()
+  const goToRegistration =  ()=>{
+    navigate("../Registration")
+  }
 
   const onSubmit = (data) => {
     axios.get(`${mainUrl}/users`).then((res) => {
@@ -81,13 +73,10 @@ const Login = () => {
 
       {(isLoginFailed || (errors.login || errors.password)) && (
         <div className={classes.goToRegister}>
-          <button
-            onClick={() => {
-              dispatch(setAuthRoute(REGISTRATION))
-            }}
+          <button onClick={goToRegistration}
             className={classes.registerBtn}
           >
-            <p className={classes.registerBtnP}>Go to Registration</p>
+            <p   className={classes.registerBtnP}>Go to Registration</p>
           </button>
         </div>
       )}

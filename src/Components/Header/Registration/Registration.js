@@ -1,22 +1,15 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { AUTH_TABS } from "../../../helpers/constants";
 import "./Registration.css";
 import axios from "axios";
 import { mainUrl } from "../../../api/api";
-import { useDispatch } from "react-redux";
-import { setAuthRoute } from "../../../redux/slices/authSlice";
+import { useNavigate } from "react-router-dom";
+import regBackground from "../../Images/Registration.png"
 
-const [LOGIN] = AUTH_TABS;
-
-const Registration = () => {
-  const [isRegisterFailed, setIsRegisterFailed] = useState(false);
-  const dispatch = useDispatch()
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+function  Registration () {
+  const [isRegisterFailed, setIsRegisterFailed] = useState(true);
+  const {register,handleSubmit,formState: { errors }} = useForm();
+  const navigate = useNavigate() 
 
   const onSubmit = (data) => {
     if(data.password === data.rePassword){
@@ -27,46 +20,65 @@ const Registration = () => {
     
     setIsRegisterFailed(false);
     setTimeout(() => {
-      dispatch(setAuthRoute(LOGIN))
-    }, 2000);
+      navigate("../Login")
+    }, 1000);
   }
   else{
-    console.log('password are not the same');
+    alert('password are not the same');
   }
 }
   return (
-    <div>
+    <div className="registrationMain">
+      <div className="formMainDIV">
       <form className="registrationForm" onSubmit={handleSubmit(onSubmit)}>
         <div className="registrationDiv">
-          <label>
-            {" "}
-            LOGIN
+            <p> Register </p>
+          <label> 
             <input
-              {...register("login", { required: true, minLength: 4 })}
+              {...register("login", {
+                required: "Field is required",
+                  minLength : {
+                  value : 3,
+                  message : "*Minimum 3 characters for LOGIN!" }
+               })}
               type="text"
+              placeholder="Choose a login"
             />
+            <div className="errorMessage">
+              {errors?.login && <p>{errors?.login?.message || "Error!"}</p>}
+            </div>
           </label>
-          {" "}
-          <label>
-            {" "}
-            PASSWORD
+           <label>
             <input
-              {...register("password", { required: true, minLength: 4 })}
+              {...register("password", { 
+                  required: "Field is required",
+                  minLength : {
+                  value : 6,
+                  message : "*Minimum 6 characters for PASSWORD!" }
+              })}
+              placeholder="Choose a password"
               type="password"
             />
-          </label>{" "}
+            <div className="errorMessage">
+              {errors?.password && <p>{errors?.password?.message || "Error!"}</p>}
+            </div>
+          </label>
           <label>
-            {" "}
-            REPEAT PASSWORD
             <input
               {...register("rePassword", { required: true })}
               type="password"
+              placeholder="Repeat password"
             />
-          </label>{" "}
-          <button type="submit">REGISTER</button>
+          </label>
+          <button type="submit">Submit</button>
         </div>
       </form>
       {!isRegisterFailed && <p>Registration succeed!</p>}
+      
+      </div>
+      <div className="registrationImage">
+              <img src={regBackground}></img>
+      </div>
     </div>
   );
 };
