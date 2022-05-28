@@ -26,6 +26,7 @@
     background-color: rgba(0, 0, 0, 0.658);
     transition: all .3s;
     animation: showBackBlack .3s ease-out;
+    z-index: 1;
 }
 
 .modal{

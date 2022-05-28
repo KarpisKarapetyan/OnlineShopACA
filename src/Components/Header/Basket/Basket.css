@@ -42,6 +42,9 @@
     text-align: center;
     
 }
+.letterColor{
+    color: rgb(255, 255, 255);
+}
 
 ul {
     text-align: center;
