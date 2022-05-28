@@ -1,10 +1,10 @@
 import axios from "axios"
 import {useEffect, useState} from "react"
 import {mainUrl} from "../../api/api"
-import "./WomanTshirts.css"
+import "./KidsJackets.css"
 import { useAddBasket } from "../../hooks/useAddBasket"
 
-const WomanTshirts = () => {
+const KidsJackets = () => {
 
     const [womanTshirtsArr, setWomanTshirtsArr] = useState([])
     console.log("=================================================")
@@ -40,6 +40,6 @@ const WomanTshirts = () => {
     )
   }
   
-  export default WomanTshirts
+  export default KidsJackets
   
 
