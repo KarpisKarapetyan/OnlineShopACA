@@ -11,6 +11,7 @@ import searchLogo from "../../project_pictures/Vector.png"
 import {basketSelector, setIsBasketShown} from "../../redux/slices/basketSlice"
 import basketLogo from "../Images/BasketLogo.png"
 import OurBaskets from "./Basket/OurBaskets"
+import { searchThunk } from "../../redux/thunks/searchThunk"
 
 function Header() {
   const isBasketShown = useSelector(basketSelector)
@@ -25,7 +26,8 @@ function Header() {
   const navigate = useNavigate()
 
   const onSubmit = (data) => {
-    console.log(data)
+    navigate("../searchResult")
+    dispatch(searchThunk(data))
   }
 
   const userLogin = () => {
@@ -67,7 +69,7 @@ function Header() {
               </div>
 
               <input
-                {...register("serach")}
+                {...register("search")}
                 type="search"
                 className="search"
               ></input>

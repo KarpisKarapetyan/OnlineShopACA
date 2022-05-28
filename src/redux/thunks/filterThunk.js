@@ -14,7 +14,7 @@ const filterThunkPending = () => {
   filterData: []
 }
 
-const filterThunkFulfilld = (state, {payload}) => {
+const filterThunkFulfilled = (state, {payload}) => {
   state.messageData = payload
   console.log(payload);
 }
@@ -26,6 +26,6 @@ const filterThunkRejected = (state) => {
 export const filterExtraReducer = (builder) => {
   builder
     .addCase(filterThunk.pending, filterThunkPending)
-    .addCase(filterThunk.fulfilled, filterThunkFulfilld)
+    .addCase(filterThunk.fulfilled, filterThunkFulfilled)
     .addCase(filterThunk.rejected, filterThunkRejected)
 }

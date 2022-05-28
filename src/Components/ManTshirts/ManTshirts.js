@@ -1,26 +1,19 @@
 import axios from "axios"
 import {useEffect, useState} from "react"
-import {useDispatch, useSelector} from "react-redux"
+import {useSelector} from "react-redux"
 import {mainUrl} from "../../api/api"
-import {
-  basketBtnShownSelector,
-  setIsBasketBtnShown,
-  subtractIsBasketBtnShown,
-} from "../../redux/slices/basketSlice"
-import {
-  setUserBasket,
-  subtractUserBasket,
-  userBasketSelector,
-  userSelector,
-} from "../../redux/slices/userSlice"
-import classes from "./ManTshirts.module.css"
+import { useAddBasket } from "../../hooks/useAddBasket"
+import { useSubtractBasket } from "../../hooks/useSubtractBasket"
+import { basketBtnShownSelector} from "../../redux/slices/basketSlice"
+import Loadable from "../Loadable/Loadable"
+//import classes from "./ManTshirts.module.css"
+import "./ManTshirts.css"
 
 const ManTshirts = () => {
-  const user = useSelector(userSelector)
   const [tshirtsArr, setTshirtsArr] = useState([])
-  const userBasket = useSelector(userBasketSelector)
   const isBasketBtnShown = useSelector(basketBtnShownSelector)
-  const dispatch = useDispatch()
+  const addBasket = useAddBasket()
+  const subtractBasket = useSubtractBasket()
 
   useEffect(() => {
     axios.get(`${mainUrl}/manTshirts`).then((res) => {
@@ -28,37 +21,14 @@ const ManTshirts = () => {
     })
   }, [])
 
-  const addBasket = (item) => {
-    if (user) {
-      dispatch(setUserBasket(item))
-      dispatch(setIsBasketBtnShown(item.id))
-    }
-    else{
-        alert("please Log in")
-    }
-  }
-
-  const subtractBasket = (item) => {
-    const arr = userBasket
-    const basketShownArr = isBasketBtnShown
-    let index = arr.indexOf(item)
-    let indexOfItemId = basketShownArr.indexOf(item.id)
-    const filteredArr = arr.filter((item, i) => i !== index)
-    console.log(filteredArr);
-    const filteredItemIdArr = basketShownArr.filter(
-      (item, i) => i !== indexOfItemId
-    )
-    dispatch(subtractUserBasket(filteredArr))
-    dispatch(subtractIsBasketBtnShown(filteredItemIdArr))
-  }
 
   return (
     <div>
       {tshirtsArr.map((item, i) => {
         return (
           <div key={item.id}>
-            <div>
-              <img src={item.location} />
+            <div className="item">
+              <Loadable src={item.locaion}/>
             </div>
             <span>{item.price}</span>
             <span>{item.size}</span>

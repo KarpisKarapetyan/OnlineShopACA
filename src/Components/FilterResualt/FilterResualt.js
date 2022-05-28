@@ -10,7 +10,6 @@ function FilterResualt (){
     const test = ()=>{
         alert ('Կորոշենք հլը ուր ա գնում')
     }
-
     return(
         <div className='filterMain' >
             {filterData.length > 0 && 
@@ -25,7 +24,7 @@ function FilterResualt (){
                         <div className='dressDetails'
                             onClick={test}
                         >
-                        <p> Size: {item.size} Price: {item.price} </p> </div>
+                        <p> Price: {item.price}AMD  Size: {item.size}</p> </div>
                     </div>
                 ))}
             </div>

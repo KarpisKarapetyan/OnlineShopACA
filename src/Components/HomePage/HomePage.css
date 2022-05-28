@@ -1,3 +1,4 @@
+
 .homePage{
     background-color: #A7E1DE;
 }
@@ -7,4 +8,10 @@
     justify-content: center;
     height: auto;
     width: 100%;
+}
+
+.imgBox {
+    max-width: 100%;
+    min-height: 630px;
+    margin: 0 auto;
 }
