@@ -20,13 +20,14 @@ function  Registration () {
       password: data.password,
       id: id,
       userBasket: [],
-      isBasketBtnShown: []
+      isBasketBtnShown: [],
+      favorite: []
     });
     
     setIsRegisterFailed(false);
     setTimeout(() => {
-      navigate("../Login")
-    }, 2000);
+       navigate("../Login")
+    }, 3000);
   }
   else{
     alert('password are not the same');
@@ -77,7 +78,9 @@ function  Registration () {
           </label>
           <button type="submit">Submit</button>
         </div>
-        {!isRegisterFailed && <AlertMUI/>}  
+        <div className="registrationSucces">
+          {!isRegisterFailed && <AlertMUI/>}  
+        </div>
       </form> 
       </div>
 

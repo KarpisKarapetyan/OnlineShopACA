@@ -4,6 +4,7 @@ import {useAddBasket} from "../../../../hooks/useAddBasket"
 import {useSubtractBasket} from "../../../../hooks/useSubtractBasket"
 import { basketBtnShownSelector } from "../../../../redux/slices/basketSlice"
 import {
+  favoriteSelector,
   userBasketSelector,
 } from "../../../../redux/slices/userSlice"
 
@@ -12,11 +13,16 @@ const BasketComponent = () => {
   const isBasketBtnShown = useSelector(basketBtnShownSelector)
   const [basketArr, setBasketArr] = useState([])
   const dispatch = useDispatch()
+  const favorite = useSelector(favoriteSelector)
 
   const addBasket = useAddBasket()
   const subtractBasket = useSubtractBasket()
 
   useEffect(() => {
+    sessionStorage.removeItem('favorite')
+    sessionStorage.removeItem("isBasketBtnShown")
+    sessionStorage.setItem('favorite', JSON.stringify(favorite))
+    sessionStorage.setItem('isBasketBtnShown', JSON.stringify(isBasketBtnShown))
     sessionStorage.removeItem('userBasket')
     sessionStorage.setItem('userBasket', JSON.stringify(userBasket))
 
