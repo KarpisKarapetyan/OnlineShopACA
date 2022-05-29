@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { mainUrl } from '../../../api/api'
 import { useAddBasket } from '../../../hooks/useAddBasket'
 import Carousel from './Carousel/Carousel'
+import FavoriteIcon from '../Favorite/Favorite'
+import AddShoppingcard from '../BasketIcon/basketIcon'
 import './Products.css'
 
 function Products (){
@@ -33,9 +35,12 @@ function Products (){
                             <div className='itemProducts' >  
                                 <img src={item?.location} />  
                             </div>
-                            <div onClick={()=> goBasket(item)}
-                             className='dressDetailsCarusel'>
-                                <p> Price: {item.price} AMD Size: {item.size}</p>
+                            <div className='dressDetailsCarusel' >
+                                <div className='iconsCarusel' >
+                                    <div  onClick={()=> goBasket(item)}><AddShoppingcard /></div>  
+                                    <div><FavoriteIcon /></div>
+                                </div>
+                                <p > {item.price} AMD / {item.size}  </p>
                             </div>
                  </div>
                  ))}
