@@ -3,9 +3,7 @@ import Footer from "./Components/Footer/Footer"
 import {useRoutes} from "react-router-dom"
 import {ROUTES} from "./helpers/routes"
 import {ModalProvider} from "./contexts"
-import {lazy, Suspense} from "react"
-
-const Routes = lazy(() => import("./helpers/routes"))
+import {Suspense} from "react"
 
 const App = () => {
   const routes = useRoutes(ROUTES)

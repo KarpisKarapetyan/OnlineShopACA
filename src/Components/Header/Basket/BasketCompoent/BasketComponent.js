@@ -53,7 +53,7 @@ const BasketComponent = () => {
     <div>
       {basketArr.map((item) => {
         return (
-          <div key={item.id}>
+          <div className="letterColor" key={item.id}>
             <div>{item.count}</div>
             <div>{item.price}</div>
             <div>{item.size}</div>
