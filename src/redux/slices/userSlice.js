@@ -1,9 +1,8 @@
 import {createSlice, current} from "@reduxjs/toolkit"
 
 const initialState = {
-  user: localStorage.getItem("user") || sessionStorage.getItem("user") || null,
-  userBasket: [],
-  unseenUserBasket: [],
+  user: JSON.parse(localStorage.getItem("user")) || JSON.parse(sessionStorage.getItem("user"))  || null,
+  userBasket: JSON.parse(sessionStorage.getItem('userBasket')) || [],
   basketItemCounter: 0,
 }
 
@@ -20,25 +19,20 @@ const userSlice = createSlice({
     setUserBasket: (state, {payload}) => {
       state.userBasket = payload
     },
-    setUnseenUserBasket: (state, {payload}) => {
-      state.unseenUserBasket.push(payload)
-    },
-    subtractUnseenBasket: (state, {payload}) => {
-      state.unseenUserBasket = payload
+    pushUserBasket: (state, {payload}) => {
+      state.userBasket.push(payload)
     }
   },
 })
 
 export const userSelector = (state) => state.user.user
 export const userBasketSelector = (state) => state.user.userBasket
-export const unseenBasketSelector = (state) => state.user.unseenUserBasket
 
 export const {
   setUser,
   removeUser,
   setUserBasket,
-  setUnseenUserBasket,
-  subtractUnseenBasket,
+  pushUserBasket,
 } = userSlice.actions
 
 export default userSlice.reducer
