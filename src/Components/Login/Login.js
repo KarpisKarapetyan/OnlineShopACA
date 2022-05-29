@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux"
 import {useNavigate} from "react-router-dom"
 import {mainUrl} from "../../api/api"
 import { setIsBasketBtnShown, subtractIsBasketBtnShown } from "../../redux/slices/basketSlice"
-import {setUser, setUserBasket, subtractUnseenBasket} from "../../redux/slices/userSlice"
+import {setUser, setUserBasket, subTract, subTractFavorite, subtractUnseenBasket} from "../../redux/slices/userSlice"
 import classes from "./Login.module.css"
 
 const Login = () => {
@@ -34,10 +34,14 @@ const Login = () => {
         if(user.userBasket.length !== 0){
           dispatch(setUserBasket(user.userBasket))
           dispatch(subtractIsBasketBtnShown(user.isBasketBtnShown))
+          dispatch(subTractFavorite(user.favorite))
           sessionStorage.setItem('userBasket', JSON.stringify(user.userBasket))
-        }
-        else{
+          sessionStorage.setItem('isBasketBtnShown', JSON.stringify(user.isBasketBtnShown))
+          sessionStorage.setItem('favorite', JSON.stringify(user.favorite))
+        }else{
           sessionStorage.setItem('userBasket', JSON.stringify([]))
+          sessionStorage.setItem('isBasketBtnShown', JSON.stringify(user.isBasketBtnShown))
+          sessionStorage.setItem('favorite', JSON.stringify(user.favorite))
         }
         navigate("../homePage", {replace: true})
       } else {

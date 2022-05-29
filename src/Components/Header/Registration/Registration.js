@@ -5,6 +5,7 @@ import axios from "axios";
 import { mainUrl } from "../../../api/api";
 import { useNavigate } from "react-router-dom";
 import regBackground from "../../Images/Registration.png"
+import AlertMUI from "./AlertMUI/AlertMUI"
 
 function  Registration () {
   const [isRegisterFailed, setIsRegisterFailed] = useState(true);
@@ -19,13 +20,14 @@ function  Registration () {
       password: data.password,
       id: id,
       userBasket: [],
-      isBasketBtnShown: []
+      isBasketBtnShown: [],
+      favorite: []
     });
     
     setIsRegisterFailed(false);
     setTimeout(() => {
-      navigate("../Login")
-    }, 1000);
+       navigate("../Login")
+    }, 3000);
   }
   else{
     alert('password are not the same');
@@ -76,10 +78,12 @@ function  Registration () {
           </label>
           <button type="submit">Submit</button>
         </div>
-      </form>
-      {!isRegisterFailed && <p>Registration succeed!</p>}
-      
+        <div className="registrationSucces">
+          {!isRegisterFailed && <AlertMUI/>}  
+        </div>
+      </form> 
       </div>
+
       <div className="registrationImage">
               <img src={regBackground}></img>
       </div>

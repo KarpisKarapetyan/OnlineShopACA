@@ -3,6 +3,8 @@ import {useDispatch, useSelector} from "react-redux"
 import {mainUrl} from "../api/api"
 import {basketBtnShownSelector, subtractIsBasketBtnShown} from "../redux/slices/basketSlice"
 import {
+  favoriteSelecotr,
+  favoriteSelector,
   removeUser,
   setUserBasket,
   subtractUnseenBasket,
@@ -15,6 +17,7 @@ export const useLogout = () => {
   const user = useSelector(userSelector)
   const userBasket = useSelector(userBasketSelector)
   const isBasketBtnShown = useSelector(basketBtnShownSelector)
+  const favorite = useSelector(favoriteSelector)
   const dispatch = useDispatch()
 
   const logout =  () => {
@@ -26,6 +29,7 @@ export const useLogout = () => {
       id: id,
       userBasket: userBasket,
       isBasketBtnShown: isBasketBtnShown,
+      favorite: favorite
     }
 
     dispatch(setUserBasket([]))
@@ -34,6 +38,8 @@ export const useLogout = () => {
     localStorage.removeItem("user")
     sessionStorage.removeItem("user")
     sessionStorage.removeItem('userBasket')
+    sessionStorage.removeItem('favorite')
+    sessionStorage.removeItem('isBasketBtnShown')
     dispatch(removeUser())
 
     axios
