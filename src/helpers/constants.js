@@ -34,7 +34,7 @@ export const KIDSLINKS = [
   },
   {
     id: "2",
-    to: "jackets",
+    to: "KidsJacket",
     title: "JACETKS",
   },
 ]

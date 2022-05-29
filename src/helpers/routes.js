@@ -13,6 +13,7 @@ import SearchResult from "../Components/SearchResult/SearchResult";
 import WomanTshirts from "../Components/WomanTshirts/WomanTshirts";
 import WomanJackets from "../Components/WomanJackets/WomanJackets";
 import TshirtMan from "../Components/TshirtMan/TshirtMan";
+import KidsJackets from "../Components/KidsJackets/KidsJackets";
 
 const MAIN_ROUTES = [
     {
@@ -70,6 +71,10 @@ const MAIN_ROUTES = [
     {
         path: "tshirtMan",
         element: <TshirtMan />
+    },
+    {
+        path: "kidsJacket",
+        element: <KidsJackets />
     }
 ]
 
