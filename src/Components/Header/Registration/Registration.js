@@ -14,9 +14,13 @@ function  Registration () {
 
   const onSubmit = (data) => {
     if(data.password === data.rePassword){
+      const id = "id" + new Date().getTime()
     axios.post(`${mainUrl}/users`, {
       name: data.login,
       password: data.password,
+      id: id,
+      userBasket: [],
+      isBasketBtnShown: []
     });
     
     setIsRegisterFailed(false);

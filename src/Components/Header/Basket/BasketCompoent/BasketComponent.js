@@ -1,24 +1,27 @@
-import {useEffect} from "react"
+import {useEffect, useState} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import {useAddBasket} from "../../../../hooks/useAddBasket"
 import {useSubtractBasket} from "../../../../hooks/useSubtractBasket"
+import { basketBtnShownSelector } from "../../../../redux/slices/basketSlice"
 import {
-  setUserBasket,
-  unseenBasketSelector,
   userBasketSelector,
 } from "../../../../redux/slices/userSlice"
 
 const BasketComponent = () => {
   const userBasket = useSelector(userBasketSelector)
-  const unseenUserBasket = useSelector(unseenBasketSelector)
+  const isBasketBtnShown = useSelector(basketBtnShownSelector)
+  const [basketArr, setBasketArr] = useState([])
   const dispatch = useDispatch()
 
   const addBasket = useAddBasket()
   const subtractBasket = useSubtractBasket()
 
   useEffect(() => {
+    sessionStorage.removeItem('userBasket')
+    sessionStorage.setItem('userBasket', JSON.stringify(userBasket))
+
     const newArr = []
-    unseenUserBasket.forEach((item) => {
+    userBasket.forEach((item) => {
       newArr.push({...item})
     })
 
@@ -43,12 +46,12 @@ const BasketComponent = () => {
         }
     }, [])
 
-    dispatch(setUserBasket(arr))
-  }, [unseenUserBasket])
+   setBasketArr(arr)
+  }, [userBasket])
 
   return (
     <div>
-      {userBasket.map((item) => {
+      {basketArr.map((item) => {
         return (
           <div className="letterColor" key={item.id}>
             <div>{item.count}</div>

@@ -1,31 +1,32 @@
 import axios from "axios"
 import {useEffect, useState} from "react"
 import {mainUrl} from "../../api/api"
-import "./WomanTshirts.css"
+import "./KidsJackets.css"
 import { useAddBasket } from "../../hooks/useAddBasket"
 
-const WomanTshirts = () => {
+const KidsJackets = () => {
 
-    const [womanTshirtsArr, setWomanTshirtsArr] = useState([])
-    console.log("=================================================")
+    const [kidsJacketsArr, setKidsJacketsArr] = useState([])
+   
     useEffect(() => {
-      axios.get(`${mainUrl}/womanTshirts`)
-      .then(res => setWomanTshirtsArr(res.data))
+      axios.get(`${mainUrl}/kidsJackets`)
+      .then( console.log("================================================="))
+      .then(res => setKidsJacketsArr(res.data))
     }, []) 
     const addBasket = useAddBasket()
      
     return (
-      <div className="womanTshrts">
-         <span className='womanTshirtsTitle'> Woman Tshrts</span>
-         <div className="womanTshrtsData">
+      <div className="kidsJackets">
+         <span className='kidsJacketsTitle'> Kids Jacets</span>
+         <div className= "kidsJacketsData" >
          {
-            womanTshirtsArr.map((item,i)=>{
+            kidsJacketsArr.map((item,i)=>{
                 return(
-                    <div key={i}  className ="womanTshrtsItems">
-                        <div className="womanTshrtsDetailsImij">
+                    <div key={i}  className ="kidsJacketsItems">
+                        <div className="kidsJacketsDetailsImij">
                           <img src={item.location} />
                         </div>
-                        <div className='womanTshrtsDetails'
+                        <div className='kidsJacketsDetails'
                         >
                           <button onClick={() => addBasket(item)}>Add Basket</button>
                           <p> Size: {item.size} Price: {item.price} </p>
@@ -40,6 +41,6 @@ const WomanTshirts = () => {
     )
   }
   
-  export default WomanTshirts
+  export default KidsJackets
   
 
