@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
     isBasketShown: false,
-    isBasketBtnShown: []
+    isBasketBtnShown: JSON.parse(sessionStorage.getItem('isBasketBtnShown')) || [],
 }
 
 const basketSlice = createSlice({

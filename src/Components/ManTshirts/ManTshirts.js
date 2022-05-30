@@ -6,7 +6,6 @@ import { useAddBasket } from "../../hooks/useAddBasket"
 import { useSubtractBasket } from "../../hooks/useSubtractBasket"
 import { basketBtnShownSelector} from "../../redux/slices/basketSlice"
 import Loadable from "../Loadable/Loadable"
-//import classes from "./ManTshirts.module.css"
 import "./ManTshirts.css"
 
 const ManTshirts = () => {
@@ -22,13 +21,15 @@ const ManTshirts = () => {
   }, [])
 
 
+
+
   return (
     <div>
       {tshirtsArr.map((item, i) => {
         return (
           <div key={item.id}>
-            <div className="item">
-              <Loadable src={item.locaion}/>
+            <div >
+              <Loadable src={tshirtsArr[i].location}/>
             </div>
             <span>{item.price}</span>
             <span>{item.size}</span>

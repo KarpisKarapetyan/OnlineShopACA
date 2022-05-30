@@ -4,7 +4,8 @@ import {useForm} from "react-hook-form"
 import {useDispatch, useSelector} from "react-redux"
 import {useNavigate} from "react-router-dom"
 import {mainUrl} from "../../api/api"
-import {setUser} from "../../redux/slices/userSlice"
+import { setIsBasketBtnShown, subtractIsBasketBtnShown } from "../../redux/slices/basketSlice"
+import {setUser, setUserBasket, subTract, subTractFavorite, subtractUnseenBasket} from "../../redux/slices/userSlice"
 import classes from "./Login.module.css"
 
 const Login = () => {
@@ -25,11 +26,23 @@ const Login = () => {
 
       if (user) {
         if (data.save) {
-          localStorage.setItem("user", data.login)
+          localStorage.setItem("user", JSON.stringify(user))
         } else {
-          sessionStorage.setItem("user", data.login)
+          sessionStorage.setItem("user", JSON.stringify(user))
         }
-        dispatch(setUser(data.login))
+        dispatch(setUser(user))
+        if(user.userBasket.length !== 0){
+          dispatch(setUserBasket(user.userBasket))
+          dispatch(subtractIsBasketBtnShown(user.isBasketBtnShown))
+          dispatch(subTractFavorite(user.favorite))
+          sessionStorage.setItem('userBasket', JSON.stringify(user.userBasket))
+          sessionStorage.setItem('isBasketBtnShown', JSON.stringify(user.isBasketBtnShown))
+          sessionStorage.setItem('favorite', JSON.stringify(user.favorite))
+        }else{
+          sessionStorage.setItem('userBasket', JSON.stringify([]))
+          sessionStorage.setItem('isBasketBtnShown', JSON.stringify(user.isBasketBtnShown))
+          sessionStorage.setItem('favorite', JSON.stringify(user.favorite))
+        }
         navigate("../homePage", {replace: true})
       } else {
         setIsLoginFailed(true)
