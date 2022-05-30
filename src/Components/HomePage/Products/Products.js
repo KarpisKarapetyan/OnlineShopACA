@@ -8,6 +8,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useSelector } from 'react-redux'
 import { favoriteSelector, userBasketSelector } from '../../../redux/slices/userSlice'
 import { useAddFavorite } from '../../../hooks/useAddFavorite'
+import ImageZoom from '../ImageZoom/ImageZoom'
 import './Products.css'
 
 function Products (){
@@ -27,7 +28,7 @@ function Products (){
     },[])
         
     const goBasket = useAddBasket()
-    const favorite = useAddFavorite()
+    const goFavorite = useAddFavorite()
     return (
              <>
              <div className="productsMain">
@@ -39,7 +40,8 @@ function Products (){
              <Carousel>
              {products?.map((item , i)=>(
                  <div key={i}>
-                            <div className='itemProducts' >  
+                            <div className='itemProducts' >
+                                 
                                 <img src={item?.location} />  
                             </div>
                             <div className='dressDetailsCarusel' >
@@ -47,9 +49,10 @@ function Products (){
                                     <label className='iconsCaruselBas' onClick={()=> goBasket(item)}> 
                                     <AddShoppingCartIcon className={userBasket.includes(item) ? "activFavorite" : ''}/> </label>
                                 </div>
-                                <div className='iconFavourite'> 
-                                    <label className='iconsCaruselFav' onClick={()=> favorite(item)}> 
+                                <div className='iconsCarusel'> 
+                                    <label className='iconsCaruselFav' onClick={()=> goFavorite(item)}> 
                                     <FavoriteIcon className={favoriteArr.includes(item) ? "activFavorite" : ''}/> </label>
+                                    <ImageZoom img = {products[i].location}/> 
                                 </div>
                                 <p > {item.price} AMD / {item.size}  </p>
                             </div>
