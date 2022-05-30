@@ -14,6 +14,7 @@ import WomanTshirts from "../Components/WomanTshirts/WomanTshirts";
 import WomanJackets from "../Components/WomanJackets/WomanJackets";
 import TshirtMan from "../Components/TshirtMan/TshirtMan";
 import KidsJackets from "../Components/KidsJackets/KidsJackets";
+import AllWoman from "../Components/AllWoman/AllWoman";
 
 const MAIN_ROUTES = [
     {
@@ -75,7 +76,11 @@ const MAIN_ROUTES = [
     {
         path: "kidsJacket",
         element: <KidsJackets />
-    }
+    },{/*,
+    {
+        path: "Womans",
+        element: <AllWoman />
+    }*/}
 ]
 
 export const ROUTES = [
