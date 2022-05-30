@@ -46,6 +46,11 @@
     align-items: center;
     gap: 10%;
 }
+
+button.MuiButton-root.MuiButton-text.MuiButton-textPrimary.MuiButton-sizeMedium.MuiButton-textSizeMedium.MuiButtonBase-root.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+    min-width: 24px;
+}
+
 .dressDetailsCarusel p{
     font-size: 18px;
     color: rgb(0, 0, 0);
