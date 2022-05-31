@@ -14,12 +14,10 @@ import WomanTshirts from "../Components/WomanTshirts/WomanTshirts";
 import WomanJackets from "../Components/WomanJackets/WomanJackets";
 import TshirtMan from "../Components/TshirtMan/TshirtMan";
 import KidsJackets from "../Components/KidsJackets/KidsJackets";
+import AdminPanel from "../Components/AdminPanel/AdminPanel";
 
 const MAIN_ROUTES = [
-    {
-        path: "homePage",
-        element: <HomePage/>
-    },
+    
     {
         path: "login",
         element: <Login/>
@@ -75,6 +73,18 @@ const MAIN_ROUTES = [
     {
         path: "kidsJacket",
         element: <KidsJackets />
+    },
+    {
+        path: "/allProducts/*",
+        element: <AdminPanel />
+    },
+    {
+        path: "/adminPanel",
+        element: <AdminPanel />
+    },
+    {
+        path: "homePage",
+        element: <HomePage/>
     }
 ]
 

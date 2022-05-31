@@ -15,8 +15,7 @@ function Products (){
     const [products,setProducts] = useState([])
     const favoriteArr = useSelector(favoriteSelector)
     const userBasket = useSelector(userBasketSelector)
-    console.log(favoriteArr)
-
+    
     useEffect(()=>{
         if(!sessionStorage.getItem("BestSeller")){
             axios.get(`${mainUrl}/bestSelling`)
