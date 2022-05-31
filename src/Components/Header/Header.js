@@ -1,9 +1,9 @@
 import {useForm} from "react-hook-form"
 import {useDispatch, useSelector} from "react-redux"
 import {useNavigate} from "react-router-dom"
-import {removeUser, userSelector} from "../../redux/slices/userSlice"
+import {userSelector} from "../../redux/slices/userSlice"
+import { adminSelector } from "../../redux/slices/adminSlice"
 import "./Header.css"
-import Basket from "./Basket/Basket"
 import Register from "./Registration/Register"
 import Links from "./Links/Links"
 import logo from "../Images/LogoZootMood.png"
@@ -14,10 +14,11 @@ import OurBaskets from "./Basket/OurBaskets"
 import { searchThunk } from "../../redux/thunks/searchThunk"
 import { useLogout } from "../../hooks/useLogout"
 
+
 function Header() {
   const isBasketShown = useSelector(basketSelector)
   const logout = useLogout()
-
+  const admin =  useSelector(adminSelector)
   const dispatch = useDispatch()
   const {
     register,
@@ -40,14 +41,12 @@ function Header() {
     navigate("../Registration")
   }
 
-  // const logOut = () => {
-  //   localStorage.removeItem("user")
-  //   sessionStorage.removeItem("user")
-  //   dispatch(removeUser())
-  // }
 
   const goToHomePage = () => {
     navigate("../homePage")
+  }
+  const goToAdminPanel = ()=>{
+    navigate('../adminPanel')
   }
 
   return (
@@ -57,10 +56,10 @@ function Header() {
           <div className="logoContainer" onClick={goToHomePage}>
             <img src={logo} className="logo" />
           </div>
-
           <Links />
         </div>
-
+        {admin && sessionStorage.setItem("admin" , JSON.stringify(admin))}
+        {admin && <div className="goAdmin" onClick={ goToAdminPanel } >Admin Panel</div>}
         <div>
           <form onSubmit={handleSubmit(onSubmit)} className="form">
             <label>
@@ -87,7 +86,7 @@ function Header() {
               <div
                 className="divBasket"
                 onClick={() => dispatch(setIsBasketShown(!isBasketShown))}
-              >
+              > 
                 <img className="logoBasket" src={basketLogo}></img>
                 <OurBaskets />
               </div>

@@ -20,6 +20,14 @@
           "location": "https://firebasestorage.googleapis.com/v0/b/onlineshopaca-6023f.appspot.com/o/Mans%20Jackets%2F62a6912fcf8a4997c67acd2156937ad2.jpg?alt=media&token=e6dfd75a-f7dd-47a0-8af3-c576ad008ac4"
         }
       ]
+    },
+    {
+      "name": "Karpis",
+      "password": "111111",
+      "id": "id1653990240463",
+      "userBasket": [],
+      "isBasketBtnShown": [],
+      "favorite": []
     }
   ],
   "manTshirts": [
