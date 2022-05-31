@@ -1,24 +1,28 @@
 import {useForm} from "react-hook-form"
 import {useDispatch, useSelector} from "react-redux"
 import {useNavigate} from "react-router-dom"
-import {userSelector} from "../../redux/slices/userSlice"
-import { adminSelector } from "../../redux/slices/adminSlice"
+import {removeUser, userSelector} from "../../redux/slices/userSlice"
 import "./Header.css"
+import Basket from "./Basket/Basket"
 import Register from "./Registration/Register"
 import Links from "./Links/Links"
 import logo from "../Images/LogoZootMood.png"
 import searchLogo from "../../project_pictures/Vector.png"
 import {basketSelector, setIsBasketShown} from "../../redux/slices/basketSlice"
-import basketLogo from "../Images/BasketLogo.png"
 import OurBaskets from "./Basket/OurBaskets"
-import { searchThunk } from "../../redux/thunks/searchThunk"
-import { useLogout } from "../../hooks/useLogout"
+import {searchThunk} from "../../redux/thunks/searchThunk"
+import {useLogout} from "../../hooks/useLogout"
+import BasketModal from "../Header/Basket/BasketModal/BasketModal"
+import FavoriteWindow from '../Header/Favorite/FavoriteWindow/FavoriteWindow'
+import favorite from "../Images/favorite.png"
+
+
 
 
 function Header() {
   const isBasketShown = useSelector(basketSelector)
   const logout = useLogout()
-  const admin =  useSelector(adminSelector)
+
   const dispatch = useDispatch()
   const {
     register,
@@ -41,13 +45,13 @@ function Header() {
     navigate("../Registration")
   }
 
-
+  
   const goToHomePage = () => {
     navigate("../homePage")
   }
-  const goToAdminPanel = ()=>{
-    navigate('../adminPanel')
-  }
+
+
+ 
 
   return (
     <div className="headerBody">
@@ -56,10 +60,10 @@ function Header() {
           <div className="logoContainer" onClick={goToHomePage}>
             <img src={logo} className="logo" />
           </div>
+
           <Links />
         </div>
-        {admin && sessionStorage.setItem("admin" , JSON.stringify(admin))}
-        {admin && <div className="goAdmin" onClick={ goToAdminPanel } >Admin Panel</div>}
+
         <div>
           <form onSubmit={handleSubmit(onSubmit)} className="form">
             <label>
@@ -78,7 +82,10 @@ function Header() {
           </form>
         </div>
       </div>
-
+      <div className="favoriteDIV" >
+        <FavoriteWindow/>
+      </div>
+      
       <div className="headerRight">
         <div className="betweenLogin">
           {user && (
@@ -86,9 +93,8 @@ function Header() {
               <div
                 className="divBasket"
                 onClick={() => dispatch(setIsBasketShown(!isBasketShown))}
-              > 
-                <img className="logoBasket" src={basketLogo}></img>
-                <OurBaskets />
+              >
+                <BasketModal />
               </div>
               <div className="divBasket loginBasket">
                 <label>

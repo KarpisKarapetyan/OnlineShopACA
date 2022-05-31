@@ -51,7 +51,7 @@ function Products (){
                                 <div className='iconsCarusel'> 
                                     <label className='iconsCaruselFav' onClick={()=> goFavorite(item)}> 
                                     <FavoriteIcon className={favoriteArr.includes(item) ? "activFavorite" : ''}/> </label>
-                                    <ImageZoom img = {products[i].location}/> 
+                                    <ImageZoom img = {products[i].location}/>
                                 </div>
                                 <p > {item.price} AMD / {item.size}  </p>
                             </div>

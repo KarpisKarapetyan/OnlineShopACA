@@ -14,7 +14,7 @@
 }
 
 .siteName {
-  min-width: 80vw;
+  min-width: 73vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,6 +32,7 @@
 }
 .form {
   position: relative;
+  z-index: 0;
 }
 
 .submitBtn{
@@ -74,6 +75,17 @@
   display: flex;
   gap: 1rem;
 }
+.favoriteDIV{
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+ margin-right: 5px;
+}
+.logoFavorite{
+  width: 35px;
+  height: 35px;
+  object-fit: cover;  
+}
 
 .betweenLogin {
   display: flex;
@@ -89,8 +101,8 @@
 }
 
 .divBasket {
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,8 +130,6 @@
   cursor: pointer;
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-  letter-spacing: 2px;
 }
 
 .logoContainer {

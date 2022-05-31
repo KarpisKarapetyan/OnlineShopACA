@@ -1,10 +1,13 @@
 import {createSlice, current} from "@reduxjs/toolkit"
 
 const initialState = {
-  user: JSON.parse(localStorage.getItem("user")) || JSON.parse(sessionStorage.getItem("user"))  || null,
-  userBasket: JSON.parse(sessionStorage.getItem('userBasket')) || [],
+  user:
+    JSON.parse(localStorage.getItem("user")) ||
+    JSON.parse(sessionStorage.getItem("user")) ||
+    null,
+  userBasket: JSON.parse(sessionStorage.getItem("userBasket")) || [],
   basketItemCounter: 0,
-  favorite : JSON.parse(sessionStorage.getItem('favorite')) || [],
+  favorite: JSON.parse(sessionStorage.getItem("favorite")) || [],
 }
 
 const userSlice = createSlice({
@@ -14,7 +17,7 @@ const userSlice = createSlice({
     setUser: (state, {payload}) => {
       state.user = payload
     },
-    
+
     removeUser: (state) => {
       state.user = null
     },
@@ -24,8 +27,12 @@ const userSlice = createSlice({
     pushUserBasket: (state, {payload}) => {
       state.userBasket.push(payload)
     },
-    pushFavorite:(state,{payload})=>{state.favorite.push(payload)},
-    subTractFavorite :(state,{payload}) =>{state.favorite = payload}
+    pushFavorite: (state, {payload}) => {
+      state.favorite.push(payload)
+    },
+    subTractFavorite: (state, {payload}) => {
+      state.favorite = payload
+    },
   },
 })
 
@@ -39,7 +46,7 @@ export const {
   setUserBasket,
   pushUserBasket,
   pushFavorite,
-  subTractFavorite
+  subTractFavorite,
 } = userSlice.actions
 
 export default userSlice.reducer
