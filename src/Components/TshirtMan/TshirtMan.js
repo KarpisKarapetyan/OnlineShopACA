@@ -27,7 +27,7 @@ const TshirtMan = () => {
     return (
       <div className="bgColorBlue">
           <div className="manTitleContainer">
-              <span> Man Tshirt</span>
+              <span> Man T-shirt</span>
           </div>
           <div className="manItemContainer">
               {
