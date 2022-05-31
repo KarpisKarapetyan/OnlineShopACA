@@ -3,8 +3,10 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import basketLogo from "../../../Images/BasketLogo1.png"
-import BasketComponent from '../BasketCompoent/BasketComponent';
+import favorite from "../../../Images/favorite.png"
+
+
+
 
 
 const style = {
@@ -26,7 +28,7 @@ export default function BasicModal() {
 
   return (
     <div>
-      <Button onClick={handleOpen}> <img className="logoBasket" src={basketLogo}></img></Button>
+      <Button  onClick={handleOpen}><img className="logoFavorite" src={favorite}></img></Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -35,7 +37,7 @@ export default function BasicModal() {
       >
         <Box sx={style}>
            <Typography id="modal-modal-title" variant="h6" component="h2">
-              <BasketComponent/>
+          
            </Typography>
           
         </Box>
