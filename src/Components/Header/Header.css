@@ -37,6 +37,7 @@
 .submitBtn{
     border: none;
     background: none;
+    cursor:pointer;
 }
 
 .submitBtn {
@@ -78,7 +79,7 @@
 .betweenLogin {
   display: flex;
   align-items: center;
-  width: 10vw;
+  width: 7vw;
 }
 
 .basketTrue {
@@ -89,16 +90,19 @@
 }
 
 .divBasket {
-  width: 52px;
-  height: 52px;
+  width: 28px;
+  height: 28px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  margin-left: 2px;
 }
 .loginBasket {
   width: 48px !important;
   height: 48px !important;
+  font-weight: 600;
+  font-size: 18px;
 }
 .loginBasket label {
   cursor: pointer;
@@ -110,16 +114,22 @@
   object-fit: cover;
 }
 
+.spanLogin {
+  font-size: 17px;
+}
+
 .logOut {
   padding: 0;
   border: none;
   background: none;
   height: 5vh;
   cursor: pointer;
-  font-size: 16px;
+  /* font-size: 16px; */
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
   letter-spacing: 2px;
+  font-weight: 600;
+  font-size: 17px;
 }
 
 .logoContainer {
@@ -143,6 +153,10 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+.registerInput {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1200px) {

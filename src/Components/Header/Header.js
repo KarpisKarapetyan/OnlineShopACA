@@ -106,7 +106,7 @@ function Header() {
                 </label>
               </div>
               <div>
-                <label onClick={goToRegister}>
+                <label className="registerInput" onClick={goToRegister}>
                   <Register />
                 </label>
               </div>
