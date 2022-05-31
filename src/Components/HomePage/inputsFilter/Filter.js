@@ -36,13 +36,16 @@ function Filter (){
               PRICE
               <input
                 {...register("price", { 
+                  
                   required: "Field is required",
+                  
                   minLength : {
                     value : 4,
                     message : "*Minimum 4 characters for price!"
                   }
                  })}
                 type="number"
+                placeholder="Select price"
               />
               
             <div className="errorMessage">
@@ -60,6 +63,7 @@ function Filter (){
                    }
                   })}
                 type="text"
+                placeholder="Select size"
               />
               <div className="errorMessage">
               {errors?.size && <p>{errors?.size?.message || "Error!"}</p>}

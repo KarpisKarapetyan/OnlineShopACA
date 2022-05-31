@@ -1,3 +1,46 @@
 .mainFooter{
-    border: 1px solid black;
+    display: flex;
+    height: 200px;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    color: aliceblue;
+}
+
+.footerLogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 18%;
+}
+.footerIcons{
+    display: flex;
+    gap: 50%;
+}
+
+.footerLogo img{
+    width: 100%;
+    object-fit: cover;
+}
+.footerLinks{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    color: aliceblue;
+    height: 100%;
+    width: 60%;
+}
+.footerInput{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.gmail img {
+    object-fit: cover;
+}
+
+.forCursor{
+    cursor: pointer;
 }

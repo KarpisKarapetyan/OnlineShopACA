@@ -12,9 +12,11 @@ import {basketSelector, setIsBasketShown} from "../../redux/slices/basketSlice"
 import basketLogo from "../Images/BasketLogo.png"
 import OurBaskets from "./Basket/OurBaskets"
 import { searchThunk } from "../../redux/thunks/searchThunk"
+import { useLogout } from "../../hooks/useLogout"
 
 function Header() {
   const isBasketShown = useSelector(basketSelector)
+  const logout = useLogout()
 
   const dispatch = useDispatch()
   const {
@@ -38,11 +40,11 @@ function Header() {
     navigate("../Registration")
   }
 
-  const logOut = () => {
-    localStorage.removeItem("user")
-    sessionStorage.removeItem("user")
-    dispatch(removeUser())
-  }
+  // const logOut = () => {
+  //   localStorage.removeItem("user")
+  //   sessionStorage.removeItem("user")
+  //   dispatch(removeUser())
+  // }
 
   const goToHomePage = () => {
     navigate("../homePage")
@@ -91,7 +93,7 @@ function Header() {
               </div>
               <div className="divBasket loginBasket">
                 <label>
-                  <span className="spanLogin">{user}</span>
+                  <span className="spanLogin">{user.name}</span>
                 </label>
               </div>
             </div>
@@ -117,7 +119,7 @@ function Header() {
 
       {user && (
         <div className="logOutDiv">
-          <button className="logOut" onClick={logOut}>
+          <button className="logOut" onClick={logout}>
             Log out
           </button>
         </div>

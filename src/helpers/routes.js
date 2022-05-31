@@ -13,6 +13,10 @@ import SearchResult from "../Components/SearchResult/SearchResult";
 import WomanTshirts from "../Components/WomanTshirts/WomanTshirts";
 import WomanJackets from "../Components/WomanJackets/WomanJackets";
 import TshirtMan from "../Components/TshirtMan/TshirtMan";
+import JacketMan from "../Components/JacketMan/JacketMan";
+import KidsTshirt from "../Components/KidsTshirt/KidsTshirt";
+import KidsJackets from "../Components/KidsJackets/KidsJackets";
+import AllMan from "../Components/AllMan/AllMan";
 
 const MAIN_ROUTES = [
     {
@@ -70,7 +74,23 @@ const MAIN_ROUTES = [
     {
         path: "tshirtMan",
         element: <TshirtMan />
-    }
+    },
+    {
+        path: "kidsJacket",
+        element: <KidsJackets />
+    },
+    {
+        path: "kidsTshirt",
+        element: <KidsTshirt />
+    },
+    {
+        path: "jacketMan",
+        element: <JacketMan />
+    },
+    {
+        path: "allMan",
+        element: <AllMan />
+    },
 ]
 
 export const ROUTES = [

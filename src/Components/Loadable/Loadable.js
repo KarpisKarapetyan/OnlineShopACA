@@ -18,7 +18,6 @@ const Loadable = ({src}) => {
         }
     }, [isIntersecting, isLoaded])
 
-    console.log(src);
     return (
         <div ref={containerRef} className={classNames(classes.container, {
             [classes.container_loaded]: isLoaded
@@ -28,7 +27,7 @@ const Loadable = ({src}) => {
                     className={classNames(classes.manTshirt, {
                         [classes.manTshirt_loaded]: isLoaded
                     })}
-                    src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/a4/5b/a2/l-image-art-hotel.jpg?w=900&h=-1&s=1"
+                    src={src}
                     ref={imageRef}
                 />
             }
