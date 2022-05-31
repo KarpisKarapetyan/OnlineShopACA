@@ -72,7 +72,7 @@ function Header() {
 
               <input
                 {...register("search")}
-                type="search"
+                type="text"
                 className="search"
               ></input>
             </label>

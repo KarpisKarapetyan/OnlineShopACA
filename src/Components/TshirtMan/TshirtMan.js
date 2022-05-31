@@ -35,7 +35,7 @@ const TshirtMan = () => {
                       return (
                           <div key={i} className="manItem">
                               <img src={item.location}/>
-                              <div className="manDetails">
+                              <div className="dressDetailsCarusel">
                                   <label className='iconItem' onClick={() => goBasket(item)}>
                                       <AddShoppingCartIcon
                                           className={userBasket.includes(item) ? "activFavorite" : ''}/>
@@ -44,7 +44,7 @@ const TshirtMan = () => {
                                       <FavoriteIcon className={favoriteArr.includes(item) ? "activFavorite" : ''}/>
                                   </label>
                                   <ImageZoom img={tshirtManArr[i].location}/>
-                                  <span> {item.price} AMD / {item.size}  </span>
+                                  <p> {item.price} AMD / {item.size}  </p>
                               </div>
                           </div>
                       )

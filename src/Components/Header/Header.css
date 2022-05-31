@@ -20,15 +20,15 @@
   align-items: center;
 }
 
-.submit{
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* justify-content: center; */
-    /* align-items: center; */
+.submit {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    z-index:3;
+    z-index: 3;
     right: 17px;
-    top: 6px;
+    top: 5px;
 }
 .form {
   position: relative;
@@ -40,10 +40,8 @@
     cursor:pointer;
 }
 
-.submitBtn {
-    border: none;
-    background: none;
-    color: #a7e1de
+.submit img {
+    width: 22px;
 }
 
 .loginAndRegister{
@@ -63,7 +61,7 @@
   position:relative;
   border: none;
   width: 221px;
-  height: 39px;
+  height: 30px;
   background-color: #fff;
   border-radius: 50px 50px;
   z-index:2;

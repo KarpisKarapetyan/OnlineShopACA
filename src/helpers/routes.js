@@ -28,10 +28,6 @@ const MAIN_ROUTES = [
         element: <Login/>
     },
     {
-        path: "Man",
-        element: <Man/>
-    },
-    {
         path: "Woman",
         element: <Woman/>
     },
@@ -88,7 +84,7 @@ const MAIN_ROUTES = [
         element: <JacketMan />
     },
     {
-        path: "allMan",
+        path: "Man",
         element: <AllMan />
     },
 ]
