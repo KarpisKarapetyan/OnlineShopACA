@@ -8,7 +8,7 @@ export const MANLINKS = [
   },
   {
     id: "2",
-    to: "jackets",
+    to: "jacketMan",
     title: "JACETKS",
   },
 ]
@@ -29,7 +29,7 @@ export const WOMANLINKS = [
 export const KIDSLINKS = [
   {
     id: "1",
-    to: "tShirts",
+    to: "KidsTshirt",
     title: "T-SHIRTS",
   },
   {
