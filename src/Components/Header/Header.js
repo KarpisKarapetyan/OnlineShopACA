@@ -74,7 +74,7 @@ function Header() {
 
               <input
                 {...register("search")}
-                type="search"
+                type="text"
                 className="search"
               ></input>
             </label>
@@ -112,7 +112,7 @@ function Header() {
                 </label>
               </div>
               <div>
-                <label onClick={goToRegister}>
+                <label className="registerInput" onClick={goToRegister}>
                   <Register />
                 </label>
               </div>

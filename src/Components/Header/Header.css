@@ -154,6 +154,9 @@
     justify-content: center;
     align-items: center;
 }
+.goAdmin{
+  cursor: pointer;
+}
 
 @media only screen and (max-width: 1200px) {
   .loginAndRegister {
