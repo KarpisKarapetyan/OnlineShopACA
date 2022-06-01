@@ -1,13 +1,13 @@
 ::-webkit-input-placeholder{color: rgba(255, 255, 255, 0.733);}
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
 
 
 .registrationMain{
     height: 85vh;
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
 }
 .registrationForm{
@@ -16,23 +16,25 @@
     text-align: left;
 }
 .formMainDIV {
+    width: 50%;
+    height: auto;
     display: flex;
-    flex-direction: center;
-    margin-right: 140px;
+    align-items: center;
+    justify-content: center;
 }
 .registrationForm input{
     border: none;
     width: 250px;
     height: 30px;
     outline: 0;
-    border-radius: 15px;
+    border-radius: 10px;
     text-indent: 15px;
     background-color: rgb(0, 0, 0);
     color: #a7e1de;
 }
-.registrationForm button{
+.regSubmit{
     padding: 5px 20px;
-    border-radius: 15px;
+    border-radius: 10px;
     background-color: #a7e1de;
     border: none;
     cursor: pointer;
@@ -46,6 +48,7 @@
     gap: 13px;
     align-items: center;
     font-size: 24px;
+    margin: 0 auto;
 }
 
 .registrationDiv p{
@@ -70,3 +73,15 @@
     object-fit:revert;
     
  } 
+
+.registrationSucces {
+    width: 40%;
+    margin: 13px auto;
+} 
+.css-acap47-MuiAlert-message {
+    font-size: 26px;
+}
+.css-acap47-MuiAlert-message{
+    font-size: 16px;
+    color: #a03a38
+}

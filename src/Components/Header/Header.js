@@ -9,12 +9,19 @@ import Links from "./Links/Links"
 import logo from "../Images/LogoZootMood.png"
 import searchLogo from "../../project_pictures/Vector.png"
 import {basketSelector, setIsBasketShown} from "../../redux/slices/basketSlice"
-import basketLogo from "../Images/BasketLogo.png"
 import OurBaskets from "./Basket/OurBaskets"
-import { searchThunk } from "../../redux/thunks/searchThunk"
+import {searchThunk} from "../../redux/thunks/searchThunk"
+import {useLogout} from "../../hooks/useLogout"
+import BasketModal from "../Header/Basket/BasketModal/BasketModal"
+import FavoriteWindow from '../Header/Favorite/FavoriteWindow/FavoriteWindow'
+import favorite from "../Images/favorite.png"
+
+
+
 
 function Header() {
   const isBasketShown = useSelector(basketSelector)
+  const logout = useLogout()
 
   const dispatch = useDispatch()
   const {
@@ -38,15 +45,13 @@ function Header() {
     navigate("../Registration")
   }
 
-  const logOut = () => {
-    localStorage.removeItem("user")
-    sessionStorage.removeItem("user")
-    dispatch(removeUser())
-  }
-
+  
   const goToHomePage = () => {
     navigate("../homePage")
   }
+
+
+ 
 
   return (
     <div className="headerBody">
@@ -70,14 +75,17 @@ function Header() {
 
               <input
                 {...register("search")}
-                type="search"
+                type="text"
                 className="search"
               ></input>
             </label>
           </form>
         </div>
       </div>
-
+      <div className="favoriteDIV" >
+        <FavoriteWindow/>
+      </div>
+      
       <div className="headerRight">
         <div className="betweenLogin">
           {user && (
@@ -86,12 +94,11 @@ function Header() {
                 className="divBasket"
                 onClick={() => dispatch(setIsBasketShown(!isBasketShown))}
               >
-                <img className="logoBasket" src={basketLogo}></img>
-                <OurBaskets />
+                <BasketModal />
               </div>
               <div className="divBasket loginBasket">
                 <label>
-                  <span className="spanLogin">{user}</span>
+                  <span className="spanLogin">{user.name}</span>
                 </label>
               </div>
             </div>
@@ -106,7 +113,7 @@ function Header() {
                 </label>
               </div>
               <div>
-                <label onClick={goToRegister}>
+                <label className="registerInput" onClick={goToRegister}>
                   <Register />
                 </label>
               </div>
@@ -117,7 +124,7 @@ function Header() {
 
       {user && (
         <div className="logOutDiv">
-          <button className="logOut" onClick={logOut}>
+          <button className="logOut" onClick={logout}>
             Log out
           </button>
         </div>

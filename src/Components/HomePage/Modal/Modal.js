@@ -19,7 +19,7 @@ import './Modal.css'
         <>
         <div className= {backBlackStyle} onClick={exitInputs}>
             <div className='modal' onClick={(e)=>e.stopPropagation()}>
-                <div modalMain>
+                <div className='registrationForm input'>
                     <Filter/>
                 </div>
             </div>      

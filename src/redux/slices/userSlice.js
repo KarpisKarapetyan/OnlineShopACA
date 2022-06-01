@@ -1,10 +1,13 @@
 import {createSlice, current} from "@reduxjs/toolkit"
 
 const initialState = {
-  user: localStorage.getItem("user") || sessionStorage.getItem("user") || null,
-  userBasket: [],
-  unseenUserBasket: [],
+  user:
+    JSON.parse(localStorage.getItem("user")) ||
+    JSON.parse(sessionStorage.getItem("user")) ||
+    null,
+  userBasket: JSON.parse(sessionStorage.getItem("userBasket")) || [],
   basketItemCounter: 0,
+  favorite: JSON.parse(sessionStorage.getItem("favorite")) || [],
 }
 
 const userSlice = createSlice({
@@ -14,36 +17,36 @@ const userSlice = createSlice({
     setUser: (state, {payload}) => {
       state.user = payload
     },
+
     removeUser: (state) => {
       state.user = null
     },
     setUserBasket: (state, {payload}) => {
       state.userBasket = payload
     },
-    setUnseenUserBasket: (state, {payload}) => {
-      state.unseenUserBasket.push(payload)
+    pushUserBasket: (state, {payload}) => {
+      state.userBasket.push(payload)
     },
-    subtractUnseenBasket: (state, {payload}) => {
-      state.unseenUserBasket = payload
+    pushFavorite: (state, {payload}) => {
+      state.favorite.push(payload)
     },
-    setBasketItemCounter: (state, {payload}) => {
-      state.basketItemCounter = payload
+    subTractFavorite: (state, {payload}) => {
+      state.favorite = payload
     },
   },
 })
 
 export const userSelector = (state) => state.user.user
 export const userBasketSelector = (state) => state.user.userBasket
-export const unseenBasketSelector = (state) => state.user.unseenUserBasket
-export const basketCounterSelector = (state) => state.user.basketItemCounter
+export const favoriteSelector = (state) => state.user.favorite
 
 export const {
   setUser,
   removeUser,
   setUserBasket,
-  setUnseenUserBasket,
-  subtractUnseenBasket,
-  setBasketItemCounter,
+  pushUserBasket,
+  pushFavorite,
+  subTractFavorite,
 } = userSlice.actions
 
 export default userSlice.reducer

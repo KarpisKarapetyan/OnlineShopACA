@@ -1,36 +1,57 @@
 import axios from "axios"
 import {useEffect, useState} from "react"
 import {mainUrl} from "../../api/api"
-import "./TshirtMan.css"
 import { useAddBasket } from "../../hooks/useAddBasket"
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { favoriteSelector, userBasketSelector } from '../../redux/slices/userSlice'
+// import { useAddFavorite } from '../../../hooks/useAddFavorite'
+import ImageZoom from '../HomePage/ImageZoom/ImageZoom'
+import "./TshirtMan.css"
+import {useSelector} from "react-redux";
+import {useAddFavorite} from "../../hooks/useAddFavorite";
 
 
 const TshirtMan = () => {
-
+    const favoriteArr = useSelector(favoriteSelector)
+    const userBasket = useSelector(userBasketSelector)
     const [tshirtManArr, setTshirtManArr] = useState([])  
     useEffect(() => {
       axios.get(`${mainUrl}/manTshirts`)
       .then(res => setTshirtManArr(res.data))
     }, [])
+
+    const goBasket = useAddBasket()
+    const goFavorite = useAddFavorite()
  
     return (
-      <div className="tshirtMan">
-        <span className='tshirtManTitle'> Man Tshirt</span>
-        <div className="tshirtManData">
-        {
-            tshirtManArr.map((item,i)=>{
-                return(
-                    <div key={i} className ="tshirtManItems">
-                      <div className='tshirtManDetails'>
-                            <img src={item.location} />
-                            <p> Size: {item.size} Price: {item.price} </p>
-                            <button onClick={() => addBasket(item)}>Add Basket</button>
-                      </div>
-                    </div>
-                    )
-            })
-        }
-        </div>
+      <div className="bgColorBlue">
+          <div className="manTitleContainer">
+              <span> Man T-shirt</span>
+          </div>
+          <div className="manItemContainer">
+              {
+                  tshirtManArr.map((item, i) => {
+                      return (
+                          <div key={i} className="manItem">
+                              <img src={item.location}/>
+                              <div className="dressDetailsCarusel">
+                                  <label className='iconItem' onClick={() => goBasket(item)}>
+                                      <AddShoppingCartIcon
+                                          className={userBasket.includes(item) ? "activFavorite" : ''}/>
+                                  </label>
+                                  <label className='iconItem' onClick={() => goFavorite(item)}>
+                                      <FavoriteIcon className={favoriteArr.includes(item) ? "activFavorite" : ''}/>
+                                  </label>
+                                  <ImageZoom img={tshirtManArr[i].location}/>
+                                  <p> {item.price} AMD / {item.size}  </p>
+                              </div>
+                          </div>
+                      )
+                  })
+              }
+          </div>
+
       </div>
     )
   }

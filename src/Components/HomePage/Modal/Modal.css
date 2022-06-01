@@ -23,25 +23,35 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.658);
+    background-color: rgba(0, 0, 0, 0.411);
     transition: all .3s;
     animation: showBackBlack .3s ease-out;
+    z-index: 2;
 }
 
 .modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: white;
     width: 400px;
     height: 200px;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.726);
     border-radius: 10px;
     transition: all .3s;;
     animation: showModal .3s ease-out;
-
+}
+.modal input{
+    border: none;
+    width: 250px;
+    height: 30px;
+    outline: 0;
+    border-radius: 10px;
+    text-indent: 15px;
+    background-color: rgb(0, 0, 0);
+    color: #a7e1de;
 }
 
-.modalMain{
-    padding: 10px 20px;
-}
 
 .backBlack-hide{
     opacity: 0;

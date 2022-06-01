@@ -5,26 +5,32 @@ import axios from "axios";
 import { mainUrl } from "../../../api/api";
 import { useNavigate } from "react-router-dom";
 import regBackground from "../../Images/Registration.png"
+import AlertMUI from "./AlertMUI/AlertMUI"
+import ErrorMessage from './AlertMUI/ErrorMessage'
 
 function  Registration () {
   const [isRegisterFailed, setIsRegisterFailed] = useState(true);
+  const [errorMessage ,setErrorMessage ] = useState(false)
   const {register,handleSubmit,formState: { errors }} = useForm();
   const navigate = useNavigate() 
 
   const onSubmit = (data) => {
     if(data.password === data.rePassword){
+      const id = "id" + new Date().getTime()
     axios.post(`${mainUrl}/users`, {
       name: data.login,
       password: data.password,
+      id: id,
+      userBasket: [],
+      isBasketBtnShown: [],
+      favorite: []
     });
     
     setIsRegisterFailed(false);
-    setTimeout(() => {
-      navigate("../Login")
-    }, 1000);
+    setTimeout(() => {navigate("../Login")}, 3000);
   }
   else{
-    alert('password are not the same');
+    setErrorMessage(true)
   }
 }
   return (
@@ -32,11 +38,11 @@ function  Registration () {
       <div className="formMainDIV">
       <form className="registrationForm" onSubmit={handleSubmit(onSubmit)}>
         <div className="registrationDiv">
-            <p> Register </p>
+            <p> Sign up </p>
           <label> 
             <input
               {...register("login", {
-                required: "Field is required",
+                required: "*Field is required",
                   minLength : {
                   value : 3,
                   message : "*Minimum 3 characters for LOGIN!" }
@@ -51,7 +57,7 @@ function  Registration () {
            <label>
             <input
               {...register("password", { 
-                  required: "Field is required",
+                  required: "*Field is required",
                   minLength : {
                   value : 6,
                   message : "*Minimum 6 characters for PASSWORD!" }
@@ -70,12 +76,15 @@ function  Registration () {
               placeholder="Repeat password"
             />
           </label>
-          <button type="submit">Submit</button>
+          <button className="regSubmit" type="submit">Submit</button>
         </div>
-      </form>
-      {!isRegisterFailed && <p>Registration succeed!</p>}
-      
+        <div className="registrationSucces">
+          {!isRegisterFailed && <AlertMUI/>} 
+          {errorMessage && <ErrorMessage className="errorMessage" />}
+        </div>
+      </form> 
       </div>
+
       <div className="registrationImage">
               <img src={regBackground}></img>
       </div>

@@ -1,0 +1,18 @@
+.linksFooterDIV{
+    display: flex;
+    
+}
+.liFooter ul {
+    list-style: none;
+}
+.navFooter {
+    float: left;
+    text-decoration: none;
+    color : #fff;
+    text-decoration: none;
+    margin-bottom: 5px;
+    margin-left: 30px; 
+}
+.active{
+    color:#A7E1DE;
+}
