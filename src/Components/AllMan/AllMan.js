@@ -14,12 +14,18 @@ import {useAddFavorite} from "../../hooks/useAddFavorite";
 const AllMan = () => {
     const favoriteArr = useSelector(favoriteSelector)
     const userBasket = useSelector(userBasketSelector)
-    const [jacketManArr, setJacketManArr] = useState([])
+    const [manJacketsArr, setManJacketsArr] = useState([])
+    const [manTshirtsArr, setManTshirtsArr] = useState([])
     useEffect(() => {
         axios.get(`${mainUrl}/manJackets`)
-            .then(res => setJacketManArr(res.data))
+            .then(res => setManJacketsArr(res.data))
+    }, [])
+    useEffect(() => {
+        axios.get(`${mainUrl}/manTshirts`)
+            .then(res => setManTshirtsArr(res.data))
     }, [])
 
+    const manList = manTshirtsArr.concat(manJacketsArr);
     const goBasket = useAddBasket()
     const goFavorite = useAddFavorite()
 
@@ -30,7 +36,7 @@ const AllMan = () => {
             </div>
             <div className="manItemContainer">
                 {
-                    jacketManArr.map((item, i) => {
+                    manList.map((item, i) => {
                         return (
                             <div key={i} className="manItem">
                                 <img src={item.location}/>
@@ -42,7 +48,7 @@ const AllMan = () => {
                                     <label className='iconItem' onClick={() => goFavorite(item)}>
                                         <FavoriteIcon className={favoriteArr.includes(item) ? "activFavorite" : ''}/>
                                     </label>
-                                    <ImageZoom img={jacketManArr[i].location}/>
+                                    <ImageZoom img={manList[i].location}/>
                                     <p> {item.price} AMD / {item.size}  </p>
                                 </div>
                             </div>
