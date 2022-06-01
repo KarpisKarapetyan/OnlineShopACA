@@ -7,6 +7,7 @@ import {
   favoriteSelector,
   userBasketSelector,
 } from "../../../../redux/slices/userSlice"
+import "../Basket.css"
 
 const BasketComponent = () => {
   const userBasket = useSelector(userBasketSelector)
@@ -19,11 +20,7 @@ const BasketComponent = () => {
   const subtractBasket = useSubtractBasket()
 
   useEffect(() => {
-    sessionStorage.removeItem('favorite')
-    sessionStorage.removeItem("isBasketBtnShown")
-    sessionStorage.setItem('favorite', JSON.stringify(favorite))
     sessionStorage.setItem('isBasketBtnShown', JSON.stringify(isBasketBtnShown))
-    sessionStorage.removeItem('userBasket')
     sessionStorage.setItem('userBasket', JSON.stringify(userBasket))
 
     const newArr = []
@@ -60,6 +57,7 @@ const BasketComponent = () => {
       {basketArr.map((item) => {
         return (
           <div className="letterColor" key={item.id}>
+            <div className="littleImageBasket"><img src={item.location}/></div>
             <div>{item.count}</div>
             <div>{item.price}</div>
             <div>{item.size}</div>

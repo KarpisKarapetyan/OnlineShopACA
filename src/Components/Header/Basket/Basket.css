@@ -46,6 +46,17 @@
     color: black
 }
 
+.littleImageBasket{
+    width: 50px;
+  height: 70px;
+}
+
+.littleImageBasket img {
+    width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 ul {
     text-align: center;
 }

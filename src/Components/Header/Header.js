@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from "react-redux"
 import {useNavigate} from "react-router-dom"
 import {removeUser, userSelector} from "../../redux/slices/userSlice"
 import "./Header.css"
-import Basket from "./Basket/Basket"
 import Register from "./Registration/Register"
 import Links from "./Links/Links"
 import logo from "../Images/LogoZootMood.png"
@@ -13,8 +12,8 @@ import OurBaskets from "./Basket/OurBaskets"
 import {searchThunk} from "../../redux/thunks/searchThunk"
 import {useLogout} from "../../hooks/useLogout"
 import BasketModal from "../Header/Basket/BasketModal/BasketModal"
-import FavoriteWindow from '../Header/Favorite/FavoriteWindow/FavoriteWindow'
-import favorite from "../Images/favorite.png"
+import FavoriteWindow from './Favorite/FavoriteWindow'
+
 
 
 

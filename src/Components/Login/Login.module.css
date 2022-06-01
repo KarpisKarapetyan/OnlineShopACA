@@ -1,14 +1,90 @@
 @import url("https://fonts.googleapis.com/css2?family=Corinthia&family=Lora&family=Merriweather:wght@300&family=Montserrat:wght@100&family=Roboto+Slab:wght@100&display=swap");
 
-.form {
+.container {
+  height: 85vh;
+  width: 100%;
   display: flex;
-  flex-flow: column;
-  width: 30vw;
-  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  width: 100%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.formDiv{
+  width: 50%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginDiv{
+  width: 50%;
+  height: 50vh;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 13px;
+  align-items: center;
+  font-size: 24px;
+  margin: 0 auto;
+}
+
+.loginDiv p {
+  margin-bottom: 12px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.loginDiv input {
+  border: none;
+    width: 250px;
+    height: 30px;
+    outline: 0;
+    border-radius: 10px;
+    text-indent: 15px;
+    background-color: rgb(0, 0, 0);
+    color: #a7e1de;
+}
+
+.loginDiv image {
+  display: flex;
+    flex-direction: column;
+}
+
+.loginImage {
+  height: 100%;
+    width: 50%;
+    display: flex;
+    object-fit: cover;
+}
+
+.loginImage img {
+  width: 100%;
+    height: 100%;
+    object-fit: revert;
 }
 
 .checkbox {
-    cursor: pointer
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.checkbox input{
+  width: 20px;
+  padding-right: 5px;
+}
+
+.checkbox span {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: normal;
 }
 
 span {
@@ -26,53 +102,11 @@ span {
   flex-flow: column;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 5rem 0;
-  width: 40%;
-  margin: 0 auto;
-  text-align: left;
-  height: 80vh;
-}
-
-.userInput {
-  border: 1px solid black;
-  width: 20vw;
-  height: 3vh;
-  border-radius: 50px 50px;
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
-}
-
 .loginBtn {
-  background: none;
-  border: none;
+  padding: 5px 20px;
+  border-radius: 10px;
   background-color: #a7e1de;
-  width: 5vw;
-  height: 3vh;
-  font-size: 16px;
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
+  border: none;
   cursor: pointer;
-  border-radius: 50px 50px;
 }
 
-.registerBtn {
-  background: none;
-  border: none;
-  background-color: #a7e1de;
-  font-size: 16px;
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
-  letter-spacing: 1px;
-  cursor: pointer;
-  border-radius: 50px 50px;
-}
-
-.goToRegister {
-    padding-top: 10px;
-    gap: 2rem
-}

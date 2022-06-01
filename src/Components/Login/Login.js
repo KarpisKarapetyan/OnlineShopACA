@@ -7,6 +7,7 @@ import {mainUrl} from "../../api/api"
 import { setIsBasketBtnShown, subtractIsBasketBtnShown } from "../../redux/slices/basketSlice"
 import {setUser, setUserBasket, subTract, subTractFavorite, subtractUnseenBasket} from "../../redux/slices/userSlice"
 import classes from "./Login.module.css"
+import loginImage from "../Images/Registration.png"
 
 const Login = () => {
   const [isLoginFailed, setIsLoginFailed] = useState(false)
@@ -31,18 +32,13 @@ const Login = () => {
           sessionStorage.setItem("user", JSON.stringify(user))
         }
         dispatch(setUser(user))
-        if(user.userBasket.length !== 0){
-          dispatch(setUserBasket(user.userBasket))
-          dispatch(subtractIsBasketBtnShown(user.isBasketBtnShown))
-          dispatch(subTractFavorite(user.favorite))
-          sessionStorage.setItem('userBasket', JSON.stringify(user.userBasket))
-          sessionStorage.setItem('isBasketBtnShown', JSON.stringify(user.isBasketBtnShown))
-          sessionStorage.setItem('favorite', JSON.stringify(user.favorite))
-        }else{
-          sessionStorage.setItem('userBasket', JSON.stringify([]))
-          sessionStorage.setItem('isBasketBtnShown', JSON.stringify(user.isBasketBtnShown))
-          sessionStorage.setItem('favorite', JSON.stringify(user.favorite))
-        }
+        dispatch(setUserBasket(JSON.parse(localStorage.getItem(`${user.userBasket}`))))
+        dispatch(subtractIsBasketBtnShown(JSON.parse(localStorage.getItem(`${user.isBasketBtnShown}`))))
+        dispatch(subTractFavorite(JSON.parse(localStorage.getItem(`${user.favorite}`))))
+        sessionStorage.setItem('userBasket', JSON.stringify(JSON.parse(localStorage.getItem(`${user.userBasket}`))))
+        sessionStorage.setItem('isBasketBtnShown', JSON.stringify(JSON.parse(localStorage.getItem(`${user.isBasketBtnShown}`))))
+        sessionStorage.setItem('favorite', JSON.stringify(JSON.parse(localStorage.getItem(`${user.favorite}`))))
+
         navigate("../homePage", {replace: true})
       } else {
         setIsLoginFailed(true)
@@ -53,22 +49,25 @@ const Login = () => {
 
   return (
     <div className={classes.container}>
+      <div className={classes.formDiv}>
       <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-        <label className={classes.label}>
-          <span>LOGIN</span>
+        <div className={classes.loginDiv}>
+        <p> Sign In </p>
+        <label >
           <input
             {...register("login", {require: true})}
             type="text"
+            placeholder="login"
             className={classes.userInput}
           />
           <div>{errors?.login?.type}</div>
         </label>
 
-        <label className={classes.label}>
-          <span>PASSWORD</span>
+        <label >
           <input
             {...register("password", {require: true})}
             type="password"
+            placeholder="password"
             className={classes.userInput}
           />
           <div>{errors?.password?.type}</div>
@@ -82,7 +81,13 @@ const Login = () => {
         <button type="submit" className={classes.loginBtn}>
           Log in
         </button>
+        </div>
       </form>
+      </div>
+
+      <div className={classes.loginImage}>
+    <img src={loginImage}></img>
+      </div>
 
       {(isLoginFailed || (errors.login || errors.password)) && (
         <div className={classes.goToRegister}>
