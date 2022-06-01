@@ -17,6 +17,8 @@ import JacketMan from "../Components/JacketMan/JacketMan";
 import KidsTshirt from "../Components/KidsTshirt/KidsTshirt";
 import KidsJackets from "../Components/KidsJackets/KidsJackets";
 import AllMan from "../Components/AllMan/AllMan";
+import AllWoman from "../Components/AllWoman/AllWoman";
+
 
 const MAIN_ROUTES = [
     {
@@ -76,6 +78,10 @@ const MAIN_ROUTES = [
         element: <KidsJackets />
     },
     {
+        path: "Womans",
+        element: <AllWoman />
+    },
+    {
         path: "kidsTshirt",
         element: <KidsTshirt />
     },
@@ -87,6 +93,7 @@ const MAIN_ROUTES = [
         path: "Man",
         element: <AllMan />
     },
+
 ]
 
 export const ROUTES = [
