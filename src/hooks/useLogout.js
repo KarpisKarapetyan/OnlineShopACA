@@ -12,9 +12,11 @@ import {
   userBasketSelector,
   userSelector,
 } from "../redux/slices/userSlice"
+import { adminSelector, setAdmin } from "../redux/slices/adminSlice"
 
 export const useLogout = () => {
   const user = useSelector(userSelector)
+  // const admin = useSelector(adminSelector)
   const userBasket = useSelector(userBasketSelector)
   const isBasketBtnShown = useSelector(basketBtnShownSelector)
   const favorite = useSelector(favoriteSelector)
@@ -41,6 +43,9 @@ export const useLogout = () => {
     sessionStorage.removeItem('favorite')
     sessionStorage.removeItem('isBasketBtnShown')
     dispatch(removeUser())
+    dispatch(setAdmin(false))
+    sessionStorage.removeItem("admin")
+    
 
     axios
       .delete(`${mainUrl}/users/${id}`)
