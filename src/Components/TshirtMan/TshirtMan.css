@@ -18,7 +18,7 @@
 .manItem {
     display: inline-block;
     width: 30%;
-    margin: 0 0.5% 30px 0.5%;
+    margin: 0 10px 30px 10px;
 }
 .iconItem {
     cursor: pointer;
