@@ -23,10 +23,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.658);
+    background-color: rgba(0, 0, 0, 0.411);
     transition: all .3s;
     animation: showBackBlack .3s ease-out;
-    z-index: 1;
+    z-index: 2;
 }
 
 .modal{
