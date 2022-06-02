@@ -3,26 +3,21 @@ import {useDispatch, useSelector} from "react-redux"
 import {useNavigate} from "react-router-dom"
 import {removeUser, userSelector} from "../../redux/slices/userSlice"
 import "./Header.css"
-import Basket from "./Basket/Basket"
 import Register from "./Registration/Register"
 import Links from "./Links/Links"
 import logo from "../Images/LogoZootMood.png"
 import searchLogo from "../../project_pictures/Vector.png"
 import {basketSelector, setIsBasketShown} from "../../redux/slices/basketSlice"
-import OurBaskets from "./Basket/OurBaskets"
 import {searchThunk} from "../../redux/thunks/searchThunk"
 import {useLogout} from "../../hooks/useLogout"
 import BasketModal from "../Header/Basket/BasketModal/BasketModal"
 import FavoriteWindow from '../Header/Favorite/FavoriteWindow/FavoriteWindow'
-import favorite from "../Images/favorite.png"
-
-
-
+import { adminSelector } from "../../redux/slices/adminSlice"
 
 function Header() {
   const isBasketShown = useSelector(basketSelector)
   const logout = useLogout()
-
+  const admin =useSelector(adminSelector)
   const dispatch = useDispatch()
   const {
     register,
@@ -45,13 +40,14 @@ function Header() {
     navigate("../Registration")
   }
 
+  const goToAdminPanel = () =>{
+    navigate('../adminPanel')
+  }
+
   
   const goToHomePage = () => {
     navigate("../homePage")
   }
-
-
- 
 
   return (
     <div className="headerBody">
@@ -63,6 +59,8 @@ function Header() {
 
           <Links />
         </div>
+      {admin && sessionStorage.setItem("admin" , JSON.stringify(admin))}
+      {admin && <div className="goAdmin" onClick={goToAdminPanel} >Admin Panel</div> }
 
         <div>
           <form onSubmit={handleSubmit(onSubmit)} className="form">

@@ -69,7 +69,7 @@ function Filter (){
               {errors?.size && <p>{errors?.size?.message || "Error!"}</p>}
             </div>
             </label>
-            <button type="submit">FILTER</button>
+            <button className="regSubmit" type="submit">FILTER</button>
           </div>
         </form>
       </div>
