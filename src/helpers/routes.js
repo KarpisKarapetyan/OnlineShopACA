@@ -74,10 +74,10 @@ const MAIN_ROUTES = [
         path: "kidsJacket",
         element: <KidsJackets />
     },
-    {
-        path: "/allProducts/*",
-        element: <AdminPanel />
-    },
+    // {
+    //     path: "/admin/*",
+    //     element: <AdminPanel />
+    // },
     {
         path: "/adminPanel",
         element: <AdminPanel />

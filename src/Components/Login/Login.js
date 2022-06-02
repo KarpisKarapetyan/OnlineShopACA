@@ -27,43 +27,14 @@ const Login = () => {
       const user = res.data.find(
         (item) => item.name === data.login && item.password === data.password
       )
-
-      if(user){
-        if (data.save) {
-          localStorage.setItem("user", JSON.stringify(user))
-        } else {
-          sessionStorage.setItem("user", JSON.stringify(user))
-        }
-        if(user.name ==="Karpis"){
-          dispatch(setUser(user))
-          if(user.userBasket.length !== 0){
-            dispatch(setUserBasket(user.userBasket))
-            dispatch(subtractIsBasketBtnShown(user.isBasketBtnShown))
-            dispatch(subTractFavorite(user.favorite))
-            sessionStorage.setItem('userBasket', JSON.stringify(user.userBasket))
-            sessionStorage.setItem('isBasketBtnShown', JSON.stringify(user.isBasketBtnShown))
-            sessionStorage.setItem('favorite', JSON.stringify(user.favorite))
-          }else{
-            sessionStorage.setItem('userBasket', JSON.stringify([]))
-            sessionStorage.setItem('isBasketBtnShown', JSON.stringify(user.isBasketBtnShown))
-            sessionStorage.setItem('favorite', JSON.stringify(user.favorite))
-          }
-          console.log(admin)
-          navigate("../homePage", {replace: true})
-          dispatch(setAdmin(true))
-          
-          console.log(admin)
-        }
-        }
-       
-
-
+      
       if (user) {
         if (data.save) {
           localStorage.setItem("user", JSON.stringify(user))
         } else {
           sessionStorage.setItem("user", JSON.stringify(user))
         }
+        if(user.name ==="Karpis"){dispatch(setAdmin(true))}
         dispatch(setUser(user))
         if(user.userBasket.length !== 0){
           dispatch(setUserBasket(user.userBasket))

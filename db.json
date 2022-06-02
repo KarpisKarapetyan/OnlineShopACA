@@ -1,11 +1,6 @@
 {
   "users": [
     {
-      "name": "Karpis",
-      "password": "111111",
-      "id": "id1653833861424"
-    },
-    {
       "name": "Aram",
       "password": "222222",
       "id": "id1654018243760",
@@ -97,6 +92,14 @@
         "8",
         "8"
       ],
+      "favorite": []
+    },
+    {
+      "name": "Karpis",
+      "password": "111111",
+      "id": "id1654023291626",
+      "userBasket": [],
+      "isBasketBtnShown": [],
       "favorite": []
     }
   ],
@@ -469,7 +472,7 @@
         "jacke",
         "Jackets"
       ],
-      "price": "7000",
+      "price": "8000",
       "size": "L",
       "location": "https://firebasestorage.googleapis.com/v0/b/onlineshopaca-6023f.appspot.com/o/Mans%20Jackets%2F4c15a3b02be2ddd08c3ab05426932b9a.jpg?alt=media&token=ca47f0ff-8ac7-475a-a71c-8a33571d6ca3"
     },
@@ -757,8 +760,8 @@
         "jacke",
         "Jackets"
       ],
-      "price": "7000",
-      "size": "S",
+      "price": "6500",
+      "size": "M",
       "location": "https://firebasestorage.googleapis.com/v0/b/onlineshopaca-6023f.appspot.com/o/Kids%20Jackets%2F4-month-old-sport-white-onesies.jpg?alt=media&token=3ed71b38-2d01-41c5-954c-657db3e11686"
     },
     {
