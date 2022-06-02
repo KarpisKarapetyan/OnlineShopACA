@@ -1,11 +1,14 @@
 import axios from "axios"
 import {useState} from "react"
+import {setAdmin} from '../../redux/slices/adminSlice'
 import {useForm} from "react-hook-form"
 import {useDispatch, useSelector} from "react-redux"
 import {useNavigate} from "react-router-dom"
 import {mainUrl} from "../../api/api"
+import { adminSelector } from "../../redux/slices/adminSlice"
 import { setIsBasketBtnShown, subtractIsBasketBtnShown } from "../../redux/slices/basketSlice"
 import {setUser, setUserBasket, subTract, subTractFavorite, subtractUnseenBasket} from "../../redux/slices/userSlice"
+
 import classes from "./Login.module.css"
 
 const Login = () => {
@@ -13,6 +16,7 @@ const Login = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const { register, handleSubmit, formState: {errors},} = useForm()
+  const admin = useSelector(adminSelector)
 
   const goToRegistration =  ()=>{
     navigate("../Registration")
@@ -23,13 +27,14 @@ const Login = () => {
       const user = res.data.find(
         (item) => item.name === data.login && item.password === data.password
       )
-
+      
       if (user) {
         if (data.save) {
           localStorage.setItem("user", JSON.stringify(user))
         } else {
           sessionStorage.setItem("user", JSON.stringify(user))
         }
+        if(user.name ==="Karpis"){dispatch(setAdmin(true))}
         dispatch(setUser(user))
         if(user.userBasket.length !== 0){
           dispatch(setUserBasket(user.userBasket))
