@@ -1,13 +1,17 @@
 import classNames from "classnames"
-import {NavLink} from "react-router-dom"
+import {NavLink, useNavigate} from "react-router-dom"
 import {KIDSLINKS, MANLINKS, WOMANLINKS} from "../../../helpers/constants"
 import classes from "./Links.module.css"
 
 const Links = () => {
+    const navigate = useNavigate();
+    const goToAllMan = () => {
+        navigate("../Man")
+    }
   return (
     <div className={classes.allLinks}>
       <div className={classes.dropdown}>
-        <button className={classes.dropbutton}>Man</button>
+        <button className={classes.dropbutton} onClick={goToAllMan}>Man</button>
         <div className={classes.dropbuttonchild}>
           <ul className={classes.ul}>
             {MANLINKS.map((link) => {

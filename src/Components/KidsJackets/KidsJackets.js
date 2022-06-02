@@ -41,6 +41,7 @@ const KidsJackets = () => {
     )
   }
   
-  export default KidsJackets
+export default KidsJackets
   
+
 
