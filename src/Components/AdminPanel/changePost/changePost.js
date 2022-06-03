@@ -8,6 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import Button from '@mui/material/Button';
 import {adminProductSelector , setAdminProduct} from '../../../redux/slices/adminProducts'
 import { useSelector, useDispatch } from 'react-redux';
+import { isAddProductSelector, setIsAddProduct } from '../../../redux/slices/addProduct';
 
 const style = {
   position: 'absolute',
@@ -20,11 +21,12 @@ const style = {
   p: 4,
 };
 
- function changePost({index,id,open,setOpen,onClose}) { 
+ function changePost({id,open,setOpen,onClose}) { 
   const dispatch =useDispatch()
   const newAdminProduct = useSelector(adminProductSelector)
   const {register,handleSubmit} = useForm();
   const handleOpen = () => setOpen(true);
+  const adminCountProduct = useSelector(isAddProductSelector)
 
   const onSubmit = (data) => {
   const name = [data.name]
@@ -36,15 +38,22 @@ const style = {
     location :data.location ,
     id: id
   }
+
+  console.log(id)
+
+  const index = newAdminProduct.indexOf(item => item.id === id)
+  console.log(index);
   const arr = [ ...newAdminProduct ]
   arr[index] = currentObj
     axios.patch(`${mainUrl}/allProducts/${id}`, {
         name : name,
         price : data.price ,
         size : data.size,
-        location :data.location
+        location :data.location,
+        id: id
     })
     dispatch(setAdminProduct(arr))
+    dispatch(setIsAddProduct(1))
   };
 
   return (

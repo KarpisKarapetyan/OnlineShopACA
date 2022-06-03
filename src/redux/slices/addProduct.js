@@ -9,7 +9,7 @@ const isAddProductSlice = createSlice({
     initialState,
     reducers: {
         setIsAddProduct: (state, {payload}) => {
-            state.isAddProduct = payload 
+            state.isAddProduct += payload 
         }
     }
 })
