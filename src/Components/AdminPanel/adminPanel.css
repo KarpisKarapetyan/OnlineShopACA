@@ -1,23 +1,44 @@
+
 .adminMain{
-    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
+    height: auto;
+}
+.allProdcuts{
+    gap: 5px;
 }
 .postsContanier{
     padding: 30px;
+    width: 70%;
+    text-align: center;
+    
+}
+.changePosts{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .posts{
     display: flex;
     justify-content: space-between;
-    border: 1px black solid;
+    align-items: center;
+    background-color: rgb(196, 196, 196);
+    border-radius: 5px;
+    padding: 2px;
+    margin: 3px;
 }
 .postsIMG{
     width: 50px;
     height: 70px;
+    border-radius: 5px;
 }
 .postsIMG img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 5px;
 }
 .changeStateButton{
     cursor: pointer;
