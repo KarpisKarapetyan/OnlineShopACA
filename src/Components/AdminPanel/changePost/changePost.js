@@ -1,14 +1,14 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
 import axios from "axios"
 import { useForm } from 'react-hook-form';
 import { mainUrl } from '../../../api/api';
+import * as React from 'react';
+import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import EditIcon from '@mui/icons-material/Edit';
 import Button from '@mui/material/Button';
 import {adminProductSelector , setAdminProduct} from '../../../redux/slices/adminProducts'
 import { useSelector, useDispatch } from 'react-redux';
-import { isAddProductSelector, setIsAddProduct } from '../../../redux/slices/addProduct';
+import { setIsAddProduct } from '../../../redux/slices/addProduct';
 
 const style = {
   position: 'absolute',
@@ -21,16 +21,13 @@ const style = {
   p: 4,
 };
 
- function changePost({id,open,setOpen,onClose}) { 
+ function changePost({index,id,open,setOpen,onClose}) { 
   const dispatch =useDispatch()
   const newAdminProduct = useSelector(adminProductSelector)
   const {register,handleSubmit} = useForm();
   const handleOpen = () => setOpen(true);
-  const adminCountProduct = useSelector(isAddProductSelector)
-
   const onSubmit = (data) => {
   const name = [data.name]
-  
   const currentObj = {
     name : name,
     price : data.price ,
@@ -39,10 +36,6 @@ const style = {
     id: id
   }
 
-  console.log(id)
-
-  const index = newAdminProduct.indexOf(item => item.id === id)
-  console.log(index);
   const arr = [ ...newAdminProduct ]
   arr[index] = currentObj
     axios.patch(`${mainUrl}/allProducts/${id}`, {
@@ -59,51 +52,43 @@ const style = {
   return (
     <div>
       <Button>  <EditIcon onClick={handleOpen}/> </Button>  
-      <Modal
-        open={open}
-        onClose={onClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+      <Modal open={open} onClose={onClose}
+             aria-labelledby="modal-modal-title"
+             aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
         <div>
         <form className="registrationForm" onSubmit={handleSubmit(onSubmit)} >
           <div className="registrationDiv">
-          <label>
-              Name
+          <label> Name
               <input
                 {...register("name")}
                 type="text"
                 placeholder="Select clothes name"
               />
-              
-            </label>
-            <label>
-              Price
+          </label>
+          <label> Price
               <input
                 {...register("price")}
                 type="number"
                 placeholder="Select price"
               />
-            </label>
-            <label>
-              Size
+          </label>
+          <label>Size
               <input
                 {...register("size")}
                 type="text"
                 placeholder="Select size"
               />
-            </label>
-            <label>
-              Image Link
+          </label>
+          <label>Image Link
               <input
                 {...register("location", )}
                 type="text"
                 placeholder="Select image link"
               />
-            </label>
-            
-            <button className="regSubmit" type="submit">Edit</button>
+          </label>
+              <button className="regSubmit" type="submit">Edit</button>
           </div>
         </form>
       </div>

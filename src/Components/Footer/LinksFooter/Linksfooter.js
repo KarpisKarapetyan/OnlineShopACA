@@ -23,7 +23,7 @@ function LinksFooter(){
                 <nav className='liFooter'>
                     <ul>
                         <li>
-                            <NavLink className="navFooter" to="woman"> Woman</NavLink>
+                            <NavLink className="navFooter" to="Womans"> Woman</NavLink>
                         </li>
                         <li>
                             <NavLink className="navFooter" to="womanTshirt"> Woman T-Shirts</NavLink> 
