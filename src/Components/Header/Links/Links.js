@@ -8,6 +8,15 @@ const Links = () => {
     const goToAllMan = () => {
         navigate("../Man")
     }
+    
+    const goToAllWoman = () => {
+      navigate("../Womans")
+    }
+
+    const goToAllKids = () => {
+        navigate("../Kids")
+    }
+
   return (
     <div className={classes.allLinks}>
       <div className={classes.dropdown}>
@@ -35,7 +44,7 @@ const Links = () => {
       </div>
 
       <div className={classes.dropdown}>
-        <button className={classes.dropbutton}>Woman</button>
+        <button onClick={goToAllWoman} className={classes.dropbutton}>Woman</button>
         <div className={classes.dropbuttonchild}>
         <ul className={classes.ul}>
             {WOMANLINKS.map((link) => {
@@ -58,7 +67,7 @@ const Links = () => {
         </div>
       </div>
       <div className={classes.dropdown}>
-        <button className={classes.dropbutton}>Kids</button>
+        <button className={classes.dropbutton} onClick={goToAllKids}>Kids</button>
         <div className={classes.dropbuttonchild}>
         <ul className={classes.ul}>
             {KIDSLINKS.map((link) => {

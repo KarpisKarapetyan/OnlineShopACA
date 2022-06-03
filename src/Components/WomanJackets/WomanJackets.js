@@ -1,7 +1,7 @@
 import axios from "axios"
 import {useEffect, useState} from "react"
 import {mainUrl} from "../../api/api"
-import "./WomanJackets.css"
+
 import { useAddBasket } from "../../hooks/useAddBasket"
 
 
@@ -10,8 +10,11 @@ const WomanJackets = () => {
 
     const [womanJacketsArr, setWomanJacketsArr] = useState([])  
     useEffect(() => {
-      axios.get(`${mainUrl}/womanJackets`)
-      .then(res => setWomanJacketsArr(res.data))
+      axios.get(`${mainUrl}/allProducts`)
+      .then(res => {
+        const arr = res.data.filter(item => item.name.some((item) => item === 'woman jacket'))
+        setWomanJacketsArr(arr)
+      })
     }, [])
 
     const addBasket = useAddBasket()

@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Corinthia&family=Lora&family=Merriweather:wght@300&family=Montserrat:wght@100&family=Roboto+Slab:wght@100&display=swap');
+
+.items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 70%;
+}
+
+.item button {
+  margin-top: 20px;
+}
+
+.favoriteItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  height: 10%;
+  padding-top: 5px;
+}
+
+.favoriteItem p {
+  font-weight: normal;
+  font-family: "Roboto","Helvetica","Arial",sans-serif
+}
+
+.favoriteItem button {
+  border: none;
+  background-color: none;
+  width: 5%;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.favoriteItemImg {
+  width: 20%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+}
+
+.favoriteItemImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

@@ -1,45 +1,62 @@
 import axios from "axios"
 import {useEffect, useState} from "react"
 import {mainUrl} from "../../api/api"
-import "./WomanTshirts.css"
 import { useAddBasket } from "../../hooks/useAddBasket"
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { favoriteSelector, userBasketSelector } from '../../redux/slices/userSlice'
+import ImageZoom from '../HomePage/ImageZoom/ImageZoom'
+import {useSelector} from "react-redux";
+import {useAddFavorite} from "../../hooks/useAddFavorite";
+
 
 const WomanTshirts = () => {
-
+   const favoriteArr = useSelector(favoriteSelector)
+   const userBasket = useSelector(userBasketSelector)
     const [womanTshirtsArr, setWomanTshirtsArr] = useState([])
-    console.log("=================================================")
+    
     useEffect(() => {
-      axios.get(`${mainUrl}/womanTshirts`)
-      .then(res => setWomanTshirtsArr(res.data))
+      axios.get(`${mainUrl}/allProducts`)
+      .then(res => {
+        const arr = res.data.filter(item => item.name.some((item) => item === 'woman tshirt'))
+        setWomanTshirtsArr(arr)
+      })
     }, []) 
-    const addBasket = useAddBasket()
-     
+    const goBasket = useAddBasket()
+    const goFavorite = useAddFavorite()
+
     return (
-      <div className="womanTshrts">
-         <span className='womanTshirtsTitle'> Woman Tshrts</span>
-         <div className="womanTshrtsData">
-         {
-            womanTshirtsArr.map((item,i)=>{
-                return(
-                    <div key={i}  className ="womanTshrtsItems">
-                        <div className="womanTshrtsDetailsImij">
-                          <img src={item.location} />
-                        </div>
-                        <div className='womanTshrtsDetails'
-                        >
-                          <button onClick={() => addBasket(item)}>Add Basket</button>
-                          <p> Size: {item.size} Price: {item.price} </p>
-                        </div>
-                      </div>
-                )
-            })
-        }
-         </div>
-       
-      </div>
+        <div className="bgColorBlue">
+            <div className="manTitleContainer"> 
+                <span>Woman Tshirt</span>
+            </div>
+            <div className="manItemContainer">
+                {
+                    womanTshirtsArr.map((item, i) => {
+                        return (
+                            <div key={i} className="manItem">
+                                <img src={item.location}/>
+                                <div className="dressDetailsCarusel">
+                                    <label className='iconItem' onClick={() => goBasket(item)}>
+                                        <AddShoppingCartIcon
+                                            className={userBasket.includes(item) ? "activFavorite" : ''}/>
+                                    </label>
+                                    <label className='iconItem' onClick={() => goFavorite(item)}>
+                                    <FavoriteIcon className={favoriteArr.includes(item) ? "activFavorite" : ''}/>
+                                    </label>
+                                    <ImageZoom img={womanTshirtsArr[i].location}/>
+                                    <p> {item.price} AMD / {item.size}  </p>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+            </div>
+
+        </div>
     )
-  }
-  
+}
+
   export default WomanTshirts
   
 

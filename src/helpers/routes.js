@@ -1,6 +1,5 @@
 import HomePage from "../Components/HomePage/HomePage";
 import Login from "../Components/Login/Login";
-import Man from '../Components/Header/persons/Man'
 import Woman from '../Components/Header/persons/Woman'
 import Kids from '../Components/Header/persons/Kids'
 import Registration from "../Components/Header/Registration/Registration";
@@ -18,6 +17,7 @@ import KidsTshirt from "../Components/KidsTshirt/KidsTshirt";
 import KidsJackets from "../Components/KidsJackets/KidsJackets";
 import AdminPanel from "../Components/AdminPanel/AdminPanel";
 import AllMan from "../Components/AllMan/AllMan";
+import AllKids from "../Components/AllKids/AllKids";
 import AllWoman from "../Components/AllWoman/AllWoman";
 
 
@@ -30,10 +30,6 @@ const MAIN_ROUTES = [
     {
         path: "Woman",
         element: <Woman/>
-    },
-    {
-        path: "Kids",
-        element: <Kids/>
     },
     {
         path: "Registration",
@@ -98,7 +94,12 @@ const MAIN_ROUTES = [
     {
         path: "Man",
         element: <AllMan />
+    },
+    {
+        path: "Kids",
+        element: <AllKids />
     }
+
 ]
 
 export const ROUTES = [

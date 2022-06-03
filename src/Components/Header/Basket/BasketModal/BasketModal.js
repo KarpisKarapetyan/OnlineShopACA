@@ -8,15 +8,15 @@ import BasketComponent from '../BasketCompoent/BasketComponent';
 
 
 const style = {
-  // position: 'absolute',
-  top: '50%',
+  position: 'absolute',
+  top: '35%',
   left: '50%',
-  transform: 'translate(640%, 35%)',
-  width: 200,
-
+  transform: 'translate(100%, -90%)',
+  width: 300,
   bgcolor: 'background.paper',
   boxShadow: 24,
   p: 4,
+  padding: 0
 };
 
 export default function BasicModal() {

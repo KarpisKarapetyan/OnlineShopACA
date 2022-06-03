@@ -1,0 +1,47 @@
+.background {
+    background-color: rgba(255, 255, 255, 0.178);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title span {
+    margin: 40px 0;
+}
+
+.searchContainer {
+    box-sizing: border-box;
+    text-align: center;
+    width: 100%;
+    padding: 0 20%;
+}
+
+.searchItem {
+    display: inline-block;
+    width: 30%;
+    margin: 0 0.5% 30px 0.5%;
+    flex-shrink: 0;
+    overflow: hidden;
+    height: 45vh;
+}
+
+.searchItem img {
+    width: 275px;
+    height: 450px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.searchIconItem {
+    cursor: pointer;
+}
+
+.textOfItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

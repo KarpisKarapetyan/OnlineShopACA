@@ -1,55 +1,37 @@
 import axios from "axios"
 import {useDispatch, useSelector} from "react-redux"
+import { useNavigate } from "react-router-dom"
 import {mainUrl} from "../api/api"
 import {basketBtnShownSelector, subtractIsBasketBtnShown} from "../redux/slices/basketSlice"
 import {
-  favoriteSelecotr,
-  favoriteSelector,
   removeUser,
   setUserBasket,
-  subtractUnseenBasket,
-  unseenBasketSelector,
-  userBasketSelector,
+  subTractFavorite,
   userSelector,
 } from "../redux/slices/userSlice"
-import { adminSelector, setAdmin } from "../redux/slices/adminSlice"
 
 export const useLogout = () => {
   const user = useSelector(userSelector)
-  // const admin = useSelector(adminSelector)
-  const userBasket = useSelector(userBasketSelector)
-  const isBasketBtnShown = useSelector(basketBtnShownSelector)
-  const favorite = useSelector(favoriteSelector)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const logout =  () => {
-    const id = user.id
-
-    const obj = {
-      name: user.name,
-      password: user.password,
-      id: id,
-      userBasket: userBasket,
-      isBasketBtnShown: isBasketBtnShown,
-      favorite: favorite
-    }
-
     dispatch(setUserBasket([]))
     dispatch(subtractIsBasketBtnShown([]))
+    dispatch(subTractFavorite([]))
+
+    localStorage.setItem(`${user.userBasket}`, JSON.stringify(JSON.parse(sessionStorage.getItem('userBasket'))))
+    localStorage.setItem(`${user.isBasketBtnShown}`, JSON.stringify(JSON.parse(sessionStorage.getItem('isBasketBtnShown'))))
+    localStorage.setItem(`${user.favorite}`, JSON.stringify(JSON.parse(sessionStorage.getItem('favorite'))))
+
+    sessionStorage.removeItem('userBasket')
+    sessionStorage.removeItem('isBasketBtnShown')
+    sessionStorage.removeItem('favorite')
 
     localStorage.removeItem("user")
     sessionStorage.removeItem("user")
-    sessionStorage.removeItem('userBasket')
-    sessionStorage.removeItem('favorite')
-    sessionStorage.removeItem('isBasketBtnShown')
     dispatch(removeUser())
-    dispatch(setAdmin(false))
-    sessionStorage.removeItem("admin")
-    
-
-    axios
-      .delete(`${mainUrl}/users/${id}`)
-      .then(() => axios.post(`${mainUrl}/users`, obj))
+      navigate('../homePage')
   }
 
   return logout
