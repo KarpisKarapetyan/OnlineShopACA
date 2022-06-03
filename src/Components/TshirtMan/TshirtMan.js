@@ -8,14 +8,13 @@ import {
   favoriteSelector,
   userBasketSelector,
 } from "../../redux/slices/userSlice"
-// import { useAddFavorite } from '../../../hooks/useAddFavorite'
 import ImageZoom from "../HomePage/ImageZoom/ImageZoom"
 import "./TshirtMan.css"
 import {useSelector} from "react-redux"
 import {useAddFavorite} from "../../hooks/useAddFavorite"
 import Loadable from "../Loadable/Loadable"
-import { basketBtnShownSelector } from "../../redux/slices/basketSlice"
-import { useSubtractBasket } from "../../hooks/useSubtractBasket"
+import {basketBtnShownSelector} from "../../redux/slices/basketSlice"
+
 
 const TshirtMan = () => {
   const favoriteArr = useSelector(favoriteSelector)
@@ -41,7 +40,6 @@ const TshirtMan = () => {
 
   const goBasket = useAddBasket()
   const goFavorite = useAddFavorite()
-  const subtractBasket = useSubtractBasket()
 
   const sort = (e) => {
     if (e.target.value === "sortHigh") {
@@ -76,18 +74,11 @@ const TshirtMan = () => {
             <div key={i} className="manItem">
               <Loadable src={tshirtManArr[i].location} />
               <div className="dressDetailsCarusel">
-                {isBasketBtnShown.includes(item.id) ? (
-                  <div className="addAndSubtractBtns">
-                    <button className="addBasketBtnStyle" onClick={() => goBasket(item)}>+</button>
-                    <button className="subtractBasketBtn" onClick={() => subtractBasket(item)}>-</button>
-                  </div>
-                ) : (
-                  <label className="iconItem" onClick={() => goBasket(item)}>
+                <label className="iconItem" onClick={() => goBasket(item)}>
                   <AddShoppingCartIcon
                     className={userBasket.includes(item) ? "activFavorite" : ""}
                   />
                 </label>
-                )}
                 <label className="iconItem" onClick={() => goFavorite(item)}>
                   <FavoriteIcon
                     className={

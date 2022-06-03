@@ -7,6 +7,22 @@
       "userBasket": "id1654246089857userBasket",
       "isBasketBtnShown": "id1654246089857isBasketBtnShown",
       "favorite": "id1654246089857favorite"
+    },
+    {
+      "name": "Ani",
+      "password": "555555",
+      "id": "id1654271385645",
+      "userBasket": "id1654271385645userBasket",
+      "isBasketBtnShown": "id1654271385645isBasketBtnShown",
+      "favorite": "id1654271385645favorite"
+    },
+    {
+      "name": "Karpis",
+      "password": "111111",
+      "id": "id1654273460730",
+      "userBasket": "id1654273460730userBasket",
+      "isBasketBtnShown": "id1654273460730isBasketBtnShown",
+      "favorite": "id1654273460730favorite"
     }
   ],
   "allProducts": [
