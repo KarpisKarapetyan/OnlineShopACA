@@ -9,9 +9,8 @@ import FavoriteComponent from './FavoriteWindow/FavoriteComponent';
 
 const style = {
   position: 'absolute',
-  top: '45%',
-  left: '50%',
-  transform: 'translate(90%, -90%)',
+  top: 90,
+  right: 20,
   width: 300,
   bgcolor: 'background.paper',
   boxShadow: 24,

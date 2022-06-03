@@ -9,9 +9,8 @@ import BasketComponent from '../BasketCompoent/BasketComponent';
 
 const style = {
   position: 'absolute',
-  top: '35%',
-  left: '50%',
-  transform: 'translate(100%, -90%)',
+  top: 90,
+  right: 20,
   width: 300,
   bgcolor: 'background.paper',
   boxShadow: 24,

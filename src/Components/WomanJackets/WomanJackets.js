@@ -17,11 +17,16 @@ const WomanJackets = () => {
   const [womanJacketsArr, setWomanJacketsArr] = useState([])  
 
     useEffect(() => {
-      axios.get(`${mainUrl}/allProducts`)
-      .then(res => {
-        const arr = res.data.filter(item => item.name.some((item) => item === 'woman jacket'))
-        setWomanJacketsArr(arr)
-      })
+      if (!JSON.parse(sessionStorage.getItem("womanJackets"))){
+        axios.get(`${mainUrl}/allProducts`)
+        .then(res => {
+          const arr = res.data.filter(item => item.name.some((item) => item === 'woman jacket'))
+          setWomanJacketsArr(arr)
+          return arr
+        }).then(arr => sessionStorage.setItem('womanJackets', JSON.stringify(arr)))
+      }else{
+        setWomanJacketsArr(JSON.parse(sessionStorage.getItem("womanJackets")))
+      }
     }, [])
     const goBasket = useAddBasket()
     const goFavorite = useAddFavorite()

@@ -1,6 +1,6 @@
 function Register(){
     return (
-        <div>
+        <div className="registerDivSignUp">
             Sign up
         </div>
     )

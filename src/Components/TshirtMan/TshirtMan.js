@@ -8,23 +8,34 @@ import {
   favoriteSelector,
   userBasketSelector,
 } from "../../redux/slices/userSlice"
-// import { useAddFavorite } from '../../../hooks/useAddFavorite'
 import ImageZoom from "../HomePage/ImageZoom/ImageZoom"
 import "./TshirtMan.css"
 import {useSelector} from "react-redux"
 import {useAddFavorite} from "../../hooks/useAddFavorite"
 import Loadable from "../Loadable/Loadable"
+import {basketBtnShownSelector} from "../../redux/slices/basketSlice"
+
 
 const TshirtMan = () => {
   const favoriteArr = useSelector(favoriteSelector)
   const userBasket = useSelector(userBasketSelector)
   const [tshirtManArr, setTshirtManArr] = useState([])
+  const isBasketBtnShown = useSelector(basketBtnShownSelector)
   useEffect(() => {
-    axios.get(`${mainUrl}/allProducts`)
-    .then((res) => {
-      const arr = res.data.filter(item => item.name.some((item) => item === 'man tshirt'))
-      setTshirtManArr(arr)
-    })
+    if (!JSON.parse(sessionStorage.getItem("tshirtMan"))) {
+      axios
+        .get(`${mainUrl}/allProducts`)
+        .then((res) => {
+          const arr = res.data.filter((item) =>
+            item.name.some((item) => item === "man tshirt")
+          )
+          setTshirtManArr(arr)
+          return arr
+        })
+        .then((arr) => sessionStorage.setItem("tshirtMan", JSON.stringify(arr)))
+    } else {
+      setTshirtManArr(JSON.parse(sessionStorage.getItem("tshirtMan")))
+    }
   }, [])
 
   const goBasket = useAddBasket()
@@ -44,14 +55,16 @@ const TshirtMan = () => {
 
   return (
     <div className="bgColorBlue">
-      <form action="#">
-        <label for="lang">sort</label>
-        <select name="sorting" onChange={sort}>
-          <option value="javascript">Select sort type</option>
-          <option value="sortHigh">PRICE (LOW - HIGH)</option>
-          <option value="sortDown">PRICE (HIGH - LOW)</option>
-        </select>
-      </form>
+      <div className="sortDiv">
+        <form action="#">
+          <label for="lang"></label>
+          <select name="sorting" onChange={sort}>
+            <option value="javascript">Select sort type</option>
+            <option value="sortHigh">PRICE (LOW - HIGH)</option>
+            <option value="sortDown">PRICE (HIGH - LOW)</option>
+          </select>
+        </form>
+      </div>
       <div className="manTitleContainer">
         <span> Man T-shirt</span>
       </div>

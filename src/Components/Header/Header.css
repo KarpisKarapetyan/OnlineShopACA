@@ -33,12 +33,15 @@
 .form {
   position: relative;
   z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.submitBtn{
+/* .submitBtn{
     border: none;
     background: none;
-}
+} */
 
 .submitBtn {
     border: none;
@@ -63,7 +66,7 @@
   position:relative;
   border: none;
   width: 221px;
-  height: 39px;
+  height: 30px;
   background-color: #fff;
   border-radius: 50px 50px;
   z-index:2;
@@ -89,8 +92,15 @@
 
 .betweenLogin {
   display: flex;
+  flex-direction: row;
   align-items: center;
   width: 10vw;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: normal;
+}
+
+.betweenLogin p{
+  width: 4vw;
 }
 
 .basketTrue {
@@ -122,6 +132,10 @@
   object-fit: cover;
 }
 
+/* .linksDivInHeader{
+  margin-right: 100px;
+} */
+
 .logOut {
   padding: 0;
   border: none;
@@ -130,29 +144,40 @@
   cursor: pointer;
   font-size: 16px;
   font-family: 'Montserrat', sans-serif;
+  font-weight: normal;
 }
 
 .logoContainer {
-  width: 10vw;
+  width: 6vw;
   height: 10vh;
   display: flex;
   justify-content: start;
   align-items: start;
   cursor: pointer;
+  border-radius: 0px 0px 5px 5px;
+  box-shadow: 0px 5px 5px 0px;
 }
 
-.logo {
+/* .logo {
   border: 2px solid rgb(0, 0, 0);
   width: 6vw ;
   height: 10vh ;
   border-radius: 0px 0px 5px 5px;
+} */
+
+.logoContainer img {
+  border-radius: 0px 0px 5px 5px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .logoAndLinks{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    width: 30vw;
 }
 .goAdmin{
   cursor: pointer;

@@ -55,17 +55,17 @@ function Header() {
       <div className="siteName">
         <div className="logoAndLinks">
           <div className="logoContainer" onClick={goToHomePage}>
-            <img src={logo} className="logo" />
+            <img src={logo} />
           </div>
 
-          <Links />
+          <div className="linksDivInHeader"><Links /></div>
         </div>
+        
       {admin && sessionStorage.setItem("admin" , JSON.stringify(admin))}
       {admin && <div className="goAdmin" onClick={goToAdminPanel} >Admin Panel</div> }
 
         <div>
           <form onSubmit={handleSubmit(onSubmit)} className="form">
-            <label>
               <div className="submit">
                 <button type="submit" className="submitBtn">
                   <img src={searchLogo} />
@@ -77,7 +77,6 @@ function Header() {
                 type="text"
                 className="search"
               ></input>
-            </label>
           </form>
         </div>
       </div>
@@ -108,7 +107,7 @@ function Header() {
             <div className="loginAndRegister">
               <div className="divBasket loginBasket">
                 <label className="betweenLogin" onClick={userLogin}>
-                  Login
+                  <p>Sign In</p>
                 </label>
               </div>
               <div>

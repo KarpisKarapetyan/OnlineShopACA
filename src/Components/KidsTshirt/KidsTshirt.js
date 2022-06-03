@@ -19,12 +19,17 @@ const KidsTshirt = () => {
   const userBasket = useSelector(userBasketSelector)
   const [kidsTshirtArr, setKidsTshirtArr] = useState([])
   useEffect(() => {
-    axios
+    if (!JSON.parse(sessionStorage.getItem("kidsTshirt"))){
+      axios
       .get(`${mainUrl}/allProducts`)
       .then((res) => {
         const arr = res.data.filter(item => item.name.some((item) => item === 'kids tshirt'))
         setKidsTshirtArr(arr)
-      })
+        return arr
+      }).then (arr => sessionStorage.setItem('kidsTshirt', JSON.stringify(arr)))
+    }else{
+      setKidsTshirtArr(JSON.parse(sessionStorage.getItem("kidsTshirt")))
+    }
   }, [])
 
   const goBasket = useAddBasket()
@@ -44,14 +49,16 @@ const KidsTshirt = () => {
 
   return (
     <div className="bgColorBlue">
-      <form action="#">
-        <label for="lang">sort</label>
-        <select name="sorting" onChange={sort}>
-          <option value="javascript">Select sort type</option>
-          <option value="sortHigh">PRICE (LOW - HIGH)</option>
-          <option value="sortDown">PRICE (HIGH - LOW)</option>
-        </select>
-      </form>
+      <div className="sortDiv">
+        <form action="#">
+          <label for="lang"></label>
+          <select name="sorting" onChange={sort}>
+            <option value="javascript">Select sort type</option>
+            <option value="sortHigh">PRICE (LOW - HIGH)</option>
+            <option value="sortDown">PRICE (HIGH - LOW)</option>
+          </select>
+        </form>
+      </div>
       <div className="manTitleContainer">
         <span> Kids' Tshirts</span>
       </div>

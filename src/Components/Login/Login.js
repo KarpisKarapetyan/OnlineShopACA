@@ -56,31 +56,12 @@ const Login = () => {
         }
         if(user.name ==="Karpis"){dispatch(setAdmin(true))}
         dispatch(setUser(user))
-        dispatch(
-          setUserBasket(JSON.parse(localStorage.getItem(`${user.userBasket}`)))
-        )
-        dispatch(
-          subtractIsBasketBtnShown(
-            JSON.parse(localStorage.getItem(`${user.isBasketBtnShown}`))
-          )
-        )
-        dispatch(
-          subTractFavorite(JSON.parse(localStorage.getItem(`${user.favorite}`)))
-        )
-        sessionStorage.setItem(
-          "userBasket",
-          JSON.stringify(JSON.parse(localStorage.getItem(`${user.userBasket}`)))
-        )
-        sessionStorage.setItem(
-          "isBasketBtnShown",
-          JSON.stringify(
-            JSON.parse(localStorage.getItem(`${user.isBasketBtnShown}`))
-          )
-        )
-        sessionStorage.setItem(
-          "favorite",
-          JSON.stringify(JSON.parse(localStorage.getItem(`${user.favorite}`)))
-        )
+        dispatch(setUserBasket(JSON.parse(localStorage.getItem(`${user.userBasket}`))))
+        dispatch(subtractIsBasketBtnShown(JSON.parse(localStorage.getItem(`${user.isBasketBtnShown}`))))
+        dispatch(subTractFavorite(JSON.parse(localStorage.getItem(`${user.favorite}`))))
+        sessionStorage.setItem("userBasket", JSON.stringify(JSON.parse(localStorage.getItem(`${user.userBasket}`))))
+        sessionStorage.setItem("isBasketBtnShown", JSON.stringify(JSON.parse(localStorage.getItem(`${user.isBasketBtnShown}`))))
+        sessionStorage.setItem("favorite", JSON.stringify(JSON.parse(localStorage.getItem(`${user.favorite}`))))
 
         navigate("../homePage", {replace: true})
       } else {
