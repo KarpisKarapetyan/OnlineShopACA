@@ -12,14 +12,8 @@ import {searchThunk} from "../../redux/thunks/searchThunk"
 import {useLogout} from "../../hooks/useLogout"
 import BasketModal from "../Header/Basket/BasketModal/BasketModal"
 import FavoriteWindow from './Favorite/FavoriteWindow'
+import { adminSelector } from "../../redux/slices/adminSlice"
 
-
-
-
-// =======
-// import FavoriteWindow from '../Header/Favorite/FavoriteWindow/FavoriteWindow'
-// import { adminSelector } from "../../redux/slices/adminSlice"
-// >>>>>>> 52f897f6fdb5459c18d427c4a1c186b15bddd6a5
 
 function Header() {
   const isBasketShown = useSelector(basketSelector)

@@ -13,18 +13,18 @@ import {useAddFavorite} from "../../hooks/useAddFavorite";
 const AllKids = () => {
     const favoriteArr = useSelector(favoriteSelector)
     const userBasket = useSelector(userBasketSelector)
-    const [kidsTshirtsArr, setKidsTshirtsArr] = useState([])
-    const [kidsJacketsArr, setKidsJacketsArr] = useState([])
+    const [allKids, setAllKids] = useState([])
     useEffect(() => {
-        axios.get(`${mainUrl}/kidsTshirts`)
-            .then(res => setKidsTshirtsArr(res.data))
-    }, [])
-    useEffect(() => {
-        axios.get(`${mainUrl}/kidsJackets`)
-            .then(res => setKidsJacketsArr(res.data))
-    }, [])
+        axios.get(`${mainUrl}/allProducts`).then((res) => {
+          const arr = res.data.filter(
+            (item) =>
+              item.name.some((item) => item === "kids tshirt") ||
+              item.name.some((item) => item === "kids jacket")
+          )
+          setAllKids(arr)
+        })
+      }, [])
 
-    const kidsList = kidsTshirtsArr.concat(kidsJacketsArr);
     const goBasket = useAddBasket()
     const goFavorite = useAddFavorite()
 
@@ -35,7 +35,7 @@ const AllKids = () => {
             </div>
             <div className="manItemContainer">
                 {
-                    kidsList.map((item, i) => {
+                    allKids.map((item, i) => {
                         return (
                             <div key={i} className="manItem">
                                 <img src={item.location}/>
@@ -47,7 +47,7 @@ const AllKids = () => {
                                     <label className='iconItem' onClick={() => goFavorite(item)}>
                                         <FavoriteIcon className={favoriteArr.includes(item) ? "activFavorite" : ''}/>
                                     </label>
-                                    <ImageZoom img={kidsList[i].location}/>
+                                    <ImageZoom img={allKids[i].location}/>
                                     <p> {item.price} AMD / {item.size}  </p>
                                 </div>
                             </div>
