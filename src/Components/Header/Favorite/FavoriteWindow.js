@@ -3,19 +3,16 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import favorite from "../../../Images/favorite.png"
-
-
-
+import favorite from "../../Images/favorite.png"
+import FavoriteComponent from './FavoriteWindow/FavoriteComponent';
 
 
 const style = {
-  // position: 'absolute',
-  top: '50%',
+  position: 'absolute',
+  top: '45%',
   left: '50%',
-  transform: 'translate(640%, 35%)',
-  width: 200,
-
+  transform: 'translate(90%, -90%)',
+  width: 300,
   bgcolor: 'background.paper',
   boxShadow: 24,
   p: 4,
@@ -36,10 +33,7 @@ export default function BasicModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-           <Typography id="modal-modal-title" variant="h6" component="h2">
-          
-           </Typography>
-          
+           <FavoriteComponent />
         </Box>
       </Modal>
     </div>

@@ -1,6 +1,7 @@
 import {useForm} from "react-hook-form"
 import {useDispatch, useSelector} from "react-redux"
 import {useNavigate} from "react-router-dom"
+import { adminSelector } from "../../redux/slices/adminSlice"
 import {removeUser, userSelector} from "../../redux/slices/userSlice"
 import "./Header.css"
 import Register from "./Registration/Register"
@@ -11,8 +12,8 @@ import {basketSelector, setIsBasketShown} from "../../redux/slices/basketSlice"
 import {searchThunk} from "../../redux/thunks/searchThunk"
 import {useLogout} from "../../hooks/useLogout"
 import BasketModal from "../Header/Basket/BasketModal/BasketModal"
-import FavoriteWindow from '../Header/Favorite/FavoriteWindow/FavoriteWindow'
-import { adminSelector } from "../../redux/slices/adminSlice"
+import FavoriteWindow from './Favorite/FavoriteWindow'
+
 
 function Header() {
   const isBasketShown = useSelector(basketSelector)
@@ -41,7 +42,7 @@ function Header() {
   }
 
   const goToAdminPanel = () =>{
-    navigate('../adminPanel')
+    navigate('../adminPanel', {replace: true})
   }
 
   

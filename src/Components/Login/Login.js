@@ -1,24 +1,37 @@
 import axios from "axios"
 import {useState} from "react"
-import {setAdmin} from '../../redux/slices/adminSlice'
 import {useForm} from "react-hook-form"
 import {useDispatch, useSelector} from "react-redux"
 import {useNavigate} from "react-router-dom"
 import {mainUrl} from "../../api/api"
+import {setAdmin} from '../../redux/slices/adminSlice'
 import { adminSelector } from "../../redux/slices/adminSlice"
-import { setIsBasketBtnShown, subtractIsBasketBtnShown } from "../../redux/slices/basketSlice"
-import {setUser, setUserBasket, subTract, subTractFavorite, subtractUnseenBasket} from "../../redux/slices/userSlice"
-
+import {
+  setIsBasketBtnShown,
+  subtractIsBasketBtnShown,
+} from "../../redux/slices/basketSlice"
+import {
+  setUser,
+  setUserBasket,
+  subTract,
+  subTractFavorite,
+  subtractUnseenBasket,
+} from "../../redux/slices/userSlice"
 import classes from "./Login.module.css"
+import loginImage from "../Images/Registration.png"
 
 const Login = () => {
   const [isLoginFailed, setIsLoginFailed] = useState(false)
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { register, handleSubmit, formState: {errors},} = useForm()
   const admin = useSelector(adminSelector)
+  const {
+    register,
+    handleSubmit,
+    formState: {errors},
+  } = useForm()
 
-  const goToRegistration =  ()=>{
+  const goToRegistration = () => {
     navigate("../Registration")
   }
 
@@ -27,27 +40,48 @@ const Login = () => {
       const user = res.data.find(
         (item) => item.name === data.login && item.password === data.password
       )
-      
+
       if (user) {
+        const obj = {
+          name: user.name,
+          id: user.id,
+          userBasket: user.userBasket,
+          isBasketBtnShown: user.isBasketBtnShown,
+          favorite: user.favorite,
+        }
         if (data.save) {
-          localStorage.setItem("user", JSON.stringify(user))
+          localStorage.setItem("user", JSON.stringify(obj))
         } else {
-          sessionStorage.setItem("user", JSON.stringify(user))
+          sessionStorage.setItem("user", JSON.stringify(obj))
         }
         if(user.name ==="Karpis"){dispatch(setAdmin(true))}
         dispatch(setUser(user))
-        if(user.userBasket.length !== 0){
-          dispatch(setUserBasket(user.userBasket))
-          dispatch(subtractIsBasketBtnShown(user.isBasketBtnShown))
-          dispatch(subTractFavorite(user.favorite))
-          sessionStorage.setItem('userBasket', JSON.stringify(user.userBasket))
-          sessionStorage.setItem('isBasketBtnShown', JSON.stringify(user.isBasketBtnShown))
-          sessionStorage.setItem('favorite', JSON.stringify(user.favorite))
-        }else{
-          sessionStorage.setItem('userBasket', JSON.stringify([]))
-          sessionStorage.setItem('isBasketBtnShown', JSON.stringify(user.isBasketBtnShown))
-          sessionStorage.setItem('favorite', JSON.stringify(user.favorite))
-        }
+        dispatch(
+          setUserBasket(JSON.parse(localStorage.getItem(`${user.userBasket}`)))
+        )
+        dispatch(
+          subtractIsBasketBtnShown(
+            JSON.parse(localStorage.getItem(`${user.isBasketBtnShown}`))
+          )
+        )
+        dispatch(
+          subTractFavorite(JSON.parse(localStorage.getItem(`${user.favorite}`)))
+        )
+        sessionStorage.setItem(
+          "userBasket",
+          JSON.stringify(JSON.parse(localStorage.getItem(`${user.userBasket}`)))
+        )
+        sessionStorage.setItem(
+          "isBasketBtnShown",
+          JSON.stringify(
+            JSON.parse(localStorage.getItem(`${user.isBasketBtnShown}`))
+          )
+        )
+        sessionStorage.setItem(
+          "favorite",
+          JSON.stringify(JSON.parse(localStorage.getItem(`${user.favorite}`)))
+        )
+
         navigate("../homePage", {replace: true})
       } else {
         setIsLoginFailed(true)
@@ -58,46 +92,55 @@ const Login = () => {
 
   return (
     <div className={classes.container}>
-      <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-        <label className={classes.label}>
-          <span>LOGIN</span>
-          <input
-            {...register("login", {require: true})}
-            type="text"
-            className={classes.userInput}
-          />
-          <div>{errors?.login?.type}</div>
-        </label>
+      <div className={classes.formDiv}>
+        <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
+          <div className={classes.loginDiv}>
+            <p> Sign In </p>
+            <label>
+              <input
+                {...register("login", {require: true})}
+                type="text"
+                placeholder="login"
+                className={classes.userInput}
+              />
+              <div>{errors?.login?.type}</div>
+            </label>
 
-        <label className={classes.label}>
-          <span>PASSWORD</span>
-          <input
-            {...register("password", {require: true})}
-            type="password"
-            className={classes.userInput}
-          />
-          <div>{errors?.password?.type}</div>
-        </label>
+            <label>
+              <input
+                {...register("password", {require: true})}
+                type="password"
+                placeholder="password"
+                className={classes.userInput}
+              />
+              <div>{errors?.password?.type}</div>
+            </label>
 
-        <label className={classes.checkbox}>
-          <input type="checkbox" {...register("save")} />
-          <span className={classes.remember}>remember me?</span>
-        </label>
+            <label className={classes.checkbox}>
+              <input type="checkbox" {...register("save")} />
+              <span className={classes.remember}>remember me?</span>
+            </label>
 
-        <button type="submit" className={classes.loginBtn}>
-          Log in
-        </button>
-      </form>
+            <button type="submit" className={classes.loginBtn}>
+              Log in
+            </button>
+            {(isLoginFailed || errors.login || errors.password) && (
+              <div className={classes.goToRegister}>
+                <button
+                  onClick={goToRegistration}
+                  className={classes.registerBtn}
+                >
+                  <p className={classes.registerBtnP}>Go to Registration</p>
+                </button>
+              </div>
+            )}
+          </div>
+        </form>
+      </div>
 
-      {(isLoginFailed || (errors.login || errors.password)) && (
-        <div className={classes.goToRegister}>
-          <button onClick={goToRegistration}
-            className={classes.registerBtn}
-          >
-            <p   className={classes.registerBtnP}>Go to Registration</p>
-          </button>
-        </div>
-      )}
+      <div className={classes.loginImage}>
+        <img src={loginImage}></img>
+      </div>
     </div>
   )
 }

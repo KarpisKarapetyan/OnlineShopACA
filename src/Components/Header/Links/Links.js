@@ -8,10 +8,15 @@ const Links = () => {
     const goToAllMan = () => {
         navigate("../Man")
     }
+    
+    const goToAllWoman = () => {
+      navigate("../Womans")
+    }
+
     const goToAllKids = () => {
         navigate("../Kids")
     }
-  
+
   return (
     <div className={classes.allLinks}>
       <div className={classes.dropdown}>

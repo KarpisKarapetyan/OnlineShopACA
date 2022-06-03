@@ -6,6 +6,7 @@ import filterSlice from "./slices/filterSlice";
 import searchSlice from "./slices/searchSlice";
 import adminSlice from "./slices/adminSlice";
 import isAddProductSlice from './slices/addProduct'
+import adminProductSlice from './slices/adminProducts'
 
 export const rootReducer = combineReducers({
     user: userReducer,
@@ -15,4 +16,5 @@ export const rootReducer = combineReducers({
     searchArr: searchSlice,
     admin : adminSlice,
     isAddProduct : isAddProductSlice,
+    adminProduct : adminProductSlice
 })
