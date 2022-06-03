@@ -1,6 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Corinthia&family=Lora&family=Merriweather:wght@300&family=Montserrat:wght@100&family=Roboto+Slab:wght@100&display=swap");
+
 .bgColorBlue {
     background-color: #A7E1DE;
 }
+
+body{
+    background-color: #A7E1DE;
+}
+
 .manItemContainer {
     box-sizing: border-box;
     text-align: center;
@@ -41,4 +48,41 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.sortDiv {
+    display: flex;
+    justify-content:flex-end;
+    margin: 20px 20px 10px 0;
+}
+
+.sortDiv select {
+    border: none;
+    background-color: none;
+    font-family: "Montserrat", sans-serif;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.addAndSubtractBtns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addBasketBtnStyle{
+    border: none;
+    background-color: none;
+    font-size: 15px;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.subtractBasketBtn{
+    border: none;
+    background-color: none;
+    font-size: 15px;
+    width: 20px;
+    height: 20px;
 }

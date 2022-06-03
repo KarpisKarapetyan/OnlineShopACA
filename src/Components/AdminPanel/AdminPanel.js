@@ -9,6 +9,8 @@ import {adminProductSelector , setAdminProduct} from '../../redux/slices/adminPr
 import Button from '@mui/material/Button';
 import ChangePost from './changePost/changePost'
 import DELETEALL from './DELETEALL/DELETEALL'
+import ProductComponent from "./productComponent"
+import { isAddProductSelector } from "../../redux/slices/addProduct";
 
 function AdminPanel() {
 const [open, setOpen] = useState(false);
@@ -18,12 +20,13 @@ const handleClose = () => setOpen(false);
 const handleEditClose = ()=>setEditWindow(false)
 const dispatch = useDispatch()
 const newAdminProduct = useSelector(adminProductSelector)
+const isAddProduct = useSelector(isAddProductSelector)
 
 useEffect(()=>{
   axios.get(`${mainUrl}/allProducts`)
 .then((res) => dispatch(setAdminProduct(res.data)) );
 setRemoveItem(false)
-},[removeItem])
+},[removeItem, isAddProduct])
  
 return ( 
       <div className="adminMain">
@@ -38,20 +41,7 @@ return (
             </div>  
           {newAdminProduct?.map((item, index) => {
             return (
-                <div key={item.id} className="allProdcuts" >
-                    <div className="posts"  >
-                        <div className="postsIMG"> <img src={item.location}></img> </div>
-                        <div><p>{item.name[0]}</p></div>
-                        <div><p>{item.price}</p></div>
-                        <div><p>{item.size}</p></div>
-                        <div>  <ChangePost index={index} id={newAdminProduct[index].id} open={editWindow} setOpen={setEditWindow} onClose={handleEditClose}  /></div>
-                        <div> <Button><DeleteForever onClick={()=> {
-                            axios.delete(`${mainUrl}/allProducts/${item.id}`)
-                            .then(setRemoveItem(true))
-                            }}/></Button> 
-                        </div>
-                    </div>
-                </div>  
+              <ProductComponent key={item.id} item={item}/>
             );
           })}
         </div>

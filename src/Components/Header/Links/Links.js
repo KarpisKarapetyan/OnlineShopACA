@@ -44,7 +44,7 @@ const Links = () => {
       </div>
 
       <div className={classes.dropdown}>
-        <button onClick={goToAllWoman} className={classes.dropbutton}>Woman</button>
+        <button  className={classes.dropbutton} onClick={goToAllWoman}>Woman</button>
         <div className={classes.dropbuttonchild}>
         <ul className={classes.ul}>
             {WOMANLINKS.map((link) => {
