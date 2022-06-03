@@ -10,34 +10,34 @@ import {useSelector} from "react-redux";
 import {useAddFavorite} from "../../hooks/useAddFavorite";
 
 
-const AllWoman = () => {
+const AllKids = () => {
     const favoriteArr = useSelector(favoriteSelector)
     const userBasket = useSelector(userBasketSelector)
-    const [allWomanArr, setAllWomanArr] = useState([])
-   
-
+    const [kidsTshirtsArr, setKidsTshirtsArr] = useState([])
+    const [kidsJacketsArr, setKidsJacketsArr] = useState([])
     useEffect(() => {
-      axios.get(`${mainUrl}/allProducts`).then((res) => {
-        const arr = res.data.filter(
-          item => item.name.some((item) => item === 'woman tshirt') || item.name.some((item) => item === 'woman jacket')
-        )
-        setAllWomanArr(arr)
-      })
+        axios.get(`${mainUrl}/kidsTshirts`)
+            .then(res => setKidsTshirtsArr(res.data))
     }, [])
-  
-    const addBasket = useAddBasket()
- 
+    useEffect(() => {
+        axios.get(`${mainUrl}/kidsJackets`)
+            .then(res => setKidsJacketsArr(res.data))
+    }, [])
+
+    const kidsList = kidsTshirtsArr.concat(kidsJacketsArr);
+    const goBasket = useAddBasket()
+    const goFavorite = useAddFavorite()
+
     return (
         <div className="bgColorBlue">
-            <div className="manTitleContainer"> 
-                <span>Woman</span>
+            <div className="manTitleContainer">
+                <span>Kids</span>
             </div>
-            
             <div className="manItemContainer">
                 {
-                    allWomanArr.map((item, i) => {
+                    kidsList.map((item, i) => {
                         return (
-                            <div key={item.id} className="manItem">
+                            <div key={i} className="manItem">
                                 <img src={item.location}/>
                                 <div className="dressDetailsCarusel">
                                     <label className='iconItem' onClick={() => goBasket(item)}>
@@ -45,9 +45,9 @@ const AllWoman = () => {
                                             className={userBasket.includes(item) ? "activFavorite" : ''}/>
                                     </label>
                                     <label className='iconItem' onClick={() => goFavorite(item)}>
-                                    <FavoriteIcon className={favoriteArr.includes(item) ? "activFavorite" : ''}/>
+                                        <FavoriteIcon className={favoriteArr.includes(item) ? "activFavorite" : ''}/>
                                     </label>
-                                    <ImageZoom img={allWomanArr[i].location}/>
+                                    <ImageZoom img={kidsList[i].location}/>
                                     <p> {item.price} AMD / {item.size}  </p>
                                 </div>
                             </div>
@@ -58,6 +58,6 @@ const AllWoman = () => {
 
         </div>
     )
-}  
-  export default AllWoman
+}
 
+export default AllKids

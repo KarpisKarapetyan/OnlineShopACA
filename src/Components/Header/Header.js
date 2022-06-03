@@ -16,11 +16,15 @@ import FavoriteWindow from './Favorite/FavoriteWindow'
 
 
 
+// =======
+// import FavoriteWindow from '../Header/Favorite/FavoriteWindow/FavoriteWindow'
+// import { adminSelector } from "../../redux/slices/adminSlice"
+// >>>>>>> 52f897f6fdb5459c18d427c4a1c186b15bddd6a5
 
 function Header() {
   const isBasketShown = useSelector(basketSelector)
   const logout = useLogout()
-
+  const admin =useSelector(adminSelector)
   const dispatch = useDispatch()
   const {
     register,
@@ -43,13 +47,14 @@ function Header() {
     navigate("../Registration")
   }
 
+  const goToAdminPanel = () =>{
+    navigate('../adminPanel')
+  }
+
   
   const goToHomePage = () => {
     navigate("../homePage")
   }
-
-
- 
 
   return (
     <div className="headerBody">
@@ -61,6 +66,8 @@ function Header() {
 
           <Links />
         </div>
+      {admin && sessionStorage.setItem("admin" , JSON.stringify(admin))}
+      {admin && <div className="goAdmin" onClick={goToAdminPanel} >Admin Panel</div> }
 
         <div>
           <form onSubmit={handleSubmit(onSubmit)} className="form">

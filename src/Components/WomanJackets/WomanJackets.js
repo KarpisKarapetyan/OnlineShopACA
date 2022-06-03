@@ -1,7 +1,7 @@
 import axios from "axios"
 import {useEffect, useState} from "react"
 import {mainUrl} from "../../api/api"
-import "./WomanJackets.css"
+
 import { useAddBasket } from "../../hooks/useAddBasket"
 
 

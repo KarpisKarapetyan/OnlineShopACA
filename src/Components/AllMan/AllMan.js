@@ -21,12 +21,13 @@ const AllMan = () => {
   useEffect(() => {
     axios.get(`${mainUrl}/allProducts`).then((res) => {
       const arr = res.data.filter(
-        item => item.name.some((item) => item === 'man tshirt') || item.name.some((item) => item === 'man jacket')
+        (item) =>
+          item.name.some((item) => item === "man tshirt") ||
+          item.name.some((item) => item === "man jacket")
       )
       setManList(arr)
     })
   }, [])
-
 
   const goBasket = useAddBasket()
   const goFavorite = useAddFavorite()
