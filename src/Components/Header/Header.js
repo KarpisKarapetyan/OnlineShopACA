@@ -108,7 +108,7 @@ function Header() {
             <div className="loginAndRegister">
               <div className="divBasket loginBasket">
                 <label className="betweenLogin" onClick={userLogin}>
-                  Login
+                  Sign in
                 </label>
               </div>
               <div>
