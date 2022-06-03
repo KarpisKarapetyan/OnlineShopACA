@@ -31,7 +31,7 @@ const AllMan = () => {
 
     return (
         <div className="bgColorBlue">
-            <div className="manTitleContainer">
+            <div className="manTitleContainer"> 
                 <span>Men</span>
             </div>
             <div className="manItemContainer">
@@ -46,7 +46,7 @@ const AllMan = () => {
                                             className={userBasket.includes(item) ? "activFavorite" : ''}/>
                                     </label>
                                     <label className='iconItem' onClick={() => goFavorite(item)}>
-                                        <FavoriteIcon className={favoriteArr.includes(item) ? "activFavorite" : ''}/>
+                                    <FavoriteIcon className={favoriteArr.includes(item) ? "activFavorite" : ''}/>
                                     </label>
                                     <ImageZoom img={manList[i].location}/>
                                     <p> {item.price} AMD / {item.size}  </p>
