@@ -19,11 +19,16 @@ const JacketMan = () => {
   const userBasket = useSelector(userBasketSelector)
   const [jacketManArr, setJacketManArr] = useState([])
   useEffect(() => {
-    axios.get(`${mainUrl}/allProducts`)
-    .then((res) => {
-      const arr = res.data.filter(item => item.name.some((item) => item === 'man jacket'))
-      setJacketManArr(arr)
-    })
+    if (!JSON.parse(sessionStorage.getItem("jacketMan"))){
+      axios.get(`${mainUrl}/allProducts`)
+      .then((res) => {
+        const arr = res.data.filter(item => item.name.some((item) => item === 'man jacket'))
+        setJacketManArr(arr)
+        return arr
+      }).then(arr => sessionStorage.setItem('jacketMan', JSON.stringify(arr)))
+    }else{
+      setJacketManArr(JSON.parse(sessionStorage.getItem('jacketMan')))
+    }
   }, [])
 
   const goBasket = useAddBasket()
@@ -43,14 +48,16 @@ const JacketMan = () => {
 
   return (
     <div className="bgColorBlue">
-      <form action="#">
-        <label for="lang">sort</label>
-        <select name="sorting" onChange={sort}>
-          <option value="javascript">Select sort type</option>
-          <option value="sortHigh">PRICE (LOW - HIGH)</option>
-          <option value="sortDown">PRICE (HIGH - LOW)</option>
-        </select>
-      </form>
+      <div className="sortDiv">
+        <form action="#">
+          <label for="lang">sort</label>
+          <select name="sorting" onChange={sort}>
+            <option value="javascript">Select sort type</option>
+            <option value="sortHigh">PRICE (LOW - HIGH)</option>
+            <option value="sortDown">PRICE (HIGH - LOW)</option>
+          </select>
+        </form>
+      </div>
       <div className="manTitleContainer">
         <span> Man Jackets</span>
       </div>

@@ -17,8 +17,7 @@ const Loadable = ({src}) => {
             imageRef.current.onload = () => setIsLoaded(true)
         }
     }, [isIntersecting, isLoaded])
-
-    console.log(333);
+    
     return (
         <div ref={containerRef} className={classNames(classes.container, {
             [classes.container_loaded]: isLoaded
