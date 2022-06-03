@@ -18,6 +18,8 @@
 .manItem {
     display: inline-block;
     width: 30%;
+    flex-shrink: 0; 
+    height: 60vh;
     margin: 0 5px 30px 5px;
 }
 .iconItem {
@@ -28,6 +30,7 @@
     width: 275px;
     height: 450px;
     border-radius: 10px;
+    object-fit: cover;
 }
 
 .manDetails {

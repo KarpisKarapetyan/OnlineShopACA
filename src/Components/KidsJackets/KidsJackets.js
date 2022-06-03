@@ -17,13 +17,17 @@ const KidsJackets = () => {
   const goFavorite = useAddFavorite()
    
     useEffect(() => {
-      axios.get(`${mainUrl}/kidsJackets`)
-      .then(res => setKidsJacketsArr(res.data))
+      axios.get(`${mainUrl}/allProducts`)
+      .then( console.log("================================================="))
+      .then(res => {
+        const arr = res.data.filter(item => item.name.some((item) => item === 'kids jacket'))
+        setKidsJacketsArr(arr)
+    })
+    }, [])
+
+    const addBasket = useAddBasket()
      
-    }, []) 
-    
-     
- 
+
     return (
       <div className="bgColorBlue">
           <div className="manTitleContainer"> 
@@ -51,7 +55,6 @@ const KidsJackets = () => {
                   })
               }
           </div>
-
       </div>
   )
 }

@@ -10,8 +10,11 @@ const WomanJackets = () => {
 
     const [womanJacketsArr, setWomanJacketsArr] = useState([])  
     useEffect(() => {
-      axios.get(`${mainUrl}/womanJackets`)
-      .then(res => setWomanJacketsArr(res.data))
+      axios.get(`${mainUrl}/allProducts`)
+      .then(res => {
+        const arr = res.data.filter(item => item.name.some((item) => item === 'woman jacket'))
+        setWomanJacketsArr(arr)
+      })
     }, [])
 
     const addBasket = useAddBasket()

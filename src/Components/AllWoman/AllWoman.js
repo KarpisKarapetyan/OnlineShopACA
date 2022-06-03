@@ -17,18 +17,16 @@ const AllWoman = () => {
    
 
     useEffect(() => {
-      axios.get(`${mainUrl}/womanJackets`)
-      .then(res => setAllWomanArr(res.data))
-      }, [])
-    useEffect(() => {
-        axios.get(`${mainUrl}/womanTshirts`)
-        .then(res => setAllWomanArr((prev)=>{
-            prev.push(...res.data)
-          return prev}))
-      }, [])
-    const goBasket = useAddBasket()
-    const goFavorite = useAddFavorite()
-     //console.log("allWomanArr", allWomanArr)
+      axios.get(`${mainUrl}/allProducts`).then((res) => {
+        const arr = res.data.filter(
+          item => item.name.some((item) => item === 'woman tshirt') || item.name.some((item) => item === 'woman jacket')
+        )
+        setAllWomanArr(arr)
+      })
+    }, [])
+  
+    const addBasket = useAddBasket()
+ 
     return (
         <div className="bgColorBlue">
             <div className="manTitleContainer"> 

@@ -17,14 +17,22 @@ function  Registration () {
   const onSubmit = (data) => {
     if(data.password === data.rePassword){
       const id = "id" + new Date().getTime()
-    axios.post(`${mainUrl}/users`, {
+      const userBasketName = id + 'userBasket'
+      const isBasketBtnShownName = id + 'isBasketBtnShown'
+      const favoriteName = id + 'favorite'
+
+      axios.post(`${mainUrl}/users`, {
       name: data.login,
       password: data.password,
       id: id,
-      userBasket: [],
-      isBasketBtnShown: [],
-      favorite: []
+      userBasket: userBasketName,
+      isBasketBtnShown: isBasketBtnShownName,
+      favorite: favoriteName
     });
+
+    localStorage.setItem(`${userBasketName}`, JSON.stringify([]))
+    localStorage.setItem(`${isBasketBtnShownName}`, JSON.stringify([]))
+    localStorage.setItem(`${favoriteName}`, JSON.stringify([]))
     
     setIsRegisterFailed(false);
     setTimeout(() => {navigate("../Login")}, 3000);
