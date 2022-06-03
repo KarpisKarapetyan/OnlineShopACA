@@ -1,0 +1,25 @@
+.makeOrderDIV{
+    width: 100vw;
+    height: 80vh;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+.orderForm{
+    padding-top: 5%;
+}
+.orderDIV input {
+    padding-top: 5px;
+}
+.sendMessageBTn input{
+    cursor: pointer;
+}
+.contacts{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.contacts span{
+    margin: 30px 100px 0 100px;
+}

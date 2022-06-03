@@ -15,6 +15,7 @@
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "dayjs": "^1.11.2",
+    "emailjs-com": "^3.2.0",
     "json-server": "^0.17.0",
     "ra-data-simple-rest": "^4.1.0",
     "react": "^18.1.0",
