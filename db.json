@@ -1,12 +1,12 @@
 {
   "users": [
     {
-      "name": "Aram",
-      "password": "222222",
-      "id": "id1654265100704",
-      "userBasket": "id1654265100704userBasket",
-      "isBasketBtnShown": "id1654265100704isBasketBtnShown",
-      "favorite": "id1654265100704favorite"
+      "name": "Karpis",
+      "password": "111111",
+      "id": "id1654246089857",
+      "userBasket": "id1654246089857userBasket",
+      "isBasketBtnShown": "id1654246089857isBasketBtnShown",
+      "favorite": "id1654246089857favorite"
     }
   ],
   "allProducts": [

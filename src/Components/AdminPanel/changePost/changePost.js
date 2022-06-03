@@ -5,6 +5,9 @@ import { useForm } from 'react-hook-form';
 import { mainUrl } from '../../../api/api';
 import Modal from '@mui/material/Modal';
 import EditIcon from '@mui/icons-material/Edit';
+import Button from '@mui/material/Button';
+import {adminProductSelector , setAdminProduct} from '../../../redux/slices/adminProducts'
+import { useSelector, useDispatch } from 'react-redux';
 
 const style = {
   position: 'absolute',
@@ -17,27 +20,36 @@ const style = {
   p: 4,
 };
 
- function changePost({id,open,setOpen,onClose}) {
-    console.log(id)
-  const {register,handleSubmit,formState: { errors },} = useForm();
+ function changePost({index,id,open,setOpen,onClose}) { 
+  const dispatch =useDispatch()
+  const newAdminProduct = useSelector(adminProductSelector)
+  const {register,handleSubmit} = useForm();
   const handleOpen = () => setOpen(true);
-  
 
   const onSubmit = (data) => {
-      const name = [data.name]
+  const name = [data.name]
+  
+  const currentObj = {
+    name : name,
+    price : data.price ,
+    size : data.size,
+    location :data.location ,
+    id: id
+  }
+  const arr = [ ...newAdminProduct ]
+  arr[index] = currentObj
     axios.patch(`${mainUrl}/allProducts/${id}`, {
         name : name,
         price : data.price ,
         size : data.size,
         location :data.location
-        
     })
-    onClose()
+    dispatch(setAdminProduct(arr))
   };
 
   return (
     <div>
-        <EditIcon className="changeStateButton"   onClick={handleOpen}/>
+      <Button>  <EditIcon onClick={handleOpen}/> </Button>  
       <Modal
         open={open}
         onClose={onClose}
@@ -46,8 +58,8 @@ const style = {
       >
         <Box sx={style}>
         <div>
-        <form className="inputsForm" onSubmit={handleSubmit(onSubmit)} >
-          <div className="inputsDiv">
+        <form className="registrationForm" onSubmit={handleSubmit(onSubmit)} >
+          <div className="registrationDiv">
           <label>
               Name
               <input

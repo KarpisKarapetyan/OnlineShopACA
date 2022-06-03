@@ -1,0 +1,10 @@
+.doneDeleteAll{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.deleteQuation{
+    color: rgb(209, 46, 46);
+}

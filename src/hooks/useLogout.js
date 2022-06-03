@@ -1,6 +1,7 @@
 import axios from "axios"
 import {useDispatch, useSelector} from "react-redux"
 import { useNavigate } from "react-router-dom"
+import {setAdmin} from '../redux/slices/adminSlice'
 import {mainUrl} from "../api/api"
 import {basketBtnShownSelector, subtractIsBasketBtnShown} from "../redux/slices/basketSlice"
 import {
@@ -31,6 +32,7 @@ export const useLogout = () => {
     localStorage.removeItem("user")
     sessionStorage.removeItem("user")
     dispatch(removeUser())
+    dispatch(setAdmin(false))
       navigate('../homePage')
   }
 
