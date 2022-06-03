@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Corinthia&family=Lora&family=Merriweather:wght@300&family=Montserrat:wght@100&family=Roboto+Slab:wght@100&display=swap');
+
+.items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.basketItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 10%;
+    padding-top: 5px;
+}
+
+.basketItem button {
+    border: none;
+    background-color: none;
+    width: 10%;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.basketItemImg {
+    width: 20%;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.basketItemImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.buyButton{
+    border: none;
+    background-color: none;
+    width: 20%;
+    font-size: 20px;
+    letter-spacing: 3px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+}
+

@@ -1,6 +1,5 @@
 import HomePage from "../Components/HomePage/HomePage";
 import Login from "../Components/Login/Login";
-import Man from '../Components/Header/persons/Man'
 import Woman from '../Components/Header/persons/Woman'
 import Kids from '../Components/Header/persons/Kids'
 import Registration from "../Components/Header/Registration/Registration";

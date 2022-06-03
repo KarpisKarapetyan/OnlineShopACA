@@ -8,11 +8,11 @@ import FavoriteComponent from './FavoriteWindow/FavoriteComponent';
 
 
 const style = {
-  // position: 'absolute',
-  top: '50%',
+  position: 'absolute',
+  top: '45%',
   left: '50%',
-  transform: 'translate(640%, 35%)',
-  width: 200,
+  transform: 'translate(90%, -90%)',
+  width: 300,
   bgcolor: 'background.paper',
   boxShadow: 24,
   p: 4,

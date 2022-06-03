@@ -9,9 +9,12 @@ const KidsJackets = () => {
     const [kidsJacketsArr, setKidsJacketsArr] = useState([])
    
     useEffect(() => {
-      axios.get(`${mainUrl}/kidsJackets`)
+      axios.get(`${mainUrl}/allProducts`)
       .then( console.log("================================================="))
-      .then(res => setKidsJacketsArr(res.data))
+      .then(res => {
+        const arr = res.data.filter(item => item.name.some((item) => item === 'kids jacket'))
+        setKidsJacketsArr(arr)
+    })
     }, []) 
     const addBasket = useAddBasket()
      
@@ -35,8 +38,7 @@ const KidsJackets = () => {
                 )
             })
         }
-         </div>
-       
+         </div>    
       </div>
     )
   }

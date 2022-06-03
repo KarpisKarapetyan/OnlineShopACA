@@ -5,7 +5,7 @@ import {
   favoriteSelector,
   userSelector,
 } from "../../../../redux/slices/userSlice"
-import "../Favorite.css"
+import classes from "../FavoriteComponent.module.css"
 
 function FavoriteComponent() {
   const favorite = useSelector(favoriteSelector)
@@ -23,14 +23,18 @@ function FavoriteComponent() {
   }, [favorite])
 
   return (
-    <div>
+    <div className={classes.items}>
       {favoriteArr.map((item) => {
         return (
-          <div key={item.id} className="favoriteItem">
-            <div className="littleImage"><img src={item.location}/></div>
-            <div>{item.size}</div>
-            <div>{item.price}</div>
+          <div key={item.id} className={classes.favoriteItem}>
+            <div className={classes.favoriteItemImg}><img src={item.location}/></div>
+            <div className={classes.text}>
+            <p>
+              {" "}
+              {item.price} AMD / {item.size}{" "}
+            </p>
             <button onClick={() => subtract(item)}>remove</button>
+            </div>
           </div>
         )
       })}

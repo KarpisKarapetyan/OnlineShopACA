@@ -9,15 +9,13 @@ const AllWoman = () => {
 
     const [allWomanArr, setAllWomanArr] = useState([])  
     useEffect(() => {
-      axios.get(`${mainUrl}/womanJackets`)
-      .then(res => setAllWomanArr(res.data))
-      }, [])
-    useEffect(() => {
-        axios.get(`${mainUrl}/womanTshirts`)
-        .then(res => setAllWomanArr((prev)=>{
-            prev.push(...res.data)
-          return prev}))
-      }, [])
+      axios.get(`${mainUrl}/allProducts`).then((res) => {
+        const arr = res.data.filter(
+          item => item.name.some((item) => item === 'woman tshirt') || item.name.some((item) => item === 'woman jacket')
+        )
+        setAllWomanArr(arr)
+      })
+    }, [])
   
 
     const addBasket = useAddBasket()

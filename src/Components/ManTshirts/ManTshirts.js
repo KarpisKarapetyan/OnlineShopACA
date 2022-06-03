@@ -48,7 +48,7 @@ const ManTshirts = () => {
       {tshirtsArr.map((item, i) => {
         return (
           <div key={item.id}>
-            <div>
+            <div className="item">
               <Loadable src={tshirtsArr[i].location} />
             </div>
             <span>{item.price}</span>
