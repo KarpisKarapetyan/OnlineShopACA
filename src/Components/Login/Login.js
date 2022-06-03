@@ -4,6 +4,8 @@ import {useForm} from "react-hook-form"
 import {useDispatch, useSelector} from "react-redux"
 import {useNavigate} from "react-router-dom"
 import {mainUrl} from "../../api/api"
+import {setAdmin} from '../../redux/slices/adminSlice'
+import { adminSelector } from "../../redux/slices/adminSlice"
 import {
   setIsBasketBtnShown,
   subtractIsBasketBtnShown,
@@ -22,6 +24,7 @@ const Login = () => {
   const [isLoginFailed, setIsLoginFailed] = useState(false)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const admin = useSelector(adminSelector)
   const {
     register,
     handleSubmit,
@@ -51,6 +54,7 @@ const Login = () => {
         } else {
           sessionStorage.setItem("user", JSON.stringify(obj))
         }
+        if(user.name ==="Karpis"){dispatch(setAdmin(true))}
         dispatch(setUser(user))
         dispatch(
           setUserBasket(JSON.parse(localStorage.getItem(`${user.userBasket}`)))

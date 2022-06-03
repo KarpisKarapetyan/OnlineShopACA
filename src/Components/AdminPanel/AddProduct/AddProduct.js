@@ -6,6 +6,9 @@ import Modal from '@mui/material/Modal';
 import axios from "axios"
 import { useForm } from 'react-hook-form';
 import { mainUrl } from '../../../api/api';
+import {adminProductSelector , setAdminProduct} from '../../../redux/slices/adminProducts'
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import {useDispatch ,useSelector} from 'react-redux'
 
 const style = {
   position: 'absolute',
@@ -21,23 +24,30 @@ const style = {
  function addProduct({open , setOpen , onClose}) {
   const {register,handleSubmit,formState: { errors },} = useForm();
   const handleOpen = () => setOpen(true);
+  const dispatch = useDispatch()
+  const newAdminProduct = useSelector(adminProductSelector)
 
   const onSubmit = (data) => {
     const id = "id" + new Date().getTime()
     let currentObj = {
       price : data.price,
       size:data.size,
-      location :data.location,
+      location : data.location,
       id : id
     }
     currentObj.name = [data.name]
     axios.post(`${mainUrl}/allProducts`, currentObj)
+    const arr = [
+      currentObj,
+      ...newAdminProduct
+    ]
+    dispatch(setAdminProduct(arr))
   };
 
 
   return (
     <div>
-      <Button onClick={handleOpen}>Add Product</Button>
+      <Button onClick={handleOpen}><AddBoxIcon/></Button>
       <Modal
         open={open}
         onClose={onClose}
@@ -47,8 +57,8 @@ const style = {
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
         <div>
-        <form className="inputsForm" onSubmit={handleSubmit(onSubmit)} >
-          <div className="inputsDiv">
+        <form className="registrationForm" onSubmit={handleSubmit(onSubmit)} >
+          <div className="registrationDiv addDiv">
           <label>
               Name
               <input
