@@ -1,32 +1,36 @@
-import { useState } from "react"
-import { KIDS_TSHIRT_NAME, MAN_JACKETS_NAME, WOMAN_JACKET_NAME, WOMAN_TSHIRT_NAME } from "../helpers/constants"
+import { KIDS_TSHIRT_NAME, MAN_JACKETS_NAME, MAN_TSHIRT_NAME, WOMAN_JACKET_NAME, WOMAN_TSHIRT_NAME } from "../helpers/constants"
 
-export const useSelectItemName = (name) => {
-    const [nameArr, setNameArr] = useState([])
+export const useSelectItemName = () => {
 
-    switch (name) {
-        case "man tshirt":
-            setNameArr(MAN_JACKETS_NAME)
-            break;
-        case 'woman tshirt':
-            setNameArr(WOMAN_TSHIRT_NAME)
-            break;
-        case 'man jacket':
-            setNameArr(MAN_JACKETS_NAME)
-            break;
-        case 'woman jacket':
-            setNameArr(WOMAN_JACKET_NAME)
-            break;
-        case 'kids tshirt':
-            setNameArr(KIDS_TSHIRT_NAME)
-            break;
-        case 'kids jacket':
-            setNameArr(KIDS_JACKET_NAME)
-            break;                
-        default:
-            setNameArr([name])
-            break;
+    const switchName = (name) => {
+        let arr = []
+
+        switch (name) {
+            case "man tshirt":
+                arr = MAN_TSHIRT_NAME
+                break;
+            case 'woman tshirt':
+                arr = WOMAN_TSHIRT_NAME
+                break;
+            case 'man jacket':
+                arr = MAN_JACKETS_NAME
+                break;
+            case 'woman jacket':
+                arr = WOMAN_JACKET_NAME
+                break;
+            case 'kids tshirt':
+                arr = KIDS_TSHIRT_NAME
+                break;
+            case 'kids jacket':
+                arr = KIDS_JACKET_NAME
+                break;                
+            default:
+                arr.push(name)
+                break;
+        }
+
+        return arr
     }
 
-    return nameArr
+    return switchName
 }

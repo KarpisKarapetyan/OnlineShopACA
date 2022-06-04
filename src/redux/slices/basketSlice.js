@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = {
     isBasketShown: false,
-    isBasketBtnShown: JSON.parse(sessionStorage.getItem('isBasketBtnShown')) || [],
 }
 
 const basketSlice = createSlice({
@@ -11,19 +10,12 @@ const basketSlice = createSlice({
     reducers: {
         setIsBasketShown: (state, {payload}) => {
             state.isBasketShown = payload
-        },
-        setIsBasketBtnShown: (state, {payload}) => {
-            state.isBasketBtnShown.push(payload)
-        },
-        subtractIsBasketBtnShown: (state, {payload}) => {
-            state.isBasketBtnShown = payload
         }
     }
 })
 
 export const basketSelector = state => state.isBasketShown.isBasketShown
-export const basketBtnShownSelector = state => state.isBasketShown.isBasketBtnShown
 
-export const {setIsBasketShown, setIsBasketBtnShown, subtractIsBasketBtnShown} = basketSlice.actions
+export const {setIsBasketShown} = basketSlice.actions
 
 export default basketSlice.reducer
