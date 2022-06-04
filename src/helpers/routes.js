@@ -1,13 +1,11 @@
 import HomePage from "../Components/HomePage/HomePage";
 import Login from "../Components/Login/Login";
 import Woman from '../Components/Header/persons/Woman'
-import Kids from '../Components/Header/persons/Kids'
 import Registration from "../Components/Header/Registration/Registration";
 import { Navigate } from "react-router-dom";
 import LearnMore from "../Components/HomePage/LearnMore/LearnMore";
 import MakeOrder from "../Components/makeOrder/makeOrder";
 import FilterResualt from "../Components/FilterResualt/FilterResualt";
-import ManTshirts from "../Components/ManTshirts/ManTshirts";
 import SearchResult from "../Components/SearchResult/SearchResult";
 import WomanTshirts from "../Components/WomanTshirts/WomanTshirts";
 import WomanJackets from "../Components/WomanJackets/WomanJackets";
@@ -46,10 +44,6 @@ const MAIN_ROUTES = [
     {
         path: "FilterResualt",
         element: <FilterResualt/>
-    },
-    {
-        path: "manTshirts",
-        element: <ManTshirts />
     },
     {
         path: "searchResult",

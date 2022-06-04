@@ -18,7 +18,6 @@ function  Registration () {
     if(data.password === data.rePassword){
       const id = "id" + new Date().getTime()
       const userBasketName = id + 'userBasket'
-      const isBasketBtnShownName = id + 'isBasketBtnShown'
       const favoriteName = id + 'favorite'
 
       axios.post(`${mainUrl}/users`, {
@@ -26,12 +25,10 @@ function  Registration () {
       password: data.password,
       id: id,
       userBasket: userBasketName,
-      isBasketBtnShown: isBasketBtnShownName,
       favorite: favoriteName
     });
 
     localStorage.setItem(`${userBasketName}`, JSON.stringify([]))
-    localStorage.setItem(`${isBasketBtnShownName}`, JSON.stringify([]))
     localStorage.setItem(`${favoriteName}`, JSON.stringify([]))
     
     setIsRegisterFailed(false);

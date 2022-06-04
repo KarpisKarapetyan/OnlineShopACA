@@ -10,12 +10,13 @@ import FavoriteComponent from './FavoriteWindow/FavoriteComponent';
 const style = {
   position: 'absolute',
   top: 90,
-  right: 20,
+  right: 180,
   width: 300,
   bgcolor: 'background.paper',
   boxShadow: 24,
   p: 4,
-};
+  borderRadius: 8
+}
 
 export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
