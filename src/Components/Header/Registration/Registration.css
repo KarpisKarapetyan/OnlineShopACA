@@ -53,6 +53,7 @@
 .registerDivSignUp{
     font-family: 'Montserrat', sans-serif;
     font-weight: normal;
+    cursor: pointer;
 }
 
 .registrationDiv p{

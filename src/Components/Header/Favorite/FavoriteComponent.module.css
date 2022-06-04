@@ -6,6 +6,12 @@
   justify-content: center;
   align-items: center;
 }
+.items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .title{
   font-family: 'Montserrat', sans-serif;
@@ -15,8 +21,13 @@
 .text{
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
   width: 70%;
+}
+
+.removeBtn{
+  margin: 20px 50px 20px 0px;
 }
 
 text.p {
@@ -34,12 +45,9 @@ text.p {
 
 .favoriteItem {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  height: 10%;
-  margin-top: 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .favoriteItem p {
