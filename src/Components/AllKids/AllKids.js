@@ -66,7 +66,7 @@ const AllKids = () => {
       <div className="manItemContainer">
         {allKids.map((item, i) => {
           return (
-            <div key={i} className="manItem">
+            <div key={item.id} className="manItem">
               <Loadable src={allKids[i].location} />
               <div className="dressDetailsCarusel">
                 <label className="iconItem" onClick={() => goBasket(item)}>
