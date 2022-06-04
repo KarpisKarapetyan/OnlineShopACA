@@ -10,12 +10,12 @@ import BasketComponent from '../BasketCompoent/BasketComponent';
 const style = {
   position: 'absolute',
   top: 90,
-  right: 20,
-  width: 300,
+  right: 100,
+  width: 250,
   bgcolor: 'background.paper',
   boxShadow: 24,
-  p: 4,
-  padding: 0
+  p:1,
+  borderRadius : 5
 };
 
 export default function BasicModal() {
@@ -33,6 +33,12 @@ export default function BasicModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
+          <div>
+          <Typography>
+
+          </Typography>
+          </div>
+          
            <Typography id="modal-modal-title" variant="h6" component="h2">
               <BasketComponent/>
            </Typography>
