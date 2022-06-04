@@ -100,7 +100,7 @@
 }
 
 .betweenLogin p{
-  width: 4vw;
+  width: 5vw;
 }
 
 .basketTrue {
@@ -140,6 +140,7 @@
   padding: 0;
   border: none;
   background: none;
+  width: 4vw;
   height: 5vh;
   cursor: pointer;
   font-size: 16px;

@@ -3,7 +3,6 @@ import {useEffect, useState} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import {useAddBasket} from "../../../../hooks/useAddBasket"
 import {useSubtractBasket} from "../../../../hooks/useSubtractBasket"
-import {basketBtnShownSelector} from "../../../../redux/slices/basketSlice"
 import {userBasketSelector} from "../../../../redux/slices/userSlice"
 import BasketAlert from "./BasketAlert/BasketAlert"
 import classes from "./BasketComponent.module.css"
@@ -14,7 +13,6 @@ import LocalMall from '@mui/icons-material/LocalMall';
 
 const BasketComponent = () => {
   const userBasket = useSelector(userBasketSelector)
-  const isBasketBtnShown = useSelector(basketBtnShownSelector)
   const [basketArr, setBasketArr] = useState([])
   const [basketPrice, setBasketPrice] = useState(0)
   const [errorMessage,setErrorMessage] = useState(false)
@@ -26,7 +24,6 @@ const BasketComponent = () => {
   }
 
   useEffect(() => {
-    sessionStorage.setItem("isBasketBtnShown", JSON.stringify(isBasketBtnShown))
     sessionStorage.setItem("userBasket", JSON.stringify(userBasket))
     
     const newArr = []
