@@ -55,10 +55,20 @@ const Login = () => {
         }
         if(user.name ==="Karpis"){dispatch(setAdmin(true))}
         dispatch(setUser(user))
-        dispatch(setUserBasket(JSON.parse(localStorage.getItem(`${user.userBasket}`))))
-        dispatch(subTractFavorite(JSON.parse(localStorage.getItem(`${user.favorite}`))))
-        sessionStorage.setItem("userBasket", JSON.stringify(JSON.parse(localStorage.getItem(`${user.userBasket}`))))
-        sessionStorage.setItem("favorite", JSON.stringify(JSON.parse(localStorage.getItem(`${user.favorite}`))))
+        if(JSON.parse(localStorage.getItem(`${user.userBasket}`))){
+          dispatch(setUserBasket(JSON.parse(localStorage.getItem(`${user.userBasket}`))))
+          sessionStorage.setItem("userBasket", JSON.stringify(JSON.parse(localStorage.getItem(`${user.userBasket}`))))
+        }else{
+          alert('ANOTHER LOCALSTORAGE: we have not found your basket info in this localSotrage, please register again')
+        }
+        if(JSON.parse(localStorage.getItem(`${user.favorite}`))){
+          dispatch(subTractFavorite(JSON.parse(localStorage.getItem(`${user.favorite}`))))
+          sessionStorage.setItem("favorite", JSON.stringify(JSON.parse(localStorage.getItem(`${user.favorite}`))))
+        }else{
+          alert('ANOTHER LOCALSTORAGE: we have not found your favorite info in this localSotrage, please register again')
+        }
+        
+        
 
         navigate("../homePage", {replace: true})
       } else {
