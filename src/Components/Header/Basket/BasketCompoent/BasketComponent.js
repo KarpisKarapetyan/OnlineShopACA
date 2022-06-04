@@ -1,14 +1,12 @@
 import {useEffect, useState} from "react"
-import {useDispatch, useSelector} from "react-redux"
+import {useSelector} from "react-redux"
 import {useAddBasket} from "../../../../hooks/useAddBasket"
 import {useSubtractBasket} from "../../../../hooks/useSubtractBasket"
-import {basketBtnShownSelector} from "../../../../redux/slices/basketSlice"
 import {userBasketSelector} from "../../../../redux/slices/userSlice"
 import classes from "./BasketComponent.module.css"
 
 const BasketComponent = () => {
   const userBasket = useSelector(userBasketSelector)
-  const isBasketBtnShown = useSelector(basketBtnShownSelector)
   const [basketArr, setBasketArr] = useState([])
   const [basketPrice, setBasketPrice] = useState(0)
 
@@ -16,7 +14,6 @@ const BasketComponent = () => {
   const subtractBasket = useSubtractBasket()
 
   useEffect(() => {
-    sessionStorage.setItem("isBasketBtnShown", JSON.stringify(isBasketBtnShown))
     sessionStorage.setItem("userBasket", JSON.stringify(userBasket))
     
     const newArr = []
@@ -51,7 +48,7 @@ const BasketComponent = () => {
     setBasketPrice(price)
     setBasketArr(arr)
   }, [userBasket])
-
+ 
   return (
     <div className={classes.items}>
       {basketArr.map((item) => {

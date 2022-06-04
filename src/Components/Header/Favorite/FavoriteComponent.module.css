@@ -7,11 +7,25 @@
   align-items: center;
 }
 
+.title{
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 2px;
+}
+
 .text{
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 70%;
+}
+
+text.p {
+  font-weight:bolder;
+}
+
+.textOfPtag{
+  font-family: 'Montserrat', sans-serif;
+  margin-top: 10px
 }
 
 .item button {
@@ -25,7 +39,7 @@
   align-items: center;
   width: 90%;
   height: 10%;
-  padding-top: 5px;
+  margin-top: 15px;
 }
 
 .favoriteItem p {

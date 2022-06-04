@@ -13,14 +13,12 @@ import "./TshirtMan.css"
 import {useSelector} from "react-redux"
 import {useAddFavorite} from "../../hooks/useAddFavorite"
 import Loadable from "../Loadable/Loadable"
-import {basketBtnShownSelector} from "../../redux/slices/basketSlice"
 
 
 const TshirtMan = () => {
   const favoriteArr = useSelector(favoriteSelector)
   const userBasket = useSelector(userBasketSelector)
   const [tshirtManArr, setTshirtManArr] = useState([])
-  const isBasketBtnShown = useSelector(basketBtnShownSelector)
   useEffect(() => {
     if (!JSON.parse(sessionStorage.getItem("tshirtMan"))) {
       axios

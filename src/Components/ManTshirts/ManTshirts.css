@@ -1,8 +1,0 @@
-.item {
-    flex-shrink: 0;
-    overflow: hidden;
-    width: calc(33vw - 20px);
-    height: 45vh;
-    border: 1px solid red;
-    border-radius: 5px;
-}
