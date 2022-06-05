@@ -1,27 +1,5 @@
 {
-  "users": [
-    {
-      "name": "Karpis",
-      "password": "111111",
-      "id": "id1654338575481",
-      "userBasket": "id1654338575481userBasket",
-      "favorite": "id1654338575481favorite"
-    },
-    {
-      "name": "Aram",
-      "password": "999999",
-      "id": "id1654355564598",
-      "userBasket": "id1654355564598userBasket",
-      "favorite": "id1654355564598favorite"
-    },
-    {
-      "name": "Karo",
-      "password": "666666",
-      "id": "id1654356020321",
-      "userBasket": "id1654356020321userBasket",
-      "favorite": "id1654356020321favorite"
-    }
-  ],
+  "users": [],
   "allProducts": [
     {
       "id": "1",

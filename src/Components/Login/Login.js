@@ -19,11 +19,13 @@ import {
 } from "../../redux/slices/userSlice"
 import classes from "./Login.module.css"
 import loginImage from "../Images/Registration.png"
+import StorageAlert from "./AnotherLocalStorageAlert/AnotherLocalStorageAlert"
 
 const Login = () => {
   const [isLoginFailed, setIsLoginFailed] = useState(false)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const [errorMessage,setErrorMessage] = useState(false)
   const admin = useSelector(adminSelector)
   const {
     register,
@@ -55,10 +57,20 @@ const Login = () => {
         }
         if(user.name ==="Karpis"){dispatch(setAdmin(true))}
         dispatch(setUser(user))
-        dispatch(setUserBasket(JSON.parse(localStorage.getItem(`${user.userBasket}`))))
-        dispatch(subTractFavorite(JSON.parse(localStorage.getItem(`${user.favorite}`))))
-        sessionStorage.setItem("userBasket", JSON.stringify(JSON.parse(localStorage.getItem(`${user.userBasket}`))))
-        sessionStorage.setItem("favorite", JSON.stringify(JSON.parse(localStorage.getItem(`${user.favorite}`))))
+        if(JSON.parse(localStorage.getItem(`${user.userBasket}`))){
+          dispatch(setUserBasket(JSON.parse(localStorage.getItem(`${user.userBasket}`))))
+          sessionStorage.setItem("userBasket", JSON.stringify(JSON.parse(localStorage.getItem(`${user.userBasket}`))))
+        }else{
+          setErrorMessage(true)
+        }
+        if(JSON.parse(localStorage.getItem(`${user.favorite}`))){
+          dispatch(subTractFavorite(JSON.parse(localStorage.getItem(`${user.favorite}`))))
+          sessionStorage.setItem("favorite", JSON.stringify(JSON.parse(localStorage.getItem(`${user.favorite}`))))
+        }else{
+          setErrorMessage(true)
+        }
+        
+        
 
         navigate("../homePage", {replace: true})
       } else {
@@ -110,6 +122,7 @@ const Login = () => {
                 >
                   <p className={classes.registerBtnP}>Go to Registration</p>
                 </button>
+            {errorMessage && <StorageAlert errorMessage= {errorMessage} setErrorMessage={setErrorMessage}/> }
               </div>
             )}
           </div>
