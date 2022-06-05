@@ -1,13 +1,5 @@
 {
-  "users": [
-    {
-      "name": "Karpis",
-      "password": "111111",
-      "id": "id1654357252042",
-      "userBasket": "id1654357252042userBasket",
-      "favorite": "id1654357252042favorite"
-    }
-  ],
+  "users": [],
   "allProducts": [
     {
       "id": "1",

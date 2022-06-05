@@ -19,11 +19,13 @@ import {
 } from "../../redux/slices/userSlice"
 import classes from "./Login.module.css"
 import loginImage from "../Images/Registration.png"
+import StorageAlert from "./AnotherLocalStorageAlert/AnotherLocalStorageAlert"
 
 const Login = () => {
   const [isLoginFailed, setIsLoginFailed] = useState(false)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const [errorMessage,setErrorMessage] = useState(false)
   const admin = useSelector(adminSelector)
   const {
     register,
@@ -59,13 +61,13 @@ const Login = () => {
           dispatch(setUserBasket(JSON.parse(localStorage.getItem(`${user.userBasket}`))))
           sessionStorage.setItem("userBasket", JSON.stringify(JSON.parse(localStorage.getItem(`${user.userBasket}`))))
         }else{
-          alert('ANOTHER LOCALSTORAGE: we have not found your basket info in this localSotrage, please register again')
+          setErrorMessage(true)
         }
         if(JSON.parse(localStorage.getItem(`${user.favorite}`))){
           dispatch(subTractFavorite(JSON.parse(localStorage.getItem(`${user.favorite}`))))
           sessionStorage.setItem("favorite", JSON.stringify(JSON.parse(localStorage.getItem(`${user.favorite}`))))
         }else{
-          alert('ANOTHER LOCALSTORAGE: we have not found your favorite info in this localSotrage, please register again')
+          setErrorMessage(true)
         }
         
         
@@ -120,6 +122,7 @@ const Login = () => {
                 >
                   <p className={classes.registerBtnP}>Go to Registration</p>
                 </button>
+            {errorMessage && <StorageAlert errorMessage= {errorMessage} setErrorMessage={setErrorMessage}/> }
               </div>
             )}
           </div>

@@ -12,7 +12,7 @@ const App = () => {
     <div className="App">
       
       <ModalProvider>
-        <Suspense fallback={<div>...Loading</div>}>
+        <Suspense  fallback={<div>...Loading</div>}>
           <Header />
           {routes}
           <Footer />
